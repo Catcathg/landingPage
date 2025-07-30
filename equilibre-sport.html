@@ -1,0 +1,1137 @@
+<!--https://calebasse.com/fr/pages/equilibre-sport-style-de-vie-adopter-->
+
+<style>
+    .carousel-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .newsletter-form {
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .nl-start {
+        color: #2a7d8c;
+        background-color: rgba(243, 244, 246, .5);
+        border-radius: 1em;
+        padding: 2em 2em 1em;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .nl-start .bg-green {
+        background-color: #2a7d8c;
+    }
+
+    .products-container {
+        padding: 0 20px;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        /* Styliser la scrollbar native */
+        scrollbar-width: thin;
+        scrollbar-color: #2a7d8c #e0e0e0;
+    }
+
+    /* Webkit browsers (Chrome, Safari, Edge) */
+    .products-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .products-container::-webkit-scrollbar-track {
+        background: #e0e0e0;
+        border-radius: 4px;
+    }
+
+    .products-container::-webkit-scrollbar-thumb {
+        background: #4a9d5e;
+        border-radius: 4px;
+        cursor: grab;
+    }
+
+    .products-container::-webkit-scrollbar-thumb:hover {
+        background: #3a8d4e;
+    }
+
+    .products-container::-webkit-scrollbar-thumb:active {
+        cursor: grabbing;
+        background: #2a7d3e;
+    }
+
+    /* Container pour tous les produits en ligne */
+    .products-wrapper {
+        display: flex;
+        gap: 20px;
+        padding: 10px 0 20px 0;
+        width: max-content;
+        /* Important pour permettre le défilement */
+    }
+
+    /* Style pour les produits */
+    .product {
+        background-color: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        /* Empêche la compression des produits */
+        width: 280px;
+        /* Largeur fixe pour chaque produit */
+        height: 320px;
+        /* Hauteur fixe pour l'uniformité */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Style pour les images de produits */
+    .pdt-img {
+        height: 200px;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .pdt-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .pdt-img:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Style pour les infos de produits */
+    .pdt-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    .pdt-name {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #333;
+    }
+
+    .pdt-price {
+        color: #4a9d5e;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    /* Style pour le bouton CTA */
+    .pdt-cta {
+        margin-top: auto;
+    }
+
+    .pdt-cta a {
+        display: block;
+        background-color: #4a9d5e;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .pdt-cta a:hover {
+        background-color: #3a8d4e;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(74, 157, 94, 0.3);
+    }
+
+    /* Indicateur de défilement */
+    .scroll-indicator {
+        text-align: center;
+        margin-top: 15px;
+        color: #666;
+        font-size: 12px;
+    }
+
+    .scroll-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border-radius: 15px;
+        font-size: 11px;
+        color: #041e49;
+    }
+
+    .scroll-hint:before {
+        content: "←";
+        font-size: 14px;
+    }
+
+    .scroll-hint:after {
+        content: "→";
+        font-size: 14px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 900px) {
+        .product {
+            width: 240px;
+            height: 380px;
+        }
+
+        .carousel-container {
+            max-width: 100%;
+        }
+
+        .products-container {
+            padding: 0 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .products-container {
+            padding: 0 10px;
+        }
+
+        .product {
+            width: 21px;
+            height: 350px;
+        }
+
+        .pdt-name {
+            font-size: 13px;
+        }
+
+        .pdt-price {
+            font-size: 16px;
+        }
+
+        .pdt-cta a {
+            padding: 10px 12px;
+            font-size: 13px;
+        }
+
+        /* Scrollbar plus épaisse sur mobile */
+        .products-container::-webkit-scrollbar {
+            height: 12px;
+        }
+    }
+
+    /* Animation de fade pour les produits */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .product {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .product:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .product:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .product:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .product:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .product:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .product:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .product:nth-child(7) {
+        animation-delay: 0.7s;
+    }
+
+    .product:nth-child(8) {
+        animation-delay: 0.8s;
+    }
+
+    .product:nth-child(9) {
+        animation-delay: 0.9s;
+    }
+
+    .product:nth-child(10) {
+        animation-delay: 1.0s;
+    }
+</style>
+
+<style>
+    .pt-8 {
+        padding-top: 0;
+    }
+
+    .lp-container {
+        max-width: 1250px;
+        text-align: center;
+        margin: 0 auto;
+        padding: 60px;
+        font-size: 1.2em;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        text-decoration-line: none;
+    }
+
+    .div-cache {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cache {
+        width: 900px;
+        height: 550px;
+    }
+
+    .caleverte-markdown .title h1 {
+        display: block;
+        font-size: 3.9em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: -5px;
+    }
+
+    .title {
+        display: flex;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .title-maj {
+        text-align: center;
+    }
+
+    .left {
+        width: 65%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .right {
+        width: 35%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .right img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .lp-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .nav-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 15px;
+    }
+
+    .nav-item {
+        position: relative;
+        transition: transform 0.3s ease;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .nav-item:hover {
+        transform: scale(1.05);
+    }
+
+    .nav-item a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .nav-item img {
+        width: 100%;
+        height: 216px;
+        display: block;
+        border-radius: 8px;
+        object-fit: cover;
+        object-position: center 73%;
+    }
+
+    .nav-item .art-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+
+
+    .nav-options a {
+        display: block;
+        text-decoration: none;
+        background-color: #d1e3e3;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        aspect-ratio: 5 / 3;
+        position: relative;
+    }
+
+    .nav-options a:hover {
+        transform: translateY(-5px);
+    }
+
+    .container-img {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .image-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .image-wrapper img {
+        width: 50%;
+        max-width: 500px;
+        height: auto;
+    }
+
+    .introduction .right {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .introduction {
+        display: flex;
+        margin-top: 50px;
+    }
+
+    .left-img {
+        width: 100%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .sport-img {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sport-img img {
+        border-radius: 8px;
+        width: 100%;
+        height: auto;
+    }
+
+    .background {
+        background-color: #BAD4D5;
+        border-radius: 25px;
+        margin: 20px;
+    }
+
+    .text-title {
+        padding: 20px 20px 30px 20px;
+    }
+
+    .pdt-img {
+        text-align: center;
+        margin-bottom: 15px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pdt-img img {
+        max-width: 100%;
+        max-height: 140px;
+        object-fit: contain;
+    }
+
+    .pdt-info {
+        margin-bottom: 15px;
+    }
+
+    .pdt-name {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #333;
+        line-height: 1.3;
+    }
+
+    .pdt-price {
+        font-weight: bold;
+        font-size: 16px;
+        color: #000;
+    }
+
+    .article .art-title {
+        color: white;
+    }
+
+    .pdt-cta {
+        margin-top: auto;
+    }
+
+    .pdt-cta a {
+        display: inline-block;
+        background-color: #2a7d8c;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.3s;
+        width: 100%;
+        text-align: center;
+    }
+
+    .pdt-cta a:hover {
+        background-color: #1c6270;
+    }
+
+    .nav-label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 33px;
+        height: 30px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    .separator {
+        border-bottom: 1px solid black;
+    }
+
+    .nl {
+        color: rgb(46 147 60/var(--tw-bg-opacity));
+        background-color: rgba(243, 244, 246, .5);
+        border-radius: 1em;
+        padding: 2em 2em 1em;
+        margin: 2em 2em 0 2em;
+        width: 100%;
+    }
+
+    .article {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        max-width: 800px;
+        aspect-ratio: 2 / 1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        align-items: flex-end;
+    }
+
+    .article .art-title {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 5px;
+        width: 100%;
+        border-radius: 0 0 0.5em 0.5em
+    }
+
+    .article .art-title a {
+        text-decoration: underline;
+        color: #ffffff;
+        font-weight: 700;
+        white-space: normal;
+    }
+
+    .products-wrapper {
+        display: flex;
+        overflow-x: auto;
+        /* Activer le défilement horizontal */
+        -webkit-overflow-scrolling: touch;
+        /* Pour une meilleure expérience de défilement sur iOS */
+        scroll-snap-type: x mandatory;
+        /* Snap pour une meilleure UX */
+        scrollbar-width: none;
+        /* Masquer la barre de défilement sur Firefox */
+        -ms-overflow-style: none;
+        /* Masquer la barre de défilement sur IE/Edge */
+    }
+
+    /* Masquer la barre de défilement sur Chrome/Safari */
+    .products-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .products {
+        width: 221px;
+        transition: none;
+        /* Désactiver la transition car nous utilisons le scroll natif */
+    }
+
+    .product {
+        width: 221px;
+        scroll-snap-align: start;
+        /* Snap les produits lors du défilement */
+        flex: 0 0 auto;
+    }
+
+
+    /* Ajouter un indicateur visuel pour montrer qu'il y a plus de produits */
+    .products::after {
+        content: '';
+        flex: 0 0 20px;
+        min-width: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .article .art-title {
+            font-size: 1rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            box-sizing: border-box;
+        }
+
+        .nav-item .art-title {
+            font-size: 0.8em;
+        }
+
+        .nav-item img {
+            height: 142px;
+        }
+
+        .introduction {
+            margin-top: 20px;
+        }
+
+        .sport-img {
+            margin-top: 20px;
+        }
+
+        .caleverte-markdown .title h1 {
+            font-size: 3.1em;
+            text-align: center;
+        }
+
+        .pd-carrousel {
+            padding: 10px 15px;
+        }
+
+        .caleverte-markdown:not(.no-style) p {
+            text-align: center;
+        }
+
+        .background {
+            margin: 0px;
+        }
+
+        .w-\[400px\] {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        .left-img {
+            display: none;
+        }
+
+        .lp-container {
+            padding: 0px;
+        }
+
+        .right {
+            padding-left: 0%;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+            padding: 0;
+        }
+
+        .title {
+            flex-direction: column;
+            padding: 20px 0;
+        }
+
+        .nav-options {
+            grid-template-columns: 1fr;
+            /* 3 colonnes sur mobile */
+            grid-template-rows: repeat(3, auto);
+            /* 3 lignes */
+        }
+
+        .image-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .product {
+            flex: 0 0 calc(50% - 10px);
+            min-width: calc(50% - 10px);
+            width: 21px;
+        }
+
+        .text-title {
+            padding: 20px 0px 0px 0px;
+        }
+
+        .nl {
+            margin: 2em 0em 0 0em;
+        }
+
+        .nav-item {
+            width: 68%;
+        }
+    }
+</style>
+
+<picture class="kv">
+    <source media="(max-width: 768px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749633860/Design_sans_titre_4_eca49d3ca3.png">
+    <source media="(min-width: 769px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749633453/Design_sans_titre_3_2567483b56.png">
+    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749633453/Design_sans_titre_3_2567483b56.png"
+        alt="code secret et source d'énergie féminine">
+</picture>
+<div class="lp-container">
+    <!---- le titre et l'image de la prochaine section --->
+    <div class="title">
+        <div class="left">
+            <h1>L’équilibre<br /> par le Sport : <br />le style de vie à adopter</h1>
+            <p>Et si l'on repensait notre façon de bouger ?</p>
+            <p>Le sport devient alors plus qu'un simple effort physique : il devient un rituel de reconnexion, un
+                dialogue intérieur, un chemin vers une vitalité durable.</p>
+        </div>
+        <div class="right"><img
+                src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749660152/Image_1_min_fcc894306f.jpg">
+        </div>
+    </div>
+    <div class="title">
+        <div class="left">
+            <p> <strong>Découvrez notre page Sport & Équilibre : </strong></p>
+            <p>Une approche du mouvement inspirée de la Médecine Traditionnelle Chinoise, loin des logiques de
+                performance. Ici, place à l'écoute du corps, à la vitalité douce, et à des gestes simples à intégrer au
+                quotidien. </p>
+            <p> Que vous soyez souvent assis, cherchez à vous reconnecter avec votre corps ou en quête d’un mieux-être
+                sans pression, vous y trouverez des conseils concrets, des routines accessibles et une nouvelle façon
+                d’aborder l’activité physique pour un chemin vers une vitalité durable. </p>
+        </div>
+    </div>
+    <div class="nl-start">Une vision du sport comme rituel de soin et de reconnexion.
+        Cette page sera mise à jour régulièrement. Pour suivre les nouveautés, inscrivez-vous à notre newsletter.
+        <newsletter-form from="sport"></newsletter-form>
+    </div></br>
+    <div class="title-maj">
+        <h1><b>MIEUX VIVRE AUJOURD’HUI</b></h1>
+    </div>
+    <p>Dans un monde où le stress et la fatigue sont omniprésents, la médecine traditionnelle chinoise (MTC) offre une
+        perspective enrichissante sur la santé. Plutôt que de la définir simplement comme l'absence de maladie, la MTC
+        la conçoit comme un état d'équilibre harmonieux entre le corps, l'esprit et l'environnement. Cette approche
+        holistique met l'accent sur la prévention et la qualité de vie, en considérant que le bien-être résulte d'une
+        circulation fluide du Qi, et l’équilibre global du corps.</p>
+    <div class="container-img">
+        <div class="image-wrapper">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749543338/2_e4798701b5.png"
+                alt="Image 1">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749543338/3_7a053eca13.png"
+                alt="Image 2">
+        </div>
+    </div>
+    <div class="introduction">
+        <div class="left-img"><img
+                src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746015953/Image_2_min_1_77e043dc95.jpg">
+        </div>
+        <div class="right">
+            <p>Adopter l'équilibre par le sport, c'est choisir un <b>mode de vie </b> où chaque mouvement a du sens.</p>
+            <p>C'est respecter :</p>
+            <p><b>SON ÉNERGIE</b></p>
+            <p><b>SES RYTHMES NATURELS</b></p>
+            <p><b>SES BESOINS PROFONDS</b></p>
+            <p>Le sport devient alors plus qu'un simple effort physique : il devient un rituel de reconnexion, un
+                dialogue intérieur, un chemin vers une vitalité durable.
+            </p>
+        </div>
+    </div>
+    <p>Il n'est pas nécessaire de tout changer pour entamer ce dialogue avec votre corps. Un geste, un moment, une
+        attention portée à soi peuvent suffire pour commencer à vivre autrement.</p>
+    <div class="sport-img"><img
+            src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746175587/0_81282d75ef.png"></div>
+    <p>Comme le dit Lao Tseu, sage chinois du VIe siècle av. J.-C. et figure fondatrice du taoïsme :
+        <b><em>« Un voyage de mille lieues commence toujours par un premier pas »</em></b> . . . Pour nous, ce voyage
+        commence par un premier mouvement.
+    </p>
+    <div class="lp-nav">
+        <div class="nav-options">
+            <!-- Première rangée -->
+            <div class="nav-item">
+                <a href="#pmouvement">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/mouvement_922b412a7c.png"
+                        alt="Mouvement">
+                    <div class="art-title">Mouvement</div>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#pbouger">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/assis_f3d6c5570f.png"
+                        alt="Bouger, même assis">
+                    <div class="art-title">Bouger, même assis</div>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#pfamille">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/famille_fb987754e3.png"
+                        alt="Famille">
+                    <div class="art-title">Famille</div>
+                </a>
+            </div>
+            <!-- Deuxième rangée -->
+            <!--div class="nav-item">
+      <a href="#ppilate">
+        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/pilates_93195cc394.png" alt="Pilates">
+        <div class="art-title">Pilates</div>
+      </a>
+    </div -->
+            <div class="nav-item">
+                <a href="#ptemps">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/Temps_8d2b726a10.png"
+                        alt="Temps">
+                    <div class="art-title">Le temps</div>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#pblessure">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747125778/Ecouter_son_corps_fb2c317f8b.png"
+                        alt="Blessures">
+                    <div class="art-title">Blessures</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </br>
+    <h1 id="pmouvement"><b>Le mouvement, un équilibre au quotidien et même assis !</b></h1>
+    <div class="separator"></div>
+    <p>En médecine traditionnelle chinoise, bouger ne se limite pas à « faire du sport » : c’est <b>entretenir un
+            dialogue subtil avec vos organes</b>, réveiller votre énergie vitale (Qi) et prévenir les déséquilibres.
+        Même assis au bureau, votre corps a besoin de circuler, de respirer, de vibrer. Car l’<b>immobilité bloque le
+            Qi</b>, et avec lui, la clarté mentale, la digestion, le sommeil…</p>
+    <h3><b>Explorez les 5 mouvements qui réveillent votre vitalité : </b></h3>
+    <a target="_blank" href="https://calebasse.com/blog/sante-et-bien-etre/langage-secret-de-votre-corps"
+        style="text-decoration: none; display: block;">
+        <div class="article"
+            style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749633177/1_Mouvement_9f344fb0c1.png&quot;);">
+            <div class="art-title">Le langage secret de votre corps : 5 mouvements pour stimuler vos organes</div>
+        </div>
+    </a>
+    </br>
+    <h3><b id="pbouger">Découvrez les gestes ciblés pour relancer la dynamique avec une chaise :</b></h3>
+    <a target="_blank" href="https://calebasse.com/blog/sante-et-bien-etre/6-exercices-express-circuler-energie">
+        <div class="article"
+            style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749633177/2_Chaise_b4e2e07c72.png&quot;);">
+            <div class="art-title">6 exercices express pour faire circuler l’énergie au bureau ou à la maison</div>
+        </div>
+    </a></br>
+    <div class="background">
+        <div class="pd-carrousel">
+            <div class="text-title">
+                <h1><b>Le pouvoir des plantes au service du mouvement</b></h1>
+                <p>Et si vos gestes prenaient encore plus de sens grâce aux plantes ?</br> Les <b>compléments
+                        alimentaires naturels</b> et les <b>tisanes</b> à base de plantes ne se contentent pas d’agir en
+                    interne, ils accompagnent, soutiennent et amplifient les effets du mouvement. Une infusion bien
+                    choisie peut préparer le corps à l’effort en douceur. Un complément à base de plantes ciblées peut
+                    favoriser la récupération et l’équilibre énergétique. Un massage au Gua Sha ? Un vrai boost pour vos
+                    étirements.</p>
+            </div>
+            <!-- Tous les boutons de navigation possibles -->
+            <!-- Boutons -->
+            <div class="carousel-container">
+                <div class="products-container">
+                    <div class="products-wrapper">
+                        <!-- Tous les produits en ligne -->
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/bu-zhong-yi-qi-cha-tisane-tonifiant-du-corps-3973?product=4918">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305580/1_0ce43b9ddd.png"
+                                        alt="Tisane Tonifiant du corps">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Tisane Tonifiant du corps</div>
+                                <div class="pdt-price">10,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/bu-zhong-yi-qi-cha-tisane-tonifiant-du-corps-3973?product=4918">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/chardon-marie-4474?product=6128">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305643/2_d6a90e8e24.png"
+                                        alt="Graines de Chardon-Marie">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Graines de Chardon-Marie</div>
+                                <div class="pdt-price">12,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/chardon-marie-4474?product=6128">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/qing-zhuo-tang-formule-detox-4691?product=5836">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746435499/29_85886704d0.png"
+                                        alt="Formule Détox">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Formule Détox</div>
+                                <div class="pdt-price">37,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/qing-zhuo-tang-formule-detox-4691?product=5836">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/chai-hu-an-mian-wan-formule-sommeil-4255?product=5980">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305699/4_90585e9fd8.png"
+                                        alt="Formule Sommeil">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Formule Sommeil</div>
+                                <div class="pdt-price">37,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/chai-hu-an-mian-wan-formule-sommeil-4255?product=5980">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/chai-hu-zhi-tong-tang-formule-confort-articulaire-4223?product=5848">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305755/5_7be0f765b5.png"
+                                        alt="Formule Articulation">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Formule Articulation</div>
+                                <div class="pdt-price">37,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/chai-hu-zhi-tong-tang-formule-confort-articulaire-4223?product=5848">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/jian-gu-tang-tisane-consolidation-des-os-3980?product=4932">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305812/6_8041305d63.png"
+                                        alt="Tisane Consolidation des Os">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Tisane Consolidation des Os</div>
+                                <div class="pdt-price">9.90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/jian-gu-tang-tisane-consolidation-des-os-3980?product=4932">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/ai-jiu-he-boite-de-moxibustion-sans-fumee-4607?product=7451">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305854/7_c355698c12.png"
+                                        alt="Boîte de moxibustion portable sans fumée">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Boîte de moxibustion portable sans fumée</div>
+                                <div class="pdt-price">6,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/ai-jiu-he-boite-de-moxibustion-sans-fumee-4607?product=7451">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/shu-jin-huo-luo-pao-jiao-bao-bain-de-pieds-pour-la-circulation-et-les-articulations-4552?product=6903">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305940/9_a69a80ddf9.png"
+                                        alt="Bain de pieds pour la circulation et les articulations">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Bain de pieds pour la circulation et les articulations</div>
+                                <div class="pdt-price">33,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/shu-jin-huo-luo-pao-jiao-bao-bain-de-pieds-pour-la-circulation-et-les-articulations-4552?product=6903">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/bai-shao-yao-pivoine-blanche-4441?product=4012">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305894/8_b3f5b8039a.png"
+                                        alt="Pivoine blanche">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Pivoine blanche</div>
+                                <div class="pdt-price">9,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/bai-shao-yao-pivoine-blanche-4441?product=4012">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="pdt-img">
+                                <a target="_blank"
+                                    href="https://calebasse.com/produits/gua-sha-en-pierre-de-bian-5172?product=7471">
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747305996/10_fa990b4ee2.png"
+                                        alt="Gua sha en pierre de bian">
+                                </a>
+                            </div>
+                            <div class="pdt-info">
+                                <div class="pdt-name">Gua sha en pierre de bian</div>
+                                <div class="pdt-price">18,90€</div>
+                                <div class="pdt-cta">
+                                    <a target="_blank"
+                                        href="https://calebasse.com/produits/gua-sha-en-pierre-de-bian-5172?product=7471">Découvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Indicateur de défilement -->
+                <div class="scroll-indicator">
+                    <div class="scroll-hint">Faites défiler pour voir plus</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 id="pfamille"><b>La famille, votre premier centre de bien-être</b></h1>
+    <div class="separator"></div>
+    <p>Et si votre salon devenait un espace de santé partagé ?</br>Les pratiques énergétiques chinoises offrent des
+        opportunités uniques pour transformer <b>les moments en famille</b> en rituels thérapeutiques. Imaginez : au
+        lieu de demander "As-tu fait tes devoirs ?", dites plutôt "Prêt pour notre séance de Qi Gong à deux ?"</p>
+    <h3><b>Découvrez les 5 rituels qui font du bien à toute la famille :</b></h3>
+    <a target="_blank" href="https://calebasse.com/blog/sante-et-bien-etre/rituels-sante-famille">
+        <div class="article"
+            style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747127990/3_Famille_a8d44e3c0a.png&quot;);">
+            <div class="art-title">5 rituels santé à faire en famille : des souvenirs qui soignent l’esprit</div>
+        </div>
+    </a>
+    </br>
+    <!-- h1 id="ppilate"><b>Pilates :  une recherche d’équilibre au féminin</b></h1>
+<div class="separator"></div>
+<p>De plus en plus de femmes choisissent le Pilates comme pratique régulière. Pourquoi un tel engouement ?</br>Parce que cette méthode douce, basée sur la respiration, la concentration et le renforcement profond, résonne instinctivement avec ce que la médecine chinoise valorise depuis des siècles : <b>l’harmonie entre force et souplesse</b>, entre souffle et énergie vitale.</p>
+<h3><b>Découvrez comment le Pilates peut devenir votre rituel bien-être au féminin :</b></h3>
+<a target="_blank" href="https://calebasse.com/fr/blog/sante-et-bien-etre/rechauffer-uterus-froid-bien-etre-feminin"><div class="article" style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747128000/4_Pilates_392e794951.png&quot;);">
+            <div class="art-title">Pilates & harmonie : le duo gagnant pour le corps féminin
+</div></div></a -->
+    </br>
+    <h1 id="ptemps"><b>Bouger intelligemment : écouter les signaux… au bon moment !</b></h1>
+    <div class="separator"></div>
+    <p>Et si vos performances dépendaient autant du <b>moment</b> où vous bougez que de votre <b>écoute du corps</b> ?
+        En MTC, chaque organe suit un rythme énergétique précis : s’aligner avec cette horloge, c’est plus d’énergie,
+        une meilleure récupération, et moins de blessures. Douleurs, tensions, inflammations ? Les blessures liées au
+        sport sont souvent le signe d’un déséquilibre.</p>
+    <h3><b>Découvrez les meilleurs moments pour vous entraîner et dormir :</b></h3>
+    <a target="_blank" href="https://calebasse.com/blog/sante-et-bien-etre/horlogie-biologique-chinoise">
+        <div class="article"
+            style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747128000/5_Horloge_2a8ffe7e95.png&quot;);">
+            <div class="art-title">Horloge biologique chinoise : les meilleurs moments pour le sport, le sommeil et les
+                repas</div>
+        </div>
+    </a>
+    <h3><b id="pblessure">Apprenez à prévenir et réparer naturellement les blessures :</b></h3>
+    <a
+        href="https://calebasse.com/blog/sante-et-bien-etre/blessures-sportives-prevenir-recuperer-et-retrouver-l-equilibre-naturellement">
+        <div class="article"
+            style="background-image: url(&quot;https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747128000/6_Blessure_a32ba645a2.png&quot;);">
+            <div class="art-title">Blessures sportives : prévenir, récupérer et retrouver l’équilibre naturellement
+            </div>
+        </div>
+    </a>
+    <div class="nl-start">Ce sujet vous parle ?<br />Nous préparons encore plus de contenus autour du lien entre
+        mouvement, vitalité et équilibre. Découvrez comment adopter une approche sportive alignée avec votre énergie,
+        vos besoins et votre rythme de vie. <br />Abonnez-vous à notre newsletter pour ne rien manquer !
+        <newsletter-form from="sport"></newsletter-form>
+    </div>

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz sur le froid utérin</title>
+
+    <style>
+        :root {
+            --primary: #d88c9a;
+            --primary-light: #f9ecf1;
+            --primary-dark: #c77083;
+            --secondary: #aacb55;
+            --secondary-light: #e9f5d6;
+            --secondary-dark: #88a825;
+            --text: #333333;
+            --text-light: #666666;
+            --background: #ffffff;
+            --background-alt: #fcf6f8;
+            --border: #f0e0e5;
+            --shadow: 0 8px 30px rgba(216, 140, 154, 0.1);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font-heading: 'Poppins', 'Lora', serif;
+            --font-body: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            margin: 0 25px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--background);
+            font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .section-container {
+            padding: 40px 0;
+        }
+
+        .button-persona a {
+            color: white;
+        }
+
+        .button-persona {
+            width: 60%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 15px;
+            font-size: 1rem;
+            margin-top: 10px;
+            background: #d88c9a;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .resultpic {
+            width: 100%;
+            /* margin: 40px 0;*/
+        }
+
+        .resultpic picture {
+            display: block;
+            width: 100%;
+            /* margin-bottom: 30px;*/
+        }
+
+        .resultpic picture:last-child {
+            margin-bottom: 0;
+        }
+
+        .resultpic img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: var(--radius-sm, 8px);
+            box-shadow: var(--shadow, 0 5px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Classes flexbox pour aligner les images */
+        .flexy {
+            display: flex;
+        }
+
+        .justify {
+            justify-content: center;
+        }
+
+        .align {
+            align-items: center;
+        }
+
+        /* Section styles */
+        .section-container,
+        .nutrition-container,
+        .conseils-container {
+            /*background-color: var(--background);*/
+            border-radius: var(--radius);
+            /* box-shadow: var(--shadow); */
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nutrition-container::before,
+        .section-container::before,
+        .conseils-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .nutrition-header,
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .nutrition-icon,
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .nutrition-icon svg,
+        .section-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--primary);
+        }
+
+        .nutrition-title,
+        .section-title {
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .nutrition-content,
+        .section-content {
+            padding-left: 15px;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        ul li::marker {
+            color: var(--primary);
+        }
+
+        /* Links */
+        a {
+            color: var(--secondary-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Subsections */
+        .subsection {
+            margin: 35px 0;
+            padding: 25px;
+            background-color: var(--background-alt);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+        }
+
+        .subsection-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        /* Recipe Container */
+        .recipes-container,
+        .recipe-buttons-container {
+            margin-top: 30px;
+        }
+
+        .recipe-card,
+        .recipe-container {
+            background-color: var(--background);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover,
+        .recipe-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .recipe-header,
+        .recipe-toggle {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 15px 20px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .recipe-header:hover,
+        .recipe-toggle:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+        }
+
+        .recipe-toggle-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .recipe-toggle-icon::before,
+        .recipe-toggle-icon::after {
+            content: '';
+            position: absolute;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .recipe-toggle-icon::before {
+            width: 100%;
+            height: 2px;
+            top: 9px;
+            left: 0;
+        }
+
+        .recipe-toggle-icon::after {
+            width: 2px;
+            height: 100%;
+            left: 9px;
+            top: 0;
+        }
+
+        .arrow-icon {
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
+        }
+
+        details[open] .arrow-icon {
+            transform: rotate(-135deg);
+        }
+
+        details[open] .recipe-toggle-icon::after {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+
+        .recipe-content {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        }
+
+        .recipe-title {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .check-icon,
+        .check-mark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-light);
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .check-icon::before,
+        .check-mark::before {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--secondary-dark);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .recipe-item {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .recipe-label {
+            font-weight: 600;
+            min-width: 100px;
+        }
+
+        /* Ingredients list */
+        .ingredients-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .ingredient-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-light);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .ingredient-item::before {
+            content: '•';
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Images */
+        .indent {
+            max-width: 80%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .indent img {
+            max-width: 100%;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .indent img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .legend {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin: 30px 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Final message */
+        .final-message {
+            background-color: var(--primary-light);
+            padding: 30px;
+            border-radius: var(--radius-sm);
+            margin: 40px 0;
+            position: relative;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .final-message p {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin: 0px 5px 20px 0px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .final-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .final-message::before,
+        .final-message::after {
+            content: '"';
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            position: absolute;
+            color: rgba(216, 140, 154, 0.2);
+        }
+
+        .final-message::before {
+            top: 0;
+            left: 2px;
+        }
+
+        .final-message::after {
+            bottom: -50px;
+            right: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* ----- NOUVELLES STYLES POUR LA PAGE D'ACCUEIL ET LE QUESTIONNAIRE ----- */
+
+        /* Header et Logo */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--background);
+            /* margin-bottom: 30px; */
+        }
+
+        .header img {
+            width: 200px;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .header img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Introduction du quiz */
+        .introduction {
+            max-width: 1200px;
+            text-align: center;
+            background-color: var(--background);
+            border-radius: var(--radius);
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .title {
+            font-size: 1.9rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            line-height: 1.4;
+        }
+
+        .introduction p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            max-width: 830px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Bouton de démarrage du quiz */
+        #startButtonContainer {
+            text-align: center;
+            margin: 0 0 40px 0;
+        }
+
+        #startQuizButton {
+            background: linear-gradient(45deg, var(--secondary), var(--secondary-light));
+            color: var(--text);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #startQuizButton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        #startQuizButton:hover {
+            background: linear-gradient(45deg, var(--secondary-dark), var(--secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #startQuizButton:hover::before {
+            left: 100%;
+        }
+
+        #startQuizButton:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Conteneur de question */
+        #questionContainer {
+            background-color: var(--background);
+            border-radius: var(--radius);
+            /* box-shadow: var(--shadow); */
+            max-width: 1200px;
+            text-align: center;
+            transition: var(--transition);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            //padding: 105px 10px;
+            padding: 10px;
+        }
+
+        /* Options de réponse */
+        #options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        #options button {
+            background-color: var(--background);
+            border: 2px solid var(--primary-light);
+            border-radius: 10px;
+            padding: 15px 25px;
+            width: 100%;
+            max-width: 600px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #options button:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        #options button.selected {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        /* Barre de progression */
+        .progress-container {
+            width: 100%;
+            max-width: 700px;
+            height: 8px;
+            background-color: var(--background-alt);
+            border-radius: 10px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Bouton suivant */
+        #nextBtn {
+            background-color: #ccc;
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: not-allowed;
+            transition: var(--transition);
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        #nextBtn.active {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        #nextBtn.active:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Email Container */
+        #emailContainer {
+            background-color: #f9ecf1;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 650px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        #emailContainer p.mail {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        #emailInput {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            font-family: var(--font-body);
+        }
+
+        #emailInput:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(216, 140, 154, 0.2);
+        }
+
+        #saveEmailBtn {
+            background: linear-gradient(-3deg, #f2768d, var(--primary-light));
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        #saveEmailBtn:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Séparateur stylisé */
+        .separator {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary-light), transparent);
+            margin: 40px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* Confidentialité note */
+        .confidentiality {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--background-alt);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .confidentiality strong {
+            color: var(--primary-dark);
+        }
+
+        /* Animation de chargement */
+        .processing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px auto;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .processing::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--primary-light);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+
+            .section-container,
+            .nutrition-container,
+            .conseils-container {
+                margin-bottom: 20px;
+            }
+
+            .nutrition-header,
+            .section-header {
+                align-items: flex-start;
+            }
+
+            .button-persona {
+                width: 100%;
+            }
+
+            #emailContainer {
+                padding: 10px;
+                margin: 20px;
+            }
+
+            .nutrition-icon,
+            .section-icon {
+                margin-left: 10px;
+                margin-right: 0px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .nutrition-title,
+            .section-title {
+                font-size: 1rem;
+                margin: 10px;
+            }
+
+            .indent {
+                max-width: 95%;
+            }
+
+            .ingredients-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1,
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .title br {
+                display: none;
+            }
+
+            h4 {
+                font-size: 1.3rem;
+            }
+
+            .header img {
+                max-width: 300px;
+            }
+
+            #startQuizButton {
+                font-size: 1.2rem;
+                padding: 10px 45px;
+                width: 80%;
+            }
+
+            .introduction p {
+                font-size: 1rem;
+            }
+
+            #questionContainer {
+                min-height: 70vh;
+                //padding: 50px 22px;
+                */ margin: 0;
+            }
+
+            .recipe-toggle-icon {
+                width: 32px;
+                height: 23px;
+            }
+
+            .recipe-toggle-icon::after {
+                height: 90%;
+                left: 13px;
+            }
+
+            .recipe-title {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .subsection {
+                padding: 20px 15px;
+            }
+
+            .ingredients-list {
+                grid-template-columns: 1fr;
+            }
+
+            h1,
+            .title {
+                font-size: 1.4rem;
+            }
+
+            .recipe-header,
+            .recipe-toggle {
+                padding: 13px 8px;
+                font-size: 1rem;
+            }
+
+            .final-message {
+                margin: 0px;
+            }
+
+            .final-message p {
+                font-size: 1.1rem;
+            }
+
+            #options button {
+                padding: 12px 15px;
+            }
+
+            #nextBtn,
+            #saveEmailBtn {
+                padding: 10px 50px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #questionContainer {
+                /* padding: 105px 10px; */
+                /* Padding spécifique pour desktop */
+            }
+        }
+    </style>
+
+    <script>
+        var userId = "user-" + Math.random().toString(36).substr(2, 9);
+        var currentQuestionIndex = 0;
+        var questionsCache = [];
+        var selectedAnswer = null;
+        var switchCache = {};
+        let lastQuestion = "";
+        let answerToQ1;
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Affiche l'ID utilisateur
+            document.getElementById("userIdDisplay").innerText = "Utilisateur: " + userId;
+
+            // 📌 Enregistrer l'utilisateur et récupérer lastQuestion
+            google.script.run.withSuccessHandler(function (data) {
+                // Définir dynamiquement lastQuestion selon la réponse à la question "Q1"
+                var answerToQ1 = data.answerToQ1; // Supposons que cette donnée vient de votre Google Sheets ou base de données
+                if (answerToQ1 === "Q1_A") {
+                    lastQuestion = "Q16";
+                } else if (answerToQ1 === "Q1_B") {
+                    lastQuestion = "Q21";
+                }
+                console.log("📌 lastQuestion défini à :", lastQuestion);
+
+                // 📌 Mise à jour de lastQuestion dans Google Sheets après sa définition
+                google.script.run.withSuccessHandler(function () {
+                    console.log("📌 Mise à jour réussie de lastQuestion dans Google Sheets !");
+                }).updateLastQuestion(userId, lastQuestion);
+
+            }).storeUserId(userId);
+
+            // 📌 Charger les questions et transitions
+            google.script.run.withSuccessHandler(loadQuestions).getAllQuestions(userId);
+            google.script.run.withSuccessHandler(function (data) {
+                switchCache = data;
+                console.log("📌 Transitions chargées :", switchCache);
+            }).getAllSwitches();
+
+            // 📌 Affiche le quiz et cache le bouton "Commencer" lorsqu'on clique sur "Commencer"
+            document.getElementById("startQuizButton").addEventListener("click", function () {
+                // Cache le bouton "Commencer" et les éléments d'introduction
+                document.getElementById("startButtonContainer").style.display = "none";
+                document.getElementById("introDiv").style.display = "none";
+                document.getElementById("footerText").style.display = "none";
+
+                // Affiche le quiz et la barre de progression
+                document.getElementById("questionContainer").style.display = "block";
+                document.getElementById("progressContainer").style.display = "block";
+            });
+
+        });
+
+        // 📌 Vérifier si on est à la dernière question définie par `lastQuestion`
+        function isLastQuestion(questionId) {
+            return questionId === lastQuestion;  // Compare l'ID de la question avec lastQuestion
+        }
+
+
+
+        // 📌 Charge toutes les questions et affiche la première
+        function loadQuestions(data) {
+            if (!Array.isArray(data) || data.length === 0) {
+                console.error("❌ Erreur : Impossible de charger les questions !");
+                document.getElementById("questionContainer").innerHTML = "<h3>Impossible de charger le quiz.</h3>";
+                return;
+            }
+
+            questionsCache = data;
+
+            // Si la première question est la dernière question définie, on termine directement
+            if (isLastQuestion(data[0].questionId)) {
+                finishQuiz();
+                return;
+            }
+
+            displayQuestion(); // Affiche la première question
+        }
+
+
+        // 📌 Affiche une question depuis le cache local
+        function displayQuestion() {
+            if (currentQuestionIndex >= questionsCache.length) {
+                console.log("✅ Fin du QCM détectée !");
+                finishQuiz();
+                return;
+            }
+
+            var data = questionsCache[currentQuestionIndex];
+
+            if (!data || typeof data !== "object") {
+                console.error("❌ Erreur : question invalide !");
+                document.getElementById("questionContainer").innerHTML = "<h3>Impossible de charger la question.</h3>";
+                return;
+            }
+
+            selectedAnswer = null; // Réinitialise la sélection
+
+            document.getElementById("questionContainer").innerHTML = `
+        <h3>${data.questionText}</h3> <!-- Affichage avec +1 -->
+        <div id="options"></div>
+        <button id="nextBtn" onclick="nextQuestion()" disabled>Suivant</button>
+    `;
+
+            var optionsContainer = document.getElementById("options");
+            var nextBtn = document.getElementById("nextBtn");
+
+            data.options.forEach(option => {
+                let button = document.createElement("button");
+                button.innerText = option.optionText;
+                button.classList.add("optionBtn");
+
+                button.onclick = function () {
+                    // 🔹 Désélectionner toutes les autres options
+                    document.querySelectorAll("#options button").forEach(btn => btn.classList.remove("selected"));
+
+                    // 🔹 Ajouter la classe "selected" à l'option cliquée
+                    button.classList.add("selected");
+                    selectedAnswer = option.optionId;
+
+                    // 🔹 Activer et styliser le bouton "Suivant"
+                    nextBtn.disabled = false;
+                    nextBtn.classList.add("active");
+                };
+
+                optionsContainer.appendChild(button);
+            });
+
+            updateProgressBar();
+        }
+
+
+        function getNextQuestionId(currentQuestionId, selectedAnswer) {
+            var switchKey = currentQuestionId + "_" + selectedAnswer;  // Crée la clé pour trouver la redirection
+            return switchCache[switchKey] || null;  // Si une redirection existe, elle est retournée, sinon null
+        }
+
+        function nextQuestion() {
+            console.log("📌 questionsCache actuel :", questionsCache); // Vérification du contenu de questionsCache
+            if (!selectedAnswer) {
+                alert("Veuillez choisir au minimum une réponse !");
+                return;
+            }
+
+            var currentQuestionId = questionsCache[currentQuestionIndex].questionId;
+            console.log("📌 Envoi de la réponse :", currentQuestionId, selectedAnswer);
+            if (currentQuestionIndex === 0) {
+                answerToQ1 = selectedAnswer;
+            }
+
+            // 📌 Enregistrer la réponse
+            google.script.run.recordAnswer(userId, currentQuestionId, selectedAnswer);
+
+            // Masquer la div d'introduction lorsque la première question est validée
+            if (currentQuestionIndex === 0) {
+                document.getElementById("introDiv").style.display = "none"; // Cache la div d'introduction
+            }
+
+            // 📌 Chercher le prochain `questionId` dans questionsCache
+            var nextQuestionId = getNextQuestionId(currentQuestionId, selectedAnswer);
+
+            if (nextQuestionId) {
+                // Chercher l'index de la question suivante par son ID
+                currentQuestionIndex = questionsCache.findIndex(q => q.questionId === nextQuestionId);
+                console.log("📌 Passage à la question suivante :", nextQuestionId);
+            } else {
+                // S'il n'y a pas de question suivante définie, vous pouvez soit incrémenter, soit terminer le quiz if (A && !(B && C)) {
+                if (currentQuestionIndex < questionsCache.length - 1 && !(answerToQ1 === "Q1_A" && currentQuestionIndex === 15)) {
+                    currentQuestionIndex++;
+                    console.log(currentQuestionIndex < questionsCache.length - 1 && !(answerToQ1 === "Q1_A" && currentQuestionIndex === 16));
+                    console.log(answerToQ1);
+                    console.log(currentQuestionIndex);
+                    console.log(lastQuestion);
+                } else {
+                    document.getElementById("nextBtn").innerText = "Préparation de vos résultats, veuillez patienter";
+                    document.getElementById("nextBtn").classList.add("processing"); // afficher l'image de processing
+                    finishQuiz();  // Terminer le quiz si aucune question suivante n'est disponible
+                    return;
+                }
+            }
+
+            // 📌 Vérifier si on atteint la dernière question
+            if (isLastQuestion(questionsCache[currentQuestionIndex]?.questionId)) {
+                document.getElementById("nextBtn").innerText = "Préparation de votre résultat, veuillez patienter";
+                document.getElementById("nextBtn").classList.add("processing"); // afficher l'image de processing
+                finishQuiz();
+                return;
+            }
+
+            displayQuestion();
+        }
+
+
+        function updateProgressBar() {
+            var progressBar = document.getElementById("progressBar");
+
+            // Déterminer le nombre total de questions basé sur la réponse à Q1
+            var totalQuestions;
+
+            // Vérifie quelle réponse a été donnée à Q1
+            if (answerToQ1 === "Q1_A") {
+                totalQuestions = 17;
+            } else if (answerToQ1 === "Q1_B") {
+                totalQuestions = 22;
+            } else {
+                // Si answerToQ1 n'est pas encore défini ou a une autre valeur
+                // On peut chercher dans le tableau des réponses
+                var q1Answer = findAnswerForQuestion("Q1");
+                if (q1Answer === "Q1_A") {
+                    totalQuestions = 17;
+                } else if (q1Answer === "Q1_B") {
+                    totalQuestions = 22;
+                } else {
+                    // Si pas de réponse trouvée, utiliser une valeur temporaire
+                    totalQuestions = 17; // Valeur par défaut temporaire
+                }
+            }
+
+            if (progressBar) {
+                // Calcul de la progression
+                var progressPercentage = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+                progressPercentage = Math.min(progressPercentage, 100); // Limite à 100%
+
+                // Mise à jour de la barre de progression
+                progressBar.style.width = progressPercentage + "%";
+                console.log("📌 Mise à jour de la barre :", progressPercentage.toFixed(2) + "%");
+                console.log("Index actuel de la question:", currentQuestionIndex + 1);
+                console.log("Sur un total de:", totalQuestions);
+            } else {
+                console.error("❌ Erreur : Élément progressBar introuvable !");
+            }
+        }
+
+        function findAnswerForQuestion(questionId) {
+            // Si vous avez un tableau des réponses déjà enregistrées
+            if (typeof answersRecorded !== 'undefined' && Array.isArray(answersRecorded)) {
+                for (var i = 0; i < answersRecorded.length; i++) {
+                    if (answersRecorded[i].questionId === questionId) {
+                        return answersRecorded[i].answerId;
+                    }
+                }
+            }
+
+            return null; // Si aucune réponse n'est trouvée
+        }
+
+        var switchCache = {}; // Stocke toutes les transitions
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("userIdDisplay").innerText = "Utilisateur: " + userId;
+
+            // 📌 Récupérer toutes les questions
+            google.script.run.withSuccessHandler(loadQuestions).getAllQuestions(userId);
+
+            // 📌 Récupérer toutes les transitions de switch
+            google.script.run.withSuccessHandler(function (data) {
+                switchCache = data;
+                console.log("📌 Transitions chargées :", switchCache);
+            }).getAllSwitches();
+        });
+
+
+
+        // 📌 Termine le quiz et affiche le message final
+        function finishQuiz() {
+            console.log("✅ Fin du quiz détectée");
+
+            google.script.run.withSuccessHandler(function (message) {
+                // Modifie le contenu du container
+                document.getElementById("questionContainer").innerHTML = `<p>${message}</p>`;
+
+                // Modifie aussi le style du container pour une hauteur automatique
+                document.getElementById("questionContainer").style.height = "auto";
+
+                // Affiche le container d'email
+                var emailContainer = document.getElementById("emailContainer");
+                if (emailContainer) {
+                    emailContainer.style.display = "block";
+                }
+
+                // Cache la barre de progression
+                var progressContainer = document.getElementById("progressContainer");
+                if (progressContainer) {
+                    progressContainer.style.display = "none";
+                }
+
+                // Cache le footer
+                var footerContainer = document.getElementById("footerText");
+                if (footerContainer) {
+                    footerContainer.style.display = "none";
+                }
+
+                attachEmailButton(); // Attacher le bouton de soumission du mail si nécessaire
+            }).getFinalMessage(userId);
+        }
+
+        // 📌 Attache l'événement au bouton d'email
+        function attachEmailButton() {
+            var saveEmailBtn = document.getElementById("saveEmailBtn");
+
+            if (saveEmailBtn) {
+                console.log("📌 Bouton détecté, ajout de l'événement !");
+                saveEmailBtn.addEventListener("click", saveEmail);
+            } else {
+                console.error("❌ Le bouton 'saveEmailBtn' est introuvable !");
+            }
+        }
+
+        // 📌 Enregistre l'email de l'utilisateur
+        function saveEmail() {
+            var emailInput = document.getElementById("emailInput");
+            var email = emailInput.value.trim();
+
+            // 📌 Vérification du format de l'email avec Regex
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!email || !emailRegex.test(email)) {
+                alert("Veuillez entrer une adresse email valide !");
+                emailInput.focus();
+                return;
+            }
+
+            console.log("📩 Enregistrement de l'email :", email);
+
+            // ✅ Vérifie que Google Apps Script est bien appelé
+            google.script.run.withSuccessHandler(function () {
+                document.getElementById("emailConfirmation").style.display = "block"; // ✅ Affiche la confirmation
+                console.log("✅ Email envoyé avec succès !");
+            }).storeUserEmail(userId, email);
+        }
+
+
+        // 📌 Attache l'événement dès que la page charge
+        document.addEventListener("DOMContentLoaded", attachEmailButton);
+
+
+    </script>
+</head>
+
+<body>
+    <div class="header"><img
+            src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1638543963/logo_11085b2243.svg">
+    </div>
+    <div class="container">
+
+        <div class="introduction" id="introDiv">
+            <h1 class="title">Testez votre énergie féminine : <br />à quel stade de floraison en est votre utérus ?
+            </h1>
+            <p>Savez-vous dans quel état se trouve votre utérus, ce sanctuaire de votre énergie féminine ? Ce test vous
+                aide à
+                évaluer sa vitalité et sa "température".</p>
+        </div>
+
+        <div id="startButtonContainer">
+            <button id="startQuizButton">Commencez le test</button>
+        </div>
+
+
+        <p id="userIdDisplay" style="display: none;"></p>
+        <p id="quiz-thankyou" style="display: none;">Merci d'avoir complété le test !</p>
+
+        <div id="questionContainer" style="display: none;">
+        </div>
+        <div id="emailContainer" style="display: none;">
+            <p class="mail">Partagez votre expérience, votre avis ou posez-nous une question (laissez votre email pour
+                recevoir une réponse).</p>
+            <input type="email" id="emailInput" placeholder="Entrez votre email ici">
+            <button id="saveEmailBtn">Enregistrer mon email</button>
+            <p id="emailConfirmation" style="color: green; display: none;">✅ Email enregistré avec succès !</p>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="footer" id="footerText">
+            <p>
+                À la fin du questionnaire, vous recevrez immédiatement un résumé personnalisé de l'état de votre utérus,
+                accompagné de conseils adaptés à vos besoins. Vous aurez également la possibilité d'échanger avec nous
+                pour
+                approfondir votre compréhension et poser vos questions.</p>
+            <p>
+                <b>Confidentialité</b> : Ce questionnaire est entièrement anonyme par défaut. Si vous souhaitez partager
+                vos
+                résultats et en discuter avec nous, vous pourrez laisser un moyen de contact. Dans tous les cas, vos
+                réponses et
+                informations sont protégées et traitées en toute confidentialité.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

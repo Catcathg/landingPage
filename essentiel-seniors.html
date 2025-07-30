@@ -1,0 +1,399 @@
+<!--
+https://calebasse.com/fr/pages/essentiels-seniors-mtc
+-->
+
+<style>
+    .lp-container {
+        max-width: 1000px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .caleverte-markdown .lp-container h1 {
+        display: block;
+        font-size: 4.2em;
+        font-weight: bold;
+        margin: 0 0 1rem 0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: -5px;
+        text-align: left;
+    }
+
+    .product-horizontal {
+        display: none;
+    }
+
+    .code-box {
+        width: 90%;
+        margin: 20px auto 0 auto;
+        text-align: left;
+        border-radius: 10px;
+        background-color: #fbf2ed;
+        padding: 20px 40px;
+        font-size: 1.5em;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+
+    p {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .description {
+        margin: 25px 0px 25px 0px;
+        text-align: left;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .lien {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .lp-nav-cote .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: calc(50vw - 700px);
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .fixed-menu ul li {
+        margin: calc(var(--spacing) * 2) 0;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: #AACB55;
+        color: white;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    .highlight-text {
+        color: #AACB55;
+    }
+
+    .banniere {
+        background-color: #D7E8AC;
+        padding: 15px;
+        text-align: left;
+        font-size: 35px;
+        font-weight: 600;
+        letter-spacing: -0.05em
+    }
+
+    .content-card {
+        margin: 1.5rem 0;
+        font-size: 1.1em;
+        text-align: left;
+    }
+
+    .content-card a {
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+
+    .section-title img {
+        width: 100%;
+        margin-top: 4em;
+    }
+
+    .product {
+        max-width: 990px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        display: grid;
+        grid-auto-columns: 200px;
+        grid-auto-flow: column;
+        gap: 5px;
+    }
+
+    .product::-webkit-scrollbar {
+        height: 6px;
+        /* 滚动条高度变细 */
+    }
+
+    .product-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .items.hero {
+        margin: 2em 2em 0 2em;
+    }
+
+    .items.hero img {
+        border-radius: 10px;
+    }
+
+    .article {
+        align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+        .header-desktop-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .product-desktop-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .product-desktop-grid.spec {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 727px) {
+        .caleverte-markdown .lp-container h1 {
+            font-size: 3em;
+        }
+
+        .banniere {
+            background-color: #D7E8AC;
+            padding: 22px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .caleverte-markdown .lp-container h3 {
+            margin-top: 10px;
+        }
+
+        br {
+            display: none;
+        }
+
+        .lp-container {
+            margin: 10px;
+        }
+
+        .lp-container h1 {
+            line-height: 1.2;
+            letter-spacing: -4px;
+        }
+
+        .product {
+            display: none;
+        }
+
+        .product-horizontal {
+            display: block;
+        }
+
+        .product-card-title {
+            font-size: 15px;
+        }
+
+        .banniere {
+            font-weight: 800;
+        }
+
+        .description {
+            margin: 25px 0px 0px 0px;
+        }
+    }
+</style>
+
+<div class="lp-container">
+    <div class="header-desktop-grid">
+        <div class="order-2 md:order-1">
+            <h1 class="font-bold text-gray-900 leading-tight mb-6">
+                Un geste pour la<br>
+                vitalité de nos<br>
+                grands-parents...<br>
+                C'est possible<br>
+                avec nos <span class="highlight-text">essentiels<br>
+                    seniors</span> !
+            </h1>
+        </div>
+        <div class="order-1 md:order-2 mb-8 md:mb-0">
+            <div class="product-image">
+                <picture>
+                    <source media="(max-width: 1023px)"
+                        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1753450494/mobile_79a4f1e656.png">
+                    <source media="(min-width: 1024px)"
+                        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1753450351/1_2_18d7e10a0e.png">
+                    <img alt="partir en été" loading="lazy"
+                        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1753450351/1_2_18d7e10a0e.png">
+                </picture>
+            </div>
+        </div>
+    </div>
+    <p>Avec l’âge, le corps demande plus de douceur, de soutien et d’attention… chaque geste compte pour préserver
+        l’équilibre et la vitalité au quotidien.</p>
+    <p>À l’occasion de la <b>Journée mondiale des grands-parents</b>, découvrez <span class="highlight-text bold">nos
+            essentiels seniors</span> de la MTC, pensés pour accompagner les seniors avec sérénité et respect du rythme
+        naturel.</p>
+    <div class="code-box">
+        <h2>Offres Exclusives :</h2>
+        <ul>
+            <li style="list-style-type: disc;">10% de réduction* pour tout panier de plus de <b>49€</b> avec le code :
+                <b>SENIOR10</b></li>
+            <span style="font-size: 1rem;"><em>*Offre valable jusqu'au <b>28 juillet 23h59</b> sur tout le site, sauf
+                    sur les livres et le matériel d’acupuncture</em></span>
+        </ul>
+    </div>
+    <div class="lp-nav-cote">
+        <div class="fixed-menu">
+            <ul>
+                <li> <a href="#particulations">Articulations</a></li>
+                <li><a href="#pintime">Intime</a></li>
+                <li><a href="#pimmunite">Immunité</a></li>
+                <li><a href="#pmetabolisme">Métabolisme</a></li>
+                <li><a href="#ptonus">Tonus</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    &nbsp
+    <h3 class="banniere" id="particulations">Mobilité & confort articulaire.</h3>
+    <p class="description">La circulation peut devenir plus lente, entraînant jambes lourdes, gonflements ou sensations
+        de stagnation. Stimuler en douceur le Qi et les liquides aide à retrouver confort et légèreté.</p>
+    <div class=" product-desktop-grid">
+        <div class="description content-card">
+            <h3>Formule Jambes Lourdes </h2>
+                <p>Une synergie de plantes pour stimuler la circulation, réduire la rétention d’eau et soulager les
+                    jambes fatiguées.</p>
+                <product-card class="product-horizontal" sku="D027" direction="horizontal"></product-card>
+                <h3>Marteau de massage en tissu et graines de plantes</h2>
+                    <p>Un accessoire de massage artisanal, parfumé à l’armoise, pour détendre le corps en profondeur et
+                        réveiller l’énergie vitale.</p>
+                    <product-card class="product-horizontal" sku="MA952" direction="horizontal"></product-card>
+        </div>
+        <div class="product">
+            <product-card sku="D027"></product-card>
+            <product-card sku="MA952"></product-card>
+        </div>
+    </div>
+    <br>
+    &nbsp
+    <h3 class="banniere" id="pintime">Équilibre intime & hormonal.</h3>
+    <p class="description">Les équilibres hormonaux évoluent, pouvant entraîner inconforts. Soutenir en douceur aide à
+        préserver l’équilibre intime et l’harmonie hormonale.</p>
+    <div class=" product-desktop-grid">
+        <div class="description content-card">
+            <h3>Formule Ménopause </h2>
+                <p> Un allié naturel conçu pour vous soutenir à chaque étape, de la pré-ménopause à la ménopause
+                    complète.</p>
+                <product-card class="product-horizontal" sku="D032" direction="horizontal"></product-card>
+                <h3>Formule Prostate</h2>
+                    <p> Un soutien naturel pour apaiser les inconforts et retrouver un mieux-être intime au masculin.
+                    </p>
+                    <product-card class="product-horizontal" sku="D040" direction="horizontal"></product-card>
+        </div>
+        <div class="product">
+            <product-card sku="D032"></product-card>
+            <product-card sku="D040"></product-card>
+        </div>
+    </div>
+    <br>
+    &nbsp
+    <h3 class="banniere" id="pimmunite">Vitalité & immunité.</h3>
+    <p class="description">Quand le corps ralentit, gardons l’étincelle vivante. Vitalité, résistance, clarté : des
+        alliés pour traverser le temps avec élan.</p>
+    <div class=" product-desktop-grid">
+        <div class="description content-card">
+            <h3>Morille du Yunnan – Reine des champignons </h2>
+                <p> Riche et raffinée, elle renforce les défenses naturelles, soutient la digestion et aide à retrouver
+                    tonus et vitalité avec l’âge.</p>
+                <product-card class="product-horizontal" sku="AYDJ-D" direction="horizontal"></product-card>
+                <h3>Cordée des montagnes</h2>
+                    <p> Le soutient naturel pour nourrir le Qi, le sang et le Yin au quotidien.</p>
+                    <product-card class="product-horizontal" sku="AHJ" direction="horizontal"></product-card>
+        </div>
+        <div class="product">
+            <product-card sku="AYDJ-D"></product-card>
+            <product-card sku="AHJ"></product-card>
+        </div>
+    </div>
+    <br>
+    &nbsp
+    <h3 class="banniere" id="pmetabolisme">Équilibre du métabolisme.</h3>
+    <p class="description">Pour rester léger, stable et plein d’énergie, cette sélection accompagne l’équilibre du
+        métabolisme, du sucre et de la circulation dans le corps.</p>
+    <div class=" product-desktop-grid">
+        <div class="description content-card">
+            <h3>Tisane Équilibre du sucre </h2>
+                <p> Un mélange de plantes chinoises pensé pour accompagner naturellement la régulation du sucre et
+                    favoriser l’équilibre métabolique.</p>
+                <product-card class="product-horizontal" sku="BWWJTT" direction="horizontal"></product-card>
+                <h3>Tisane Équilibre des lipides</h2>
+                    <p> Elle soutient naturellement la circulation, favorise l’élimination des excès et participe à
+                        l’équilibre général de l’organisme.</p>
+                    <product-card class="product-horizontal" sku="BJZT" direction="horizontal"></product-card>
+        </div>
+        <div class="product">
+            <product-card sku="BWWJTT"></product-card>
+            <product-card sku="BJZT"></product-card>
+        </div>
+    </div>
+    <br>
+    &nbsp
+    <h3 class="banniere" id="ptonus">Super aliments & tonus naturel.</h3>
+    <p class="description">Des trésors nutritionnels pour nourrir le corps en profondeur et renforcer l’énergie vitale.
+    </p>
+    <div class=" product-desktop-grid">
+        <div class="description content-card">
+            <h3>Baies de Goji premium – fruit de la jeunesse éternelle </h2>
+                <p> Un mélange de plantes chinoises pensé pour accompagner naturellement la régulation du sucre et
+                    favoriser l’équilibre métabolique.</p>
+                <product-card class="product-horizontal" sku="AGQZ" direction="horizontal"></product-card>
+                <h3> Fruits de jujube</h2>
+                    <p> Une douceur réconfortante qui nourrit le corps et l’esprit : idéale pour soutenir l’énergie, le
+                        sommeil et la digestion tout en se faisant plaisir.</p>
+                    <product-card class="product-horizontal" sku="ADZ" direction="horizontal"></product-card>
+        </div>
+        <div class="product">
+            <product-card sku="AGQZ"></product-card>
+            <product-card sku="ADZ"></product-card>
+        </div>
+        &nbsp
+    </div>
+    <h2>Et si vous alliez plus loin dans votre bien-être ?</h2>
+    <p class="center">Découvrez d’autres univers pensés pour accompagner chaque moment de vie. Des plroduits aux
+        formules ciblées, tout l’art du soin selon la médecine traditionnelle chinoise.</p>
+    <p class="lien"><a class="highlight-text bold"
+            href=" /pages/ete-confort-veineux-sans-stress-jambes-legeres">Essentiels d’été</a></p>
+    <p class="lien"><a class="highlight-text bold" href=" /materiel-mtc-a-prix-exceptionnel">Matériels MTC pour les
+            praticiens</a></p>
+    <p class="lien"><a class="highlight-text bold" href=" /retour-en-stock">Retour en stock</a></p>
+    &nbsp
+    <h2>Comprendre, soutenir, prévenir : lisez nos articles dédiés aux seniors !</h2>
+    <article-card-carousel ids="105,69,42,19"></article-card-carousel>
+    &nbsp
+</div>

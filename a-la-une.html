@@ -1,0 +1,1389 @@
+<!--https://calebasse.com/fr/pages/a-la-une-->
+
+<style>
+    .titre-article {
+        /* Force la largeur du conteneur */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 15px;
+        box-sizing: border-box !important;
+        /* Force le débordement si nécessaire */
+        overflow-wrap: break-word !important;
+    }
+
+    .titre-article h2 {
+        /* FORCE le retour à la ligne */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
+
+        /* Largeur contrainte */
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        /* Style du titre */
+        font-size: 1.3rem !important;
+        font-weight: 700;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        color: #2c3e50;
+
+        /* Affichage en bloc */
+        display: block !important;
+
+        /* Espacement réduit pour forcer le wrap */
+        letter-spacing: -0.02em;
+    }
+
+    /* Version alternative avec largeur fixe */
+    .titre-article.force-width h2 {
+        max-width: 250px !important;
+        /* Ajustez selon vos besoins */
+    }
+
+    /* Si rien ne fonctionne, version nucléaire */
+    .titre-article.nuclear h2 {
+        font-size: 1.1rem !important;
+        max-width: 200px !important;
+        word-spacing: -2px;
+        letter-spacing: -1px;
+    }
+
+    main .container.pt-8 {
+        padding-top: 0;
+    }
+
+    main .container.p-4 {
+        padding: 0;
+    }
+
+    .read-more span {
+        display: flex;
+        color: #aacb55;
+        text-decoration: underline;
+        font-weight: 500;
+        justify-content: end;
+        font-size: 1.4rem;
+    }
+
+    .read-more span::after {
+        content: ">";
+        color: #aacb55;
+    }
+
+    .banniere {
+        width: 100%;
+    }
+
+
+    .banniere img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Masquer les boutons radio */
+    .filter-input {
+        display: none;
+    }
+
+    /* Style de la navigation des filtres */
+    .filter-nav {
+        display: block;
+        margin: 30px auto;
+        padding: 1em;
+        max-width: 970px;
+        text-align: center;
+    }
+
+    .filter-label {
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        font-weight: 700;
+        padding: 0 5px;
+        font-size: 1.5rem;
+        color: #aacb55;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        text-decoration-line: none;
+    }
+
+    .filter-label:not(:last-child)::after {
+        content: '|';
+        position: relative;
+        right: -6px;
+        color: #aacb55;
+    }
+
+    .filter-label:hover {
+        background-color: #e0e0e0;
+    }
+
+
+    .content-container {
+        position: relative;
+        max-width: 1000px;
+        /* Même largeur que vos sections */
+        margin: 0 auto;
+        /* Centre le conteneur horizontalement */
+        padding: 0 15px;
+        /* Espace optionnel sur les petits écrans */
+    }
+
+    .section {
+        width: 100%;
+        /* Prend 100% de la largeur du conteneur parent au lieu d'une largeur fixe */
+        position: relative;
+        padding: 25px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        border: 1px solid #eee;
+    }
+
+    /* Style des images */
+    .section-image {
+        flex: 0 0 350px;
+        border-radius: 6px;
+        overflow: hidden;
+        order: 1;
+        /* Image à gauche en desktop */
+    }
+
+    .section-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .section-content {
+        flex: 1;
+        order: 2;
+        /* Contenu à droite en desktop */
+    }
+
+    .section-content p {
+        margin: 0 0 15px 0;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    /* Style des métadonnées */
+    .meta-info {
+        color: #777;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    /* SOLUTION : MODIFICATION IMPORTANTE DU FILTRAGE */
+    /* Par défaut, tous les éléments sont visibles */
+    .section {
+        display: flex;
+        opacity: 1;
+        height: auto;
+        margin-bottom: 30px;
+        padding: 25px;
+        overflow: visible;
+        border: 1px solid #eee;
+    }
+
+    /* Lorsqu'un filtre est activé, masquer IMMÉDIATEMENT tous les éléments */
+    #filter-category1:checked~.content-container .section,
+    #filter-category2:checked~.content-container .section,
+    #filter-category3:checked~.content-container .section,
+    #filter-category4:checked~.content-container .section,
+    #filter-category5:checked~.content-container .section {
+        display: none;
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+    }
+
+    /* Puis afficher IMMÉDIATEMENT uniquement ceux de la catégorie sélectionnée */
+    #filter-category1:checked~.content-container .section.category1,
+    #filter-category2:checked~.content-container .section.category2,
+    #filter-category3:checked~.content-container .section.category3,
+    #filter-category4:checked~.content-container .section.category4,
+    #filter-category5:checked~.content-container .section.category5 {
+        display: flex;
+        opacity: 1;
+        height: auto;
+        margin-bottom: 30px;
+        padding: 25px;
+        overflow: visible;
+        border: 1px solid #eee;
+    }
+
+    /* Style actif des filtres */
+    #filter-all:checked~.filter-nav .label-all,
+    #filter-category1:checked~.filter-nav .label-category1,
+    #filter-category2:checked~.filter-nav .label-category2,
+    #filter-category3:checked~.filter-nav .label-category3,
+    #filter-category4:checked~.filter-nav .label-category4,
+    #filter-category5:checked~.filter-nav .label-category5 {
+        background-color: #aacb55;
+        color: white;
+        border-color: #aacb55;
+    }
+
+    /* Style des étiquettes de catégorie */
+    .category-tag {
+        display: inline-block;
+        color: #555;
+        font-weight: 600;
+    }
+
+    /* Style des titres */
+    .section h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: black;
+        font-size: 1.5em;
+    }
+
+    .section p {
+        margin-bottom: 15px;
+        color: black;
+    }
+
+
+
+    /* Séparateur */
+    .separator {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section h2 {
+            padding: 0;
+        }
+
+
+        .read-more {
+            display: flex;
+            justify-content: end;
+        }
+
+        .section {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .section-image {
+            order: 1;
+            /* Image en haut en mobile */
+            flex: 0 0 auto;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .section-content {
+            order: 2;
+            /* Contenu en dessous en mobile */
+        }
+
+        .filter-nav {
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin: 5px 0px;
+            padding: 1em 0;
+        }
+
+        .filter-label {
+            flex: 0 0 auto;
+            font-size: 1.2em;
+        }
+
+        /* Ajustement pour les sections filtrées en mobile */
+        #filter-category1:checked~.content-container .section.category1,
+        #filter-category2:checked~.content-container .section.category2,
+        #filter-category3:checked~.content-container .section.category3,
+        #filter-category4:checked~.content-container .section.category4,
+        #filter-category5:checked~.content-container .section.category5 {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 390px) {
+        .filter-label {
+            font-size: 1rem;
+        }
+    }
+</style>
+<picture class="banniere">
+    <source media="(max-width: 767px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749803072/ACTUALITES_3e2362b04d.jpg">
+    <source media="(min-width: 768px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749803072/ACTUALITES_3e2362b04d.jpg">
+    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749803072/ACTUALITES_3e2362b04d.jpg"
+        alt="actualites">
+</picture>
+<!-- Boutons radio masqués -->
+<input type="radio" name="filter" id="filter-all" class="filter-input">
+<input type="radio" name="filter" id="filter-category1" class="filter-input">
+<input type="radio" name="filter" id="filter-category2" class="filter-input">
+<input type="radio" name="filter" id="filter-category3" class="filter-input">
+<input type="radio" name="filter" id="filter-category4" class="filter-input">
+<!-- Navigation des filtres -->
+<nav class="filter-nav">
+    <label for="filter-all" class="filter-label label-all">Tous</label>
+    <label for="filter-category1" class="filter-label label-category1">Promotion</label>
+    <label for="filter-category2" class="filter-label label-category2">Produit</label>
+    <label for="filter-category3" class="filter-label label-category3">Savoir</label>
+    <label for="filter-category4" class="filter-label label-category4">Divers</label>
+</nav>
+<!-- Conteneur principal -->
+<div class="content-container">
+    <!-- Attention: éviter des ligne vide entre des codes-->
+    <!-- Mettre les codes immédiatement en dessous de cette ligne -->
+    <a href="https://calebasse.com/pages/ete-confort-veineux-sans-stress-jambes-legeres">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1753776826/SMT_35695212af.jpg"
+                    alt="Votre Suan Mei Tang offert dès 50€ d’achat !" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Votre Suan Mei Tang offert dès 50€ d’achat !</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">28/07/2025</span>
+                </div>
+                <p>Jusqu'au 31 juillet, recevez un Suan Mei Tang offert : la boisson traditionnelle chinoise, acidulée
+                    et rafraîchissante, idéale pour l’été. Découvrez comment faire pour obtenir votre Suan Mei Tang
+                    gratuitement ! </p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/essentiels-seniors-mtc">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1753698437/SENIORS_c116e6fb80.png"
+                    alt="Essentiels seniors : vitalité et bien-être à chaque étape de leur vie" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Essentiels seniors : vitalité et bien-être à chaque étape de leur vie</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">25/07/2025</span>
+                </div>
+                <p>Découvrez nos essentiels seniors de la MTC, pensés pour accompagner les seniors avec sérénité et
+                    respect du rythme naturel.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a
+        href="https://calebasse.com/produits/dian-dong-ba-guan-qi-ventouses-electronique-masseur-12-vitesses-reglables-26594">
+        <section class="section category2">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1752824671/Ventouse_electrique_et_masseur_30c9072310.png"
+                    alt="Ventouse Électrique et masseur" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Ventouse Électrique et masseur</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Produit</span>
+                    <span class="separator"></span>
+                    <span class="date">18/07/2025</span>
+                </div>
+                <p>Découvrez la ventouse électrique & masseur 3-en-1, l’outil idéal pour les pros du soin ou amateurs en
+                    quête de performance, fiabilité et mobilité.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/possibles-bienfaits-ventouses-chinoises">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1920/f_auto/q_auto/v1752670574/38_b5cb784b2b?_a=BAVAZGBz0"
+                    alt="Les possibles bienfaits des ventouses chinoises" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Les possibles bienfaits des ventouses chinoises</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">16/07/2025</span>
+                </div>
+                <p>Vous vous demandez quels sont les possibles bienfaits des ventouses chinoises ? Réponse dans cet
+                    article par le Laboratoire Calebasse !</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a
+        href="https://calebasse.com/blog/sante-et-bien-etre/blessures-sportives-prevenir-recuperer-et-retrouver-l-equilibre-naturellement">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1752663411/14_64a7fcbf75?_a=BAVAZGBz0"
+                    alt="Blessures sportives : prévenir, récupérer et retrouver l’équilibre naturellement" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Blessures sportives : prévenir, récupérer et retrouver l’équilibre naturellement</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">16/07/2025</span>
+                </div>
+                <p>Performance, bien-être, dépassement de soi… Et si, en allant trop loin, on oubliait l’essentiel ?
+                    Douleurs, tensions, inflammations : derrière chaque blessure sportive se cache souvent un
+                    déséquilibre. Le corps tire la sonnette d’alarme, mais on n’écoute pas toujours.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/rituels-sante-famille">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1752662413/6_db1ed8fe2a?_a=BAVAZGBz0"
+                    alt="5 rituels santé à faire en famille : des souvenirs qui soignent le corps et l’esprit" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>5 rituels santé à faire en famille : des souvenirs qui soignent le corps et l’esprit</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">16/07/2025</span>
+                </div>
+                <p>Et si votre prochain grand souvenir de famille n'était pas un voyage… mais un moment de soin, de
+                    complicité, et d'énergie partagée ? Faire du sport en famille, c’est créer des moments qui marquent.
+                    On oublie la routine, on vit le moment à 100%.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/ete-confort-veineux-sans-stress-jambes-legeres">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1751899806/Weixin_Screenshot_20250707164629_49a4713c76.jpg"
+                    alt="Essentiels de l'été : un été léger et frais avec nos essentiels estivaux ! " />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Essentiels de l'été : un été léger et frais avec nos essentiels estivaux ! </h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">09/07/2025</span>
+                </div>
+                <p>Notre sélection d'essentiels de l'été s’inspire de la MTC pour accompagner votre été naturellement,
+                    avec fluidité et équilibre. De la circulation au rafraîchissement, en passant par l’allègement
+                    digestif et les petits rituels bien-être, voici de quoi passer une saison solaire, vivante et
+                    harmonieuse. </p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/jambes-lourdes-ete">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1751625988/1_a115839156?_a=BAVAZGBz0"
+                    alt="Jambes lourdes pendant l'été : que faire ?" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Jambes lourdes pendant l'été : que faire ?</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">08/07/2025</span>
+                </div>
+                <p>L’été, on a envie de légèreté… mais parfois, nos jambes ne suivent pas. Sensation de lourdeur, de
+                    gonflement, de fatigue ou d’inconfort : beaucoup de personnes ressentent cela avec les fortes
+                    chaleurs. Pourquoi ? Et surtout, comment y remédier ? Suivez le guide.</p>
+                <div class="read-more">
+                    <span>Lire maintenant</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/retour-en-stock">
+        <section class="section category2">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1751964839/PRODUITS_4_4481cc93be.jpg"
+                    alt="Ils sont de retour en stock !" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Ils sont de retour en stock !</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Produit</span>
+                    <span class="separator"></span>
+                    <span class="date">07/07/2025</span>
+                </div>
+                <p>Certaines références que vous attendiez avec impatience sont à nouveau disponibles : thés, tisanes,
+                    plantes rares et essentiels du quotidien. Faites vite, ces produits reviennent… mais ne restent
+                    jamais longtemps !</p>
+                <div class="read-more">
+                    <span>Je fonce</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/solde-ete">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1751962386/PRODUITS_3_fa8fa48247.jpg"
+                    alt="Totebag offert pour toute commande !" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Totebag offert pour toute commande !</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">05/07/2025</span>
+                </div>
+                <p>Merci de faire partie de notre communauté ! Pour vous remercier, dès maintenant, pour toute commande
+                    passée, un totebag exclusif Calebasse vous est offert, dans la limite des stocks disponibles.</p>
+                <div class="read-more">
+                    <span>J'en profite </span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/produits/suan-mei-tang-boisson-a-base-de-prunes-chinoises-4468">
+        <section class="section category2">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1751638261/SMT_609e1dd4a6.png"
+                    alt="La boisson de l'été" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>La boisson de l'été</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Produit</span>
+                    <span class="separator"></span>
+                    <span class="date">04/07/2025</span>
+                </div>
+                <p>Découvrez cette boisson traditionnelle chinoise à base de prunes acidulées, parfaite pour se
+                    rafraîchir tout en faisant du bien à votre digestion.</p>
+                <div class="read-more">
+                    <span>Je me raffraîchis</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/6-exercices-express-circuler-energie">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1749633177/2_Chaise_b4e2e07c72?_a=BAVAZGBz0"
+                    alt="6 exercices express pour faire circuler l’énergie au bureau ou à la maison" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>6 exercices express pour faire circuler l’énergie au bureau ou à la maison</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">27/06/2025</span>
+                </div>
+                <p>Entre réunions Zoom, journées à rallonge devant l’ordinateur ou longues heures passées assis, le
+                    corps a besoin de respirer, de bouger, de relancer la circulation de l’énergie. Découvrez 6
+                    exercices pour faire circuler l'énergie ...</p>
+                <div class="read-more">
+                    <span>Lire maintenant</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/langage-secret-de-votre-corps">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1749633177/1_Mouvement_9f344fb0c1?_a=BAVAZGBz0"
+                    alt="Le langage secret de votre corps : 5 mouvements pour stimuler vos organes" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Le langage secret de votre corps : 5 mouvements pour stimuler vos organes</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">25/06/2025</span>
+                </div>
+                <p>Et si chaque mouvement que vous faites, chaque respiration, chaque étirement, était un message envoyé
+                    à l’un de vos organes ? En médecine traditionnelle chinoise, le corps est vu comme un système vivant
+                    en dialogue constant ...</p>
+                <div class="read-more">
+                    <span>Lire maintenant</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/solde-ete">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750755643/SOLDES_ETE_ddf6678064.png"
+                    alt="Soldes d'été 2025" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Soldes d'été 2025</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">24/06/2025</span>
+                </div>
+                <p>Faites vos valises, nous vous embarquons pour un voyage au coeur des plantes et du bien-être.</p>
+                <div class="read-more">
+                    <span>J'embarque</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/equilibre-sport-style-de-vie-adopter">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749816521/SPORT_THEMATIQUE_a57b49b19b.png"
+                    alt="Et si bouger devenait un vrai moment d’équilibre ?" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Et si bouger devenait un vrai moment d’équilibre ?</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">13/06/2025</span>
+                </div>
+                <p>Découvrez notre page Sport & Équilibre : mouvements doux, respiration, énergie, récupération
+                    naturelle… un autre regard sur l’activité physique.
+                </p>
+                <div class="read-more">
+                    <span>Lire plus</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/fetes-des-peres-idee-cadeau">
+        <section class="section category2">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749545492/Fete_des_peres_667289d64f.png"
+                    alt="Découvrez notre sélection Spécial Papa !" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Découvrez notre sélection Spécial Papa !</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Produit</span>
+                    <span class="separator"></span>
+                    <span class="date">10/06/2025</span>
+                </div>
+                <p>Pour la Fête des Pères, misez sur le cadeau qui fait du bien : explorez notre sélection de produits
+                    choisis avec soin.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://www.salon-naturally.fr/visiter/liste-des-exposants/calebasse/" target="_blank">
+        <section class="section category4">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749116696/Capture_d_ecran_2025_06_05_113859_e93edd718d.png"
+                    alt="On sera présent lors du Salon Naturally à Paris ! " />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>On sera présent lors du Salon Naturally à Paris ! </h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Divers</span>
+                    <span class="separator"></span>
+                    <span class="date">05/06/2025</span>
+                </div>
+                <p>Du 6 au 9 juin, La Calebasse sera présente au Salon Naturally, à Paris Expo Porte de Versailles (Hall
+                    7.1 – Stand D12). Un beau moment de partage et de découverte en perspective — on espère vous y voir
+                    nombreux !</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/produits/baies-de-goji-noir-premium-le-roi-des-anthocyanines-5149">
+        <section class="section category2">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749034813/Bannieres_Desktop_1_Copie_132ad94d35.jpg"
+                    alt="Retour de stock : Baies de Goji Noir" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Retour de stock : Baies de Goji Noir</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Produit</span>
+                    <span class="separator"></span>
+                    <span class="date">04/06/2025</span>
+                </div>
+                <p>Bonne nouvelle ! Le Goji Noir est enfin de retour, et avec lui notre Tisane Beauté des Cheveux.
+                    Profitez dès maintenant de leurs bienfaits revitalisants et naturels, parfaits pour prendre soin de
+                    vos cheveux en douceur.</p>
+                <div class="read-more">
+                    <span>Découvrir</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/pages/fete-des-bateaux-dragons">
+        <section class="section category1">
+            <div class="section-image"> <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748444468/duangwu_570788579e.png"
+                    alt="Fête des Bateaux-Dragon : traditions, bien-être et surprises !" /> </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Fête des Bateaux-Dragon : traditions, bien-être et surprises</h2>
+                </div>
+                <div class="meta-info"><span class="category-tag">Promotion</span><span class="separator"></span><span
+                        class="date">28/05/2025</span></div>
+                <p>À l’occasion de la Fête des Bateaux-Dragon (Duanwu Jie), découvrez les surprises, conseils
+                    traditionnels et promotions : ne manquez rien de ce moment fort du calendrier énergétique chinois.
+                </p>
+                <div class="read-more"> <span>Découvrir</span> </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/cycle-sept-ans-energie-femme">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_3840/f_auto/q_auto/v1747751576/1_880db9ebc5?_a=BAVAZGBz0"
+                    alt="Le corps féminin à chaque étape de la vie : le cycle de 7 ans vu par la médecine chinoise" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Le corps féminin à chaque étape de la vie : le cycle de 7 ans vu par la médecine chinoise</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">21/05/2025</span>
+                </div>
+                <p>Saviez-vous que la médecine traditionnelle chinoise divise la vie d'une femme en 7 étapes clés ? De
+                    la puberté à la ménopause, chaque cycle est influencé par les énergies du Yin et du Yang. </p>
+                <div class="read-more">
+                    <span>Lire maintenant</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://calebasse.com/blog/sante-et-bien-etre/horlogie-biologique-chinoise">
+        <section class="section category3">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1747318408/5_Horloge_fdcfa081b4?_a=BAVAZGBz0"
+                    alt="Horloge biologique chinoise : les meilleurs moments pour le sport et le sommeil" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Horloge biologique chinoise : les meilleurs moments pour le sport et le sommeil</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Savoir</span>
+                    <span class="separator"></span>
+                    <span class="date">17/05/2025</span>
+                </div>
+                <p>Et si votre corps suivait une horloge énergétique intérieure, différente de celle que vous consultez
+                    sur votre montre ? En médecine traditionnelle chinoise (MTC), chaque organe possède ses propres
+                    cycles, avec des pics d'activité à des heures précises de la journée. </p>
+                <div class="read-more">
+                    <span>Lire maintenant</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="https://www.instagram.com/p/DJr2hVdNMkl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+        <section class="section category1">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747381775/Concours_insta_Meres_c691c379e1.png"
+                    alt="Concours spécial fête des mères !" />
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Concours spécial fête des mères !</h2>
+                </div>
+                <div class="meta-info">
+                    <span class="category-tag">Promotion</span>
+                    <span class="separator"></span>
+                    <span class="date">16/05/2025</span>
+                </div>
+                <p>Participez à notre concours sur Instagram et tentez de gagner notre coffret duo Gua Sha, une
+                    attention parfaite à offrir ou à s’offrir pour la fête des mères !</p>
+                <div class="read-more"><span>Je tente ma chance</span>
+                </div>
+            </div>
+        </section>
+    </a>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747236736/Banner_a_la_une_42521269c3.jpg"
+                alt="Fête des Mères 2025" />
+        </div>
+        <div class="section-content">
+            <h2>Fête des Mères 2025</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">14/05/2025</span>
+            </div>
+            <p>Pour cette Fête des Mères, nous avons choisi de célébrer ce qu’elle incarne depuis toujours : la
+                transmission. Celle de l’amour, des gestes simples, des valeurs profondes et celle, plus discrète mais
+                tout aussi précieuse, du soin.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/fete-des-meres"><span>Lire plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747148249/Bannieres_Desktop_crop_a5f637b47e.jpg"
+                alt="Nos matériels MTC font peau neuve !" />
+        </div>
+        <div class="section-content">
+            <h2>Nos matériels MTC font peau neuve !</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">13/05/2025</span>
+            </div>
+            <p>Découvrez nos dernières nouveautés en matériel et accessoires dédiés à la Médecine Traditionnelle
+                Chinoise. Régulièrement enrichie, cette sélection vous permet d’explorer de nouveaux outils authentiques
+                et pratiques pour renforcer naturellement votre bien-être quotidien.</p>
+            <div class="read-more"><a href="https://calebasse.com/nouveautes"><span>Découvrir</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747060793/Design_sans_titre_d621714a7a.png"
+                alt="Froid utérin : 20 causes selon la médecine chinoise" />
+        </div>
+        <div class="section-content">
+            <h2>Froid utérin : 20 causes selon la médecine chinoise</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">12/05/2025</span>
+            </div>
+            <p>Et si certaines de vos habitudes du quotidien contribuaient à affaiblir votre énergie féminine sans que
+                vous le sachiez ? Dans cet article, découvrez 20 gestes ou comportements, parfois anodins, qui
+                pourraient favoriser l’installation du froid dans l’utérus selon la médecine traditionnelle chinoise.
+            </p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/sante-et-bien-etre/froid-uterin-causes"><span>Lire plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746621733/NOUVEAUTE_min_a511243189.png"
+                alt="Nouveau produit d’exception : La Morille du Yunnan !" />
+        </div>
+        <div class="section-content">
+            <h2>Nouveau produit d’exception : La Morille du Yunnan !</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">07/05/2025</span>
+            </div>
+            <p>Découvrez notre nouveau produit issue des forêts du Yunnan : la Morille du Yunnan (Yang du jun),
+                champignon noble reconnu autant pour sa saveur que pour ses bienfaits en MTC.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/produits/morille-du-yunnan-reine-des-champignons-yang-du-jun-5168"><span>Découvrir</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category4">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746524068/th_73f827c8ef.png"
+                alt=":bellhop_bell: Annonce – Fermeture exceptionnelle en mai" />
+        </div>
+        <div class="section-content">
+            <h2> Annonce – Fermeture exceptionnelle en mai</h2>
+            <div class="meta-info">
+                <span class="category-tag">Divers</span>
+                <span class="separator"></span>
+                <span class="date">06/05/2025</span>
+            </div>
+            <p>Chers clients, <br />
+                Nous vous informons que notre équipe sera en congé les <b>8, 9, 29 et 30 mai.</b>
+                Pendant cette période, vous pouvez continuer à passer vos commandes en toute sérénité. Seules les
+                expéditions seront temporairement suspendues durant ces journées de fermeture.<br />
+                Notre boutique située dans le 13e arrondissement de Paris sera également fermée durant ces jours.<br />
+                Merci de votre compréhension et à très bientôt ! </p>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746452195/8_min_722a683332.png"
+                alt="Croiser les jambes, s’asseoir sur du froid : ces habitudes anodines qui fragilisent votre bien-être féminin" />
+        </div>
+        <div class="section-content">
+            <h2>Croiser les jambes, s’asseoir sur du froid : ces habitudes anodines qui fragilisent votre bien-être
+                féminin</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">30/04/2025</span>
+            </div>
+            <p>Croiser les jambes ou s’asseoir sur une surface froide peut pourtant fragiliser l’équilibre féminin en
+                profondeur. Découvrez pourquoi ces réflexes du quotidien méritent d’être repensés, et comment de simples
+                ajustements peuvent contribuer à préserver votre confort et votre vitalité.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/sante-et-bien-etre/habitudes-uterus-femme"><span>Lire
+                        plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746198129/Banner_mobile_1170x1350_bf5b5ebd2c.jpg"
+                alt="Votre bibliothèque MTC s’agrandit !" />
+        </div>
+        <div class="section-content">
+            <h2>Votre bibliothèque MTC s’agrandit !</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">20/04/2025</span>
+            </div>
+            <p>Une sélection d’ouvrages essentiels pour comprendre, apprendre et pratiquer.</p>
+            <div class="read-more"><a href="https://calebasse.com/livres"><span>Découvrir</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746197671/Banner_mobile_1466x1933_1_3fd7422c4f.jpg"
+                alt="Vos produits préférés passent au BIO !" />
+        </div>
+        <div class="section-content">
+            <h2>Vos produits préférés passent au BIO !</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">19/04/2025</span>
+            </div>
+            <p>Offrez-vous le meilleur de la nature avec nos plantes médicinales certifiées BIO. Rigoureusement
+                sélectionnées, elles répondent à vos besoins de façon douce et efficace grâce à leurs puretés, issus
+                d'une agriculture respectueuse de votre santé et de la planète.</p>
+            <div class="read-more"><a href="https://calebasse.com/bio"><span>Découvrir</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1745937488/4_bbd590ba26.jpg"
+                alt="Cache-cache pâques" />
+        </div>
+        <div class="section-content">
+            <h2>Cache-cache Pâques, édition 2025</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">18/04/2025</span>
+            </div>
+            <p>À vous de jouer : la chasse de Pâques est lancée !
+                Du 18/04 au 22/04, explorez notre site et dénichez des oeufs qui comportent des réductions jusqu’à 15%,
+                des surprises et des échantillons gourmands !</p>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1744887173/21_b7307ab3f4.jpg"
+                alt="L’éveil de l’énergie au printemps : Le rôle du Foie selon la MTC" />
+        </div>
+        <div class="section-content">
+            <h2>L’éveil de l’énergie au printemps : Le rôle du Foie selon la MTC</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">17/04/2025</span>
+            </div>
+            <p>Le printemps est une saison de renouveau énergétique, où l’énergie Yang se réveille. En MTC, cette
+                énergie est directement liée au Foie, un organe clé pour l’équilibre du corps et des émotions.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/sante-et-bien-etre/eveil-energie-printemps-foie-mtc"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1746198135/choisi_b34dbcd264.jpg"
+                alt="Bâtonnets de Moxa de Tongbai — L’excellence de la tradition" />
+        </div>
+        <div class="section-content">
+            <h2>Bâtonnets de Moxa de Tongbai — L’excellence de la tradition</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">07/04/2025</span>
+            </div>
+            <p>Circulation, détente, énergie : une armoise soigneusement sélectionnée pour vos rituels.</p>
+            <div class="read-more"><a href="https://calebasse.com/produits/batonnets-de-moxa-de-tongbai-5165"><span>Voir
+                        plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1745937488/2_b4f0932e7a.jpg"
+                alt="Cache-cache sur les Femmes" />
+        </div>
+        <div class="section-content">
+            <h2>Chasse aux cadeaux</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">26/03/2025</span>
+            </div>
+            <p>À la chasse aux cadeaux avec Calebasse !
+                Une surprise s’est glissée dans les recoins de notre site… ou plutôt plusieurs !
+                Du 27/03 au 15/04, partez à la recherche des cadeaux cachés sur notre site et remportez des codes de
+                réduction exclusifs allant de 5% à 20% ! </p>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1741010308/1_Couverture_2e0b2170f2.png"
+                alt="Essentiels Féminin" />
+        </div>
+        <div class="section-content">
+            <h2>Essentiels Féminin</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">21/03/2025</span>
+            </div>
+            <p>Ici, vous trouverez une sélection de produits naturels, pensés pour vous accompagner en douceur dans les
+                moments clés de votre vie de Femme.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/essentiels-feminin"><span>En profiter</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1741190219/image_ddf30ff675.jpg"
+                alt="Pionnières de la MTC : Les 5 Femmes à connaître" />
+        </div>
+        <div class="section-content">
+            <h2>Pionnières de la MTC : Les 5 Femmes à connaître</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">03/03/2025</span>
+            </div>
+            <p>En médecine traditionnelle chinoise (MTC), les femmes ont longtemps été éclipsées, mais certaines ont su
+                imposer leur savoir et léguer un héritage inestimable. Nous rendons hommage à celles qui ont bravé les
+                interdits, repoussé les limites et marqué l’histoire.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/la-mtc-dans-le-monde/pionnieres-de-la-mtc-les-5-femmes-a-connaitre"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1920/f_auto/q_auto/v1740665506/1_1000x600_1a61f2a035?_a=BAVAZGBz0"
+                alt="Comprendre votre utérus : tout sur le froid utérin et les bénéfices du réchauffement" />
+        </div>
+        <div class="section-content">
+            <h2>Comprendre votre utérus : tout sur le froid utérin et les bénéfices du réchauffement</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">20/02/2025</span>
+            </div>
+            <p>On parle librement de soins de la peau, de yoga ou de méditation, mais l'utérus, lui, reste un sujet
+                rarement mis en avant. </p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/sante-et-bien-etre/rechauffer-uterus-froid-bien-etre-feminin"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1745937696/L_Intimite_Feminine_sans_Tabous_sans_Jugements_1_c91da312d8.jpg"
+                alt="Utérus" />
+        </div>
+        <div class="section-content">
+            <h2>Thématique : l'utérus - le code secret du bien-être et de l'énergie féminine</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">20/02/2025</span>
+            </div>
+            <p>On parle librement de soins de la peau, de la mode ou de yoga, mais l'utérus, lui, souvent perçu comme
+                intime, reste un sujet rarement mis en avant. </p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/pages/rechauffer-uterus-source-energie-feminie-menstruel-fertilite "><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1739370573/9_766469143a.jpg"
+                alt="Herbe de l’immortalité : Une plante ancrée dans la tradition" />
+        </div>
+        <div class="section-content">
+            <h2>Herbe de l’immortalité : Une plante ancrée dans la tradition</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">17/02/2025</span>
+            </div>
+            <p>L’Herbe de l’immortalité, ou Jiao Gu Lan, est une plante phare de la médecine traditionnelle chinoise.
+                Que renferme réellement cette plante aux promesses d’immortalité ?
+            </p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/le-pouvoir-des-plantes/herbe-immortalite-plante-longevite"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738763239/6_min_13413c7d98.png"
+                alt="Cadeau pour les 50 premières commandes ! " />
+        </div>
+        <div class="section-content">
+            <h2>Cadeau pour les 50 premières commandes ! </h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">28/01/2025</span>
+            </div>
+            <p>À l'occasion du nouvel an chinois, pour les 50 premières commandes sur le site le 28 et 29 janvier, nous
+                offrons une boîte de Hong Qiao Mei.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/nouvel-an-chinois"><span>En profiter</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737022140/serpent_banner_1024x683px_150_ppi_129aec37a4.png"
+                alt="Marché Nouvel An chinois de Belleville" />
+        </div>
+        <div class="section-content">
+            <h2>Marché Nouvel An chinois de Belleville</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">25/01/2025</span>
+            </div>
+            <p>Célébrons le Nouvel An Chinois ensemble à Belleville ! Des spécialités culinaires, des boissons
+                traditionnelles et des objets culturels seront au rendez-vous pour vous offrir une expérience
+                authentique.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/nouvel-an-chinois"><span>Lire plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738763053/5_min_9992abe9e7.png"
+                alt="Code spécial : SERPENT10" />
+        </div>
+        <div class="section-content">
+            <h2>Code spécial : SERPENT10</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">24/01/2025</span>
+            </div>
+            <p>Pour marquer le Nouvel An Chinois, nous avons décidé de vous gâter.
+                Du 24/01 au 04/02, profitez d'une remise exceptionnelle de 10% sur toutes vos commandes à partir de 70€
+                !</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/nouvel-an-chinois"><span>Voir plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category3">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737037497/serpent_banner_1024x683px_2_2bbe0efe60.png"
+                alt="Nouvel An chinois 2025 : 5 règles d'or ..." />
+        </div>
+        <div class="section-content">
+            <h2>Nouvel An chinois 2025 : 5 règles d'or ...</h2>
+            <div class="meta-info">
+                <span class="category-tag">Savoir</span>
+                <span class="separator"></span>
+                <span class="date">23/01/2025</span>
+            </div>
+            <p>L’année du Serpent de Bois 2025 est très spéciale, cette astrologie chinoise regorge d’opportunités et de
+                cheminements vers l’épanouissement personnel. Comment en tirer le meilleur parti ? Découvrez les 5 clés
+                essentielles pour y parvenir.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738595905/4_06a3183e56.png"
+                alt="Escapade hivernale" />
+        </div>
+        <div class="section-content">
+            <h2>Escapade hivernale</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">03/01/2025</span>
+            </div>
+            <p>Chaque début d’année marque une nouvelle aventure. C’est le moment parfait pour s’offrir une escapade, un
+                temps pour se recentrer, faire le plein d’énergie et se préparer à relever de nouveaux challenges.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/escapade-hivernale"><span>Lire plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1734953554/3_4733663b79.png"
+                alt="Vacances d'hiver" />
+        </div>
+        <div class="section-content">
+            <h2>Vacances d'hiver</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">18/12/2024</span>
+            </div>
+            <p>Et si vous transformiez vos vacances d'hiver en un cocon de chaleur et de sérénité ? Notre sélection
+                hivernale vous accompagne pour des moments de bien-être au coin du feu, des gourmandises réconfortantes
+                et des cadeaux parfaits pour vos proches.</p>
+            <div class="read-more"><a
+                    href="https://calebasse.com/pages/offrez-un-mieux-etre-a-vos-vacances-hiver"><span>Lire
+                        plus</span></a></div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738833688/7_min_567046fd10.png"
+                alt="Nouveaux emballages" />
+        </div>
+        <div class="section-content">
+            <h2>Nouveaux emballages</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">30/11/2024</span>
+            </div>
+            <p>Dans les mois à venir, vous découvrirez de nouveaux emballages et des ajustements dans les formules de
+                certains de nos produits. Ces évolutions visent à renforcer l'efficacité tout en préservant votre
+                bien-être.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/evolution-bien-etre-sans-limite"><span>Lire
+                        plus</span></a>
+            </div>
+        </div>
+    </section>
+    <section class="section category2">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1734949490/2_1830e8bc67.png"
+                alt="Coffrets de Noël" />
+        </div>
+        <div class="section-content">
+            <h2>Coffrets de Noël</h2>
+            <div class="meta-info">
+                <span class="category-tag">Produit</span>
+                <span class="separator"></span>
+                <span class="date">29/11/2024</span>
+            </div>
+            <p>Offrez un Noël sain et original avec Calebasse: des cadeaux inspirés par la sagesse Chinoise. Anticipez
+                vos cadeaux de Noël et offrez à vos proches des coffrets naturels qui allient relaxation, bien-être et
+                beauté !</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/coffret-noel"><span>Découvrir</span></a></div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1734962816/_3f8d9d8a0e.png"
+                alt="Black friday" />
+        </div>
+        <div class="section-content">
+            <h2>Black friday</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">29/11/2024</span>
+            </div>
+            <p>Avec des remises jusqu’à 70%, il n’a jamais été aussi facile de composer un panier qui vous ressemble et
+                trouver exactement ce dont vous avez besoin.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/black-friday-bien-etre-sante-beaute"><span>En
+                        profiter</span></a></div>
+        </div>
+    </section>
+    <section class="section category1">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1734943751/Image_Banniere_dc9cdb88dd.jpg"
+                alt="Anniversaire" />
+        </div>
+        <div class="section-content">
+            <h2>Anniversaire</h2>
+            <div class="meta-info">
+                <span class="category-tag">Promotion</span>
+                <span class="separator"></span>
+                <span class="date">18/10/2024</span>
+            </div>
+            <p>En ce jour spécial, nous célébrons notre 27ᵉ anniversaire. Depuis sa fondation, Calebasse a évolué grâce
+                à la confiance de nos clients fidèles et à l'engagement de notre équipe.</p>
+            <div class="read-more"><a href="https://calebasse.com/pages/calebasse-27-ans-anniversaire"><span>Lire
+                        plus</span></a>
+            </div>
+        </div>
+    </section>
+</div>

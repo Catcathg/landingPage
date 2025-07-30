@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+
+    <!-- 引入 jsPDF 和 jsPDF SVG 插件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+        }
+
+        input,
+        button,
+        select {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #error {
+            color: red;
+        }
+
+        #success {
+            color: green;
+        }
+
+        .helvetica {
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        .container-query {
+            margin: 0 20px 20px 0;
+        }
+
+        .cap {
+            text-transform: uppercase;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 126.5%;
+            margin: 0.6em 0 0.2em 0;
+        }
+
+        .thcolor {
+            color: #5DBD98;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            /* 顺时针旋转180度 */
+            transform-origin: center;
+            /* 旋转的中心点为元素的中心（默认） */
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .section {
+            width: 90vw;
+            aspect-ratio: 37 / 200;
+            padding: 2vw 4.6vw 0 4.6vw; // 因为打印机打印位置不对，所以调整；换纸的时候可能还需要调整
+            /* border:1px solid #cccccc; 
+border-radius:1.8vw;*/
+            font-size: 3.8vw;
+            overflow: hidden;
+        }
+
+        .half {
+            height: 45%;
+            overflow: hidden;
+            position: relative;
+            /* 确保伪元素能够相对于这个 div 定位 */
+            z-index: 1;
+            /* 确保内容在伪元素上方 */
+        }
+
+        .half::before {
+            content: attr(data-nomchinois);
+            /* 使用属性中的值来显示 */
+            position: absolute;
+            bottom: 2%;
+            /* 你可以根据需要调整位置 */
+            right: 90vw;
+            font-size: 4.5em;
+            /* 调整字体大小 */
+            color: rgba(0, 0, 0, 0.08);
+            /* 颜色设置为灰色透明，类似背景效果 */
+            z-index: 0;
+            /* 确保在内容下面 */
+            pointer-events: none;
+            /* 防止伪元素干扰点击事件 */
+            transform: rotate(180deg);
+            /* 垂直方向倒转 */
+            transform-origin: right;
+            /* 确保旋转的中心点为文字的中心 */
+            /* 字体设置，优先使用华文行书或站酷快乐体 */
+            font-family: 'GenKiMin2 TC', sans-serif;
+            /* 'cursive' 作为备选 */
+        }
+
+        .quarter {
+            width: 100%;
+            aspect-ratio: 35 / 49;
+            overflow: hidden;
+        }
+
+        .icons {
+            display: flex;
+        }
+
+        .icon {
+            width: 25%;
+        }
+
+        .icon img {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .poids {
+            height: 4.95%;
+            font-size: 1.777em;
+            margin: 3.71% 5%;
+            position: relative;
+        }
+
+        .poids::after {
+            content: '';
+            position: absolute;
+            display: none;
+            /* 默认不显示 */
+        }
+
+        /* 当 bio 是 Y 时，显示图片 */
+        #bio-image {
+            display: block;
+            width: 49%;
+            top: 0;
+            right: 0%;
+            background-size: cover;
+            position: absolute;
+        }
+
+        .effet {
+            border-top: 1.2vw solid #5DBD98;
+            border-bottom: 1.2vw solid #5DBD98;
+            height: 5%;
+            margin: 0 5%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            font-size: clamp(1.2em, 2em, 2em);
+            /* word-break: break-all; 
+hyphens: auto;  自动插入连字符 */
+            white-space: normal;
+            /* 允许正常换行 */
+            line-height: 1.2em;
+            font-weight: 800;
+        }
+
+
+        .nom {
+            height: 12%;
+            margin: 5% 5%;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            font-size: clamp(1em, 2.8em, 3em);
+            /* 设置字体大小范围：最小12px，最大20px */
+            /*word-break: break-word; 
+  hyphens: auto;  自动插入连字符 */
+            white-space: normal;
+            /* 允许正常换行 */
+            line-height: 1em;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .codecouleur {
+            margin: 4% 5%;
+            height: 18%;
+            background-color: rgb(46 147 60);
+        }
+
+        .codecouleur .siteweb {
+            /* background-color:rgb(46 147 60); */
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .flag {
+            display: flex;
+            height: 0.7%;
+            margin: 0 5%;
+        }
+
+        .blue,
+        .white,
+        .red {
+            width: 33.3333333%;
+        }
+
+        .blue {
+            background-color: #0055A4;
+        }
+
+        .white {
+            background-color: #ffffff;
+        }
+
+        .red {
+            background-color: #EF4135;
+        }
+
+        .logo {
+            margin: 10.75% 5%;
+            height: 2.9%;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        .barre {
+            display: flex;
+            font-size: 1em;
+            height: 19.4%;
+        }
+
+        .barre .center {
+            width: 30%;
+            font-size: 0.8em;
+            white-space: nowrap;
+            display: flex;
+            /* 使用 flexbox 布局 */
+            align-items: center;
+            /* 垂直方向居中 */
+            background-color: #ccc;
+            transform: rotate(-90deg);
+            /*  逆时针旋转90度 */
+            transform-origin: center
+                /* 设置旋转的中心点为元素的中心（默认） */
+        }
+
+        .line-height {
+            line-height: 1.1;
+        }
+
+        .contact {
+            display: flex;
+        }
+
+        .contact .typo {
+            width: 18%;
+        }
+
+        .contact .typo img {
+            height: 85%;
+            width: 90%;
+        }
+
+        .contact .info {
+            width: 82%;
+            font-size: 0.9em;
+            line-height: 2.35em;
+        }
+
+        .contact .info .adress-space-mail {
+            line-height: 130%;
+        }
+
+        .barre .left {
+            width: 30%;
+            white-space: nowrap;
+            display: flex;
+            /* 使用 flexbox 布局 */
+            flex-direction: column;
+            /* 子元素垂直排列 */
+            justify-content: center;
+            /* 子元素在垂直方向居中 */
+            transform: rotate(-90deg);
+            /*  逆时针旋转90度 */
+            transform-origin: center
+                /* 设置旋转的中心点为元素的中心（默认） */
+
+        }
+
+        .barre .right {
+            width: 65%;
+            padding-right: 5%;
+        }
+
+        .codebarre {
+            /* background-image: url("https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1725957144/3665346169230_Yi_Yi_Ren_Chao_Larmes_de_Job_Coix_lacryma_jobi_100cp_1800ad6a65.png"); */
+            height: 70%;
+            /* background-size: 100% auto; 背景图片宽度适应 div 宽度，高度自动 */
+            /*background-position: bottom;  背景图片从底部开始显示 */
+            /* background-repeat: no-repeat; 防止背景图片重复 */
+            overflow: hidden;
+            /* 隐藏超出部分 */
+            position: relative;
+            /* 使子元素可以绝对定位 */
+        }
+
+        .codebarre img {
+            width: 100%;
+            /* 图片宽度适应容器 */
+            position: absolute;
+            bottom: 0;
+            /* 图片底部对齐容器底部 */
+            left: 9%;
+        }
+
+        .prix {
+            padding-left: 2.5em;
+        }
+
+        .placeholder {
+            min-height: 13%;
+        }
+
+        .margin {
+            margin: 6% 4%;
+        }
+
+        .short {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!------- begin query ------->
+    <div class="container-query noprint">
+        <h1>AB Générateur d'étiquettes | 小药包标签生成器</h1>
+        <div id="success"></div>
+        <div id="error"></div>
+        <div id="error2"></div>
+        <!-- Formulaire de recherche -->
+        <p>Saisissez le SKU et le LOT | 输入SKU和LOT:</p>
+        <input type="text" id="sku" placeholder="SKU du produit">
+        <input type="text" id="lot" placeholder="Lot dynamique s'il en a">
+        <label for="showPrice">Prix | 是否显示价格:</label>
+        <select id="showPrice">
+            <option value="yes">Oui</option>
+            <option value="no">Non</option>
+        </select>
+
+        <button onclick="searchProduct()">Générer</button>
+
+        <button onclick="generatePDF()">Télécharger PDF</button>
+
+
+
+    </div>
+    <!------- end query ------->
+
+    <!------- begin label ------->
+
+
+    <div class="section">
+        <div class="half">
+
+            <div class="subsection barre rotate">
+                <div class="left">
+                    <div class="lot">LOT : <span id="product-lot"></span></div>
+                    <div class="dlc">DLC : </strong><span id="product-dlt"></span></div>
+                </div>
+                <div class="right">
+                    <div class="placeholder">
+                        <div id="product-price-container" class="prix" style="display:none;">
+                            <span class="b">Prix : </span><span id="product-prix"></span> €
+                        </div>
+                    </div>
+                    <div class="codebarre"><img id="product-codebarre" alt="Code Barre" /></div>
+
+                </div>
+            </div>
+            <div class="contact rotate margin">
+                <div class="typo"><img
+                        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1729260144/Logo_vert_618e0c7bcc.png" />
+                </div>
+                <div class="info">
+                    <div class="adress-space-mail">
+                        <div>15 rue de la Vistule, 75013 Paris</div>
+                        <div> 01 45 85 88 00 </div>
+                        <div>www.calebasse.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="subsection marque rotate margin">
+                <div class="cap title b">Le Laboratoire Calebasse</div>
+                <div class="info long line-height">Établi à Paris depuis 1997, le Laboratoire Calebasse propose des
+                    plantes et
+                    compléments alimentaires de qualité.
+                    100% naturels, la priorité est donnée à l'efficacité et la sécurité. Des contrôles sont effectués
+                    sur chaque
+                    lot pour vérifier l'exemption des pesticides et métaux lourds, ainsi que la conformité à la
+                    Pharmacopée.Nos
+                    formules inspirées de la Médecine Traditionnelle Chinoise et perfectionnées par les études modernes,
+                    offrent
+                    une synergie équilibrée entre la richesse de la nature et la science moderne.</div>
+                <div class="info short line-height">Établi à Paris depuis 1997, le Laboratoire Calebasse propose des
+                    plantes et
+                    compléments alimentaires de qualité.
+                    100% naturels, la priorité est donnée à l'efficacité et la sécurité. Des contrôles sont effectués
+                    sur chaque
+                    lot pour vérifier l'exemption des pesticides et métaux lourds, ainsi que la conformité à la
+                    Pharmacopée.
+                </div>
+            </div>
+
+            <div class="subsection utilisation rotate margin">
+                <div class="cap title b">Conseil d'utilisation</div>
+                <div class="info line-height"><span id="product-utilisation"></span>
+                </div>
+            </div>
+            <div class="subsection vertus rotate margin">
+                <div class="cap title b">Vertus</div>
+                <div class="info line-height"><span id="product-vertus"></span>
+                </div>
+            </div>
+            <div class="subsection composition rotate margin">
+                <div class="cap title b">Composition</div>
+                <div class="info line-height"><span id="product-composition"></span></div>
+            </div>
+        </div>
+        <div class="subsection codecouleur" id="product-couleur">
+            <div class="siteweb b">
+                <div class="rotate"> </div>
+            </div>
+        </div>
+        <div class="subsection logo">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738755216/logo_e60692618d.png"
+                alt="Logo" />
+        </div>
+        <div class="subsection nom cap"><span id="product-nom"></div>
+        <div class="subsection effet cap thcolor" id="effet-border"><span id="product-effets"></span></div>
+        <div class="subsection poids b" id="poids-bio"><span id="product-poids"></span><img id="bio-image"
+                alt="bio image" />
+        </div>
+        <div class="subsection icons">
+            <div class="icon"><img id="icon-1" alt="Icon 1" /></div>
+            <div class="icon"><img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738682689/vegan_f50bbf335a.png"
+                    alt="Icon 2" />
+            </div>
+            <div class="icon"><img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742913265/sans_m_taux_lourds_480_1ff7e78ea1.png"
+                    alt="Icon 3" />
+            </div>
+            <div class="icon"><img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1738682686/qualite_pharmacopee_8f6691512d.png"
+                    alt="Icon 4" />
+            </div>
+        </div>
+    </div>
+
+
+    <!------- end label ------->
+
+    <script>
+        function searchProduct() {
+            var sku = document.getElementById('sku').value;
+            sku = sku.replace(/\s+/g, '').toUpperCase();
+            var lot = document.getElementById('lot').value;  // Correctly getting the value of the Lot input
+            var showPrice = document.getElementById('showPrice').value === 'yes';  // If "yes", show the price
+
+            if (sku) {
+                // Appel à la fonction Apps Script pour rechercher les données du produit
+                google.script.run.withSuccessHandler(function (product) {
+                    if (product) { // Vérifie si un produit a été trouvé
+                        displayResult(product, lot, showPrice);  // Pass the lot value and showPrice to displayResult
+
+                        // Affiche un message de succès avec le prix ou sans prix
+                        document.getElementById('success').innerText =
+                            `La génération avec le SKU (${sku}) a bien fonctionné ` +
+                            (showPrice ? "avec le prix." : "sans le prix.");
+                        document.getElementById('error').innerText = ""; // Efface le message d'erreur
+                    } else {
+                        document.getElementById('error').innerText =
+                            `Aucun produit trouvé avec le SKU (${sku}).`;
+                        document.getElementById('success').innerText = ""; // Efface le message de succès
+                        clearResult();
+                    }
+                }).searchProductBySku(sku, showPrice);
+            } else {
+                // Affiche un message d'erreur si le SKU est vide
+                document.getElementById('error').innerText = "Veuillez entrer un SKU valide.";
+                document.getElementById('success').innerText = ""; // Efface le message de succès
+                clearResult();
+            }
+        }
+
+        // Fonction clearResult pour vider les résultats affichés
+        function clearResult() {
+            document.getElementById('result').innerHTML = ""; // Vider l'affichage des résultats
+        }
+
+        // Fonction pour afficher les résultats du produit
+        function displayResult(product, lot, showPrice) {
+            if (product) {
+                const productName = product.nom.trim();
+                document.getElementById('product-nom').innerHTML =
+                    productName.endsWith('.') ? productName : productName + '.';
+
+                document.getElementById('product-effets').innerHTML = product.effets;
+                document.getElementById('product-poids').innerHTML = product.poids;
+                document.getElementById('product-vertus').innerHTML = product.vertus;
+                document.getElementById('product-composition').innerHTML = product.composition;
+                document.getElementById('product-utilisation').innerHTML = product.utilisation;
+                document.getElementById('product-dlt').innerHTML = generateDate(); // Affiche DLT (date + 3 ans)
+                document.getElementById('bio-image').src = product.bio;
+                document.getElementById('icon-1').src = product.icon;
+
+                // la source de donnée de lot
+
+                // 检查是否有任意一个非空的 lot 值
+
+                if (lot) {
+                    document.getElementById('product-lot').innerHTML = lot; // Display Lot from the page input
+                }
+                // 否则显示表格中的 lot
+                else {
+                    document.getElementById('product-lot').innerHTML = product.lot; // Display Lot from Excel
+                }
+
+
+
+
+
+                // Afficher ou masquer la section du prix
+                if (showPrice && product.prix) {
+                    document.getElementById('product-prix').innerHTML = product.prix;
+                    document.getElementById('product-price-container').style.display = 'block';  // Show the price section
+                } else {
+                    document.getElementById('product-price-container').style.display = 'none';   // Hide the price section
+                }
+
+                // Affiche l'image du code barre
+                document.getElementById('product-codebarre').src = product.codebarre;
+
+                // Affiche le bloc de couleur
+                document.getElementById('product-couleur').style.backgroundColor = product.couleur;
+
+                /*var elements = document.querySelectorAll('.thcolor');
+                elements.forEach(function(element) {
+                  element.style.color = product.couleur;
+                });
+          
+                 获取需要设置 border 的 div
+                var borderDiv = document.getElementById('effet-border');
+                borderDiv.style.borderTopColor = product.couleur;
+                borderDiv.style.borderBottomColor = product.couleur;*/
+
+                // 根据 bio 是否为 'Y' 显示 bio 图片
+                if (product.bio === 'Y') {
+                    document.getElementById('poids-bio').classList.add('bio-yes');
+                } else {
+                    document.getElementById('poids-bio').classList.remove('bio-yes');
+                }
+
+                // 在displayResult函数中，设置nomchinois作为背景
+                document.querySelector('.half').setAttribute('data-nomchinois', product.nomchinois);
+
+                // 根据 brand 的值显示长版或短版品牌介绍
+                if (product.brand === 'long') {
+                    document.querySelector('.long').style.display = 'block';
+                    document.querySelector('.short').style.display = 'none';
+                } else if (product.brand === 'court') {
+                    document.querySelector('.long').style.display = 'none';
+                    document.querySelector('.short').style.display = 'block';
+                }
+
+                // Vider les erreurs
+                document.getElementById('error').innerText = "";
+            } else {
+                document.getElementById('error').innerText = "Aucun produit trouvé avec ce SKU.";
+                clearResult(); // Vider les résultats affichés
+            }
+            if (!lot && !product.lot) {
+                // 两者都为空，显示错误信息
+                document.getElementById('error').innerText = "Erreur : Lot manquant. Veuillez saisir ou vérifier les données.";
+                clearResult(); // Vider les résultats affichés
+            }
+        }
+
+        // Fonction pour générer la date actuelle + 3 ans, format MM/YYYY
+        function generateDate() {
+            var currentDate = new Date();
+            var futureYear = currentDate.getFullYear() + 3;
+            var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Mois formaté en deux chiffres
+            return month + '/' + futureYear;
+        }
+
+        // Fonction pour vider les champs de résultats
+        function clearResult() {
+            document.getElementById('product-nom').innerText = "";
+            document.getElementById('product-effets').innerText = "";
+            document.getElementById('product-poids').innerText = "";
+            document.getElementById('product-vertus').innerText = "";
+            document.getElementById('product-composition').innerText = "";
+            document.getElementById('product-utilisation').innerText = "";
+            document.getElementById('product-lot').innerText = "";
+            document.getElementById('product-dlt').innerText = "";
+            document.getElementById('product-prix').innerText = "";
+            document.getElementById('product-price-container').style.display = 'none';
+            document.getElementById('product-codebarre').src = "";
+            document.getElementById('product-couleur').style.backgroundColor = "#ffffff";
+            document.getElementById('bio-image').src = "";
+            document.getElementById('icon-1').src = "";
+
+        }
+
+        // 生成 PDF 的代码，已经删除了 SVG 相关代码
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+
+            // 获取 div.section 的 HTML 元素
+            const sectionElement = document.querySelector('.section');
+
+            // 获取 section 的实际宽高（像素）
+            const sectionWidthPx = sectionElement.offsetWidth;
+            const sectionHeightPx = sectionElement.offsetHeight;
+
+            // 将像素转换为毫米单位
+            const pxToMm = 25.4 / 96;
+            const pdfWidth = sectionWidthPx * pxToMm;
+            const pdfHeight = sectionHeightPx * pxToMm;
+
+            // 创建 PDF，尺寸动态设置
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: [pdfWidth, pdfHeight]
+            });
+
+            // 使用 html2canvas 捕获 section 的非 SVG 内容
+            html2canvas(sectionElement, {
+                scale: 1,
+                useCORS: true, // 确保处理跨域问题
+                logging: true // 启用调试信息，帮助识别问题
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                // 将高分辨率的非 SVG 内容添加到 PDF 中
+                doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+                // 生成文件名，使用 product.nom, product.nomchinois 和日期
+                const currentDate = getCurrentDate();
+                const fileName = `${currentDate}.pdf`;
+
+                // 保存 PDF
+                doc.save(fileName);
+            });
+        }
+
+        // 获取当前日期函数，同时获取商品中文和法文名称
+        function getCurrentDate() {
+            var sku = document.getElementById('sku').value;
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            var day = currentDate.getDate().toString().padStart(2, '0');
+            let nom = document.getElementById('product-nom').innerText || '';
+            nom = nom.endsWith('.') ? nom.slice(0, -1) : nom;
+            const nomChinois = document.querySelector('.half').getAttribute('data-nomchinois'); // 获取 nomchinois
+            const poids = document.getElementById('product-poids').innerText || ''; // 获取 poids
+            let price; // 在作用域外定义 price 变量
+            if (document.getElementById('showPrice').value === 'yes') { // 移除分号
+                price = '有价';
+            } else {
+                price = '无价';
+            }
+            return `${nomChinois}-${nom}-${price}-${poids}-${sku}-${year}-${month}-${day}`;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

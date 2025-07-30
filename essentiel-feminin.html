@@ -1,0 +1,975 @@
+<!--https://calebasse.com/fr/pages/essentiels-feminin-->
+
+<style>
+    .pt-8 {
+        padding-top: 0;
+    }
+
+    .lp-container {
+        max-width: 900px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 1.2em;
+    }
+
+    .cache {
+        width: 900px;
+        height: 550px;
+    }
+
+    .btn a {
+        display: inline-block;
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        border: none;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .caleverte-markdown:not(.no-style) ol,
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-position: inside;
+        list-style-type: none;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        white-space: nowrap;
+        text-decoration-line: none;
+    }
+
+    .caleverte-markdown .title h1 {
+        display: block;
+        font-size: 3.1em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 1.2;
+        letter-spacing: -5px;
+    }
+
+    .title {
+        display: flex;
+        margin: 0 auto;
+        padding: 70px 20px 50px 20px;
+    }
+
+    .left {
+        width: 55%;
+        padding-right: 2%;
+        text-align: left;
+    }
+
+    .right {
+        width: 53%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .right img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .introduction {
+        text-align: center;
+    }
+
+    .nav-options a {
+        width: calc(30% - 30px);
+        text-align: center;
+    }
+
+
+    .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: 330px;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .fixed-menu ul li {
+        text-align: left;
+        margin: 0;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: #e2333a;
+        color: #fff;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    .fixed-menu ul li a:hover {
+        background-color: #e2333a;
+        transform: translateX(3px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style pour l'élément actif */
+    .fixed-menu ul li a.active {
+        background-color: #e2333a;
+        font-weight: bold;
+    }
+
+    /* Style horizontal pour iPad */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .fixed-menu {
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            width: auto;
+            padding: 10px;
+        }
+
+        .fixed-menu ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .fixed-menu ul li {
+            margin: 0;
+        }
+
+        .fixed-menu ul li a {
+            width: auto;
+            padding: 8px 15px;
+            white-space: nowrap;
+        }
+
+        .fixed-menu ul li a:hover {
+            transform: translateY(-2px);
+        }
+    }
+
+    /* Responsive pour mobile - design original */
+    @media screen and (max-width: 767px) {
+        .fixed-menu {
+            bottom: 10px;
+            right: 14vw;
+            padding: 5px;
+        }
+
+        .fixed-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin-right: -24px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 86vw;
+            overflow: scroll;
+            flex-direction: row;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .fixed-menu ul li a {
+            display: inline-block;
+            padding: 5px 0.8em;
+            border-radius: 20px;
+            background-color: #e2333a;
+            color: #fff;
+            font-size: 0.7em;
+            text-decoration: none;
+            width: auto;
+        }
+    }
+
+    /* Pour les écrans moyens */
+    @media (min-width: 1025px) and (max-width: 1400px) {
+        .fixed-menu {
+            right: 20px;
+        }
+    }
+
+
+
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-direction: column;
+        width: 48%;
+        background: #f8f9fa;
+        padding-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .pdt-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pdt-img img {
+        width: 15%;
+        margin: 20px;
+    }
+
+    .pdt-info {
+        flex: 2;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .pdt-name {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .pdt-price {
+        color: #f68b91;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .pdt-desc {
+        text-align: left;
+    }
+
+    .pdt-cta {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 10px 60px;
+        background-color: #f68b91;
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s ease;
+        margin: 15px;
+        font-weight: bold;
+    }
+
+    .pdt-cta:hover {
+        background-color: #e2333a;
+    }
+
+    .pdt-cta a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .banniere {
+        margin-bottom: 40px;
+    }
+
+
+    /* 容器样式 */
+    .inline-container {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    /* 移除details默认样式 */
+    details {
+        width: 100%;
+    }
+
+    /* 移除默认的三角形符号 */
+    details summary {
+        list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* 按钮样式 */
+    .promo-button {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    /* 礼物图标样式及动效 */
+    .gift-image {
+        width: 80px;
+        height: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .gift-image:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* iframe 容器样式 */
+    .iframe-container {
+        margin: 20px auto;
+        max-width: 470px;
+        height: 500px;
+        overflow: hidden;
+        /* 隐藏超出部分，不显示滚动条 */
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        /* 为了在移动端容器内正确定位iframe */
+    }
+
+    /* iframe 样式 */
+    .promo-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        overflow: hidden;
+        /* 确保iframe内容不会出现滚动条 */
+    }
+
+    /* 移动端响应式样式 */
+    @media (max-width: 470px) {
+        .iframe-container {
+            width: 90vw;
+            /* 使用90vw宽度 */
+            max-width: 90vw;
+            padding-bottom: 97.2vw;
+            /* 90vw × 1.08 = 97.2vw，保持1:1.08的宽高比 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .promo-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .nav-options {
+            flex-direction: row;
+            padding-bottom: 0px;
+        }
+
+        .nav-options a {
+            font-size: 8px;
+            margin: 10px 2px;
+        }
+
+        .lp-nav {
+            gap: 8px;
+            padding: 8px;
+        }
+
+        .title {
+            flex-direction: column;
+            padding: 40px 15px 30px 15px;
+        }
+
+        .introduction {
+            font-size: 14px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+            padding: 0;
+        }
+
+        .pdt-desc {
+            padding: 0 5px;
+        }
+
+        .caleverte-markdown .title h1 {
+            font-size: 1.8em;
+            display: flex;
+            justify-content: center;
+            letter-spacing: normal;
+        }
+
+        .left {
+            text-align: center;
+        }
+
+        .right {
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .caleverte-markdown ol li,
+        .caleverte-markdown ul li {
+            margin: 0 10px;
+        }
+
+        .right img {
+            max-width: 80%;
+        }
+
+        .nav-options a {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .products {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        .pdt-img img {
+            width: 25%;
+        }
+
+        .pdt-info {
+            font-size: 1rem;
+        }
+
+        .pdt-name {
+            font-size: 1rem;
+            margin: 0 20px;
+        }
+
+        .pdt-price {
+            font-size: 1.2rem;
+        }
+
+        .pdt-cta {
+            font-size: 1.2rem;
+            padding: 8px 40px;
+        }
+
+    }
+
+    @media (max-width: 1400px) and (min-width: 1288px) {
+        .fixed-menu {
+            right: 0px;
+        }
+    }
+
+    @media (max-width: 1900px) and (min-width: 768px) {
+        .fixed-menu {
+            right: 0px;
+        }
+
+        .lp-nav {
+            gap: 8px;
+        }
+
+        .nav-options a {
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: normal;
+            padding: 10px;
+        }
+
+        .nav-options {
+            flex-direction: row;
+            padding-bottom: 0px;
+        }
+
+        .nav-options a {
+            width: calc(49% - 10px);
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+    }
+</style>
+
+<div class="lp-container">
+    <div class="title">
+        <div class="left">
+            <h1>Au cœur de<br> l’énergie féminine : <br>Prendre soin de soi, <br> à chaque étape de <br> la féminité.
+            </h1>
+        </div>
+        <div class="right"><img
+                src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742805706/1_Couverture_min_1_27d5b9d980.png">
+        </div>
+    </div>
+    <div class="introduction">Parce qu’être femme, c’est vivre en mouvement constant, entre émotions, transformations et
+        cycles naturels, notre mission est de vous aider à mieux comprendre votre corps, à l’écouter et à en prendre
+        soin avec bienveillance.</div></br>
+    <div class="introduction">Ici, vous trouverez une sélection de produits naturels, pensés pour vous accompagner en
+        douceur dans les moments clés de votre vie de Femme.</br>
+        Que vous traversiez la période des règles, des variations d’humeur, un désir de grossesse, l’après-naissance ou
+        la ménopause, chaque besoin a sa réponse naturelle.</div>
+    </br>
+    <div class="lp-nav">
+        <div class="fixed-menu">
+            <ul>
+                <li><a href="#pmenstruation" class="menu-item">Menstruation</a></li>
+                <li><a href="#pemotions" class="menu-item">Émotions</a></li>
+                <li><a href="#pbeaute" class="menu-item">Beauté</a></li>
+                <li><a href="#pmenopause" class="menu-item">Ménopause</a></li>
+                <li><a href="#pfertilite" class="menu-item">Fertilité</a></li>
+                <li><a href="#ppost-partum" class="menu-item">Post-partum</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568780/1_6919836bbc.jpg"
+        alt="banniere regles" id="pmenstruation">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570404/tong_jing_wan_min_1_8ab7f9380f.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Formule Confort menstruel</div>
+                <div class="pdt-price">37,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Contribue à réguler le cycle</li>
+                        <li>Aide à mieux vivre les règles</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/tong-jing-wan-formule-confort-menstruel-4224">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570329/Xiao_yao_san_050e73ac9b.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Xiao Yao San</div>
+                <div class="pdt-price">27,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Favorise l'harmonie émotionnelle</li>
+                        <li>Aide à améliorer le confort durant les règles</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/xiao-yao-san-4185?product=5692">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570330/Gui_zhi_fu_ling_wan_a9992801c1.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Gui zhi fu ling wan</div>
+                <div class="pdt-price">28,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Aide à réduire la stagnation du sang</li>
+                        <li>Favorise un flux sanguin sain</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/gui-zhi-fu-ling-wan-4062">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570331/Si_Wu_tang_137b5cf969.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Si Wu Tang</div>
+                <div class="pdt-price">26,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Contribue à la récupération après le cycle</li>
+                        <li>Aide à apaiser les crampes et tensions</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/si-wu-tang-4154">Découvrir</a></div>
+            </div>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568779/3_d9d2951d63.jpg" id="pemotions"
+        alt="banniere emotions">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570985/Suan_zao_ren_0c4fa6e0b3.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Graines de jujubes</div>
+                <div class="pdt-price">11,30€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Améliore la qualité du sommeil</li>
+                        <li>Favorise un état d'esprit plus serein</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/suan-zao-ren-chao-graines-de-jujube-3922?product=4705">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570986/Wu_wei_zi_13eac48b56.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Baie aux cinq saveurs</div>
+                <div class="pdt-price">6,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Donne du tonus à l'organisme</li>
+                        <li>Soutient la gestion des émotions</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/wu-wei-zi-baie-aux-cinq-saveurs-3932">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742570870/An_shen_bu_xin_wan_c4b156f9f3.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">An shen bu xin wan</div>
+                <div class="pdt-price">28,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Contribue à retrouver la sérénité</li>
+                        <li>Aide à s’adapter au stress</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/an-shen-bu-xin-wan-4007">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742573317/design_sans_titre_15_1_720_e3482eec57.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Racine de Ginseng </div>
+                <div class="pdt-price">22,30€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Tonifie le Qi</li>
+                        <li>Veille à l'équilibre énergétique</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/xi-yang-shen-racine-de-ginseng-americain-4690">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568780/5_54651109d4.jpg" id="pbeaute"
+        alt="banniere beaute">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571404/San_Bai_tang_a49d885f2e.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Tisane Beauté</div>
+                <div class="pdt-price">9,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Améliore l'apparence de la peau</li>
+                        <li>Retarde le vieillissement cutané</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/san-bai-tang-tisane-beaute-4466?product=6490">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571404/Da_zao_7e0eadc7dd.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Fruits de jujube</div>
+                <div class="pdt-price">9,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Stimule la circulation sanguine</li>
+                        <li>Contribue à la récupération après le cycle</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/da-zao-fruits-de-jujube-3755">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571319/Zhen_zhu_fen_180c74fa09.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Poudre de perle</div>
+                <div class="pdt-price">35,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Préserve la jeunesse de la peau</li>
+                        <li>Améliore la texture de la peau</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/zhen-zhu-fen-poudre-de-perle-4279">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571405/Jian_fei_wan_896bf6ba67.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Formule Minceur</div>
+                <div class="pdt-price">37,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Aide à la perte de poids</li>
+                        <li>Draine les excès d'eau</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/jian-fei-wan-formule-minceur-4238">Découvrir</a></div>
+            </div>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568780/6_bbac46835c.jpg" id="pmenopause"
+        alt="banniere menopause">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571713/Geng_nian_an_8b66fa8d62.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Formule Ménopause</div>
+                <div class="pdt-price">37,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Accompagne la transition vers la ménopause</li>
+                        <li>Soulage les inconforts ménopausiques</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/geng-nian-an-formule-menopause-4236">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571597/Si_xian_tang_46a4964d30.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Formule Bouffées de chaleur</div>
+                <div class="pdt-price">37,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Calme les bouffées de chaleur</li>
+                        <li>Favorise l'équilibre féminin</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/si-xian-tang-formule-bouffees-de-chaleur-4272">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568780/4_eedbf4b46d.jpg" id="pfertilite"
+        alt="banniere fertilite">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571860/Dang_gui_1cf2a1c17a.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Angélique chinoise</div>
+                <div class="pdt-price">13,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Tonifie la fertilité</li>
+                        <li>Réduit la fatigue</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/dang-gui-angelique-chinoise-3756">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742571860/Nu_bao_8fd08d390d.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Trésor de la femme</div>
+                <div class="pdt-price">37,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Stimule la vitalité et le tonus sexuel</li>
+                        <li>Soutien à la fertilité</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/nu-bao-tresor-de-la-femme-4559?product=5828">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="banniere"
+        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742568779/2_99ad419cc2.jpg"
+        id="ppost-partum" alt="benniere post-partum">
+    <div class="products">
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742572049/Huang_qi_8f8fc2727c.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Astragale Racines</div>
+                <div class="pdt-price">9,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Soutient les défenses naturelles</li>
+                        <li>Tonification du Qi et du Sang</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/huang-qi-sheng-astragale-4498">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742572048/Xue_mu_er_853202712d.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Trémelle fucus </div>
+                <div class="pdt-price">10,70€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Restaure les niveaux d'énergie</li>
+                        <li>Soutien le système intestinal</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/xue-mu-er-tremelle-fucus-4379">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742572008/Ba_zhen_tang_11cb413b8c.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name"> Ba zhen tang</div>
+                <div class="pdt-price">29,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Tonifie le Qi et le Sang</li>
+                        <li>Améliorer la santé générale après </br> des
+                            périodes de fatigue ou de stress</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/ba-zhen-tang-4010">Découvrir</a></div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="pdt-img">
+                <img
+                    src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1742572028/Xiao_chai_hu_tang_e51c9430c1.png">
+            </div>
+            <div class="pdt-info">
+                <div class="pdt-name">Xiao chai hu tang</div>
+                <div class="pdt-price">32,90€</div>
+                <div class="pdt-desc">
+                    <ul>
+                        <li>Veille à l'équilibre énergétique</li>
+                        <li>Harmonise le Shao yang</li>
+                    </ul>
+                </div>
+                <div class="pdt-cta"><a target="_blank"
+                        href="https://calebasse.com/produits/xiao-chai-hu-tang-4183">Découvrir</a></div>
+            </div>
+        </div>
+    </div>
+    </br>
+    <div class="introduction">L'utérus est le cœur de votre vitalité, un centre de créativité et d'équilibre. Comme une
+        fleur qui s'épanouit grâce à la chaleur et aux soins, il mérite une attention bienveillante pour rayonner
+        pleinement. À quel stade de floraison se trouve votre utérus ?</div></br>
+    <div class="btn"><a
+            href="https://script.google.com/macros/s/AKfycbxndz2g_RShabtShNh_TeGccsFxux17po0tfkEag16__Z07lco9Cbv6aNNF8wy4xA/exec">Démarrer
+            le Quiz</a></div></br>
+</div>

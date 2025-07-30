@@ -1,0 +1,605 @@
+<!--https://calebasse.com/fr/pages/calebasse-27-ans-anniversaire-->
+
+<style>
+    body {
+        background-image: url(https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1639127347/background_92a91b3125.webp);
+    }
+
+    .lg\:pt-12 {
+        padding-top: 0 !important;
+    }
+
+    .lp-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        font-size: 18.2px;
+    }
+
+    .banniere {
+        width: 100%;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    .banniere video {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Pour les mobiles, la vidéo s'adapte à une résolution plus basse */
+    @media (max-width: 1024px) {
+        .banniere video {
+            /* Utilise la source vidéo mobile */
+            content: url("https://res.cloudinary.com/laboratoire-calebasse/video/upload/v1729152218/banniere_landing_page_1_1_1_afd62292d9.mp4");
+        }
+    }
+
+    /* Pour les écrans larges (desktop) */
+    @media (min-width: 1025px) {
+        .banniere video {
+            /* Utilise la source vidéo de bureau */
+            content: url("https://res.cloudinary.com/laboratoire-calebasse/video/upload/v1729152218/banniere_landing_page_1_1_1_afd62292d9.mp4");
+        }
+    }
+
+    .banniere img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .toggle-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 20px auto;
+        font-size: 1.2rem;
+        background-color: #AACB55;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .content {
+        text-align: left;
+        margin-bottom: 50px;
+    }
+
+    .nav-title {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-items: center;
+        margin: 20px 0;
+    }
+
+    .nav-options a {
+        padding: 10px 20px;
+        background-color: #AACB55;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .date {
+        font-size: 0.9rem;
+    }
+
+    .nav-options a.active {
+        padding: 10px 20px;
+        background-color: #AACB55;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+    }
+
+
+    .button,
+    .lpbutton a {
+        padding: 10px 20px;
+        background-color: #AACB55;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #AACB55;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        max-width: 250px;
+    }
+
+    .button:hover {
+        background-color: #DA89B2;
+    }
+
+    .kBauBB a {
+        text-decoration: none !important;
+    }
+
+    .reducSection {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .reducImage img {
+        width: 500px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .codePromo {
+        font-weight: bold;
+        color: #AACB55;
+    }
+
+    .legende {
+        font-size: 0.8rem;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .cadeauSection {
+        display: flex;
+        align-items: center;
+        text-align: start;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cadeauText p {
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .cadeauText strong {
+        color: #AACB55;
+    }
+
+    .cadeauImage img {
+        width: auto;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .legende {
+        font-size: 0.8rem;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .banniereText strong {
+        color: #AACB55;
+    }
+
+    .menopauseSection {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .menopauseImage img {
+        width: 250px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .menopauseText,
+    .eventSection p {
+        text-align: left;
+    }
+
+    .menopauseText strong {
+        color: #DA89B2;
+    }
+
+    .offre strong {
+        color: black;
+        font-weight: bold;
+    }
+
+
+    .eventSection {
+        max-width: 1000px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .banniere img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .eventDetails h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    .eventDetails p {
+        margin: 10px 0;
+    }
+
+    .eventDetails ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .eventDetails ul li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .eventDetails strong {
+        color: #AACB55;
+    }
+
+    .finalSection {
+        max-width: 1000px;
+        text-align: left;
+    }
+
+    .finalImage img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .conclusionText a {
+        font-weight: bold;
+    }
+
+    .conclusionText strong {
+        color: #AACB55;
+    }
+
+    .reducSection,
+    .cadeauSection,
+    .menopauseSection,
+    .eventSection {
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+    }
+
+    .reducSection img,
+    .cadeauSection img,
+    .menopauseSection img,
+    .eventSection img,
+    .finalSection img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .conclusion p,
+    .introduction p {
+        margin-bottom: 15px;
+    }
+
+    details {
+        cursor: pointer;
+        text-align: center;
+    }
+
+    summary {
+        list-style: none;
+        color: #AACB55;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    summary::marker {
+        display: none;
+    }
+
+    .arrow {
+        display: inline-block;
+        transition: transform 0.3s;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    /* Pivoter la flèche lorsque le texte est affiché */
+    details[open] .arrow {
+        transform: rotate(180deg);
+    }
+
+    .reducText,
+    .cadeauText,
+    .banniereText,
+    .menopauseText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+
+    @media only screen and (max-width: 1024px) {
+        .container {
+            font-size: 1rem;
+        }
+
+        .content {
+            margin-bottom: 30px;
+        }
+
+        .toggle-btn,
+        .button,
+        .nav-options a {
+            width: 100%;
+            display: block;
+            justify-content: center;
+        }
+
+        .nav-options {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        h3 {
+            margin: 10px;
+        }
+
+        .reducSection,
+        .cadeauSection,
+        .menopauseSection,
+        .eventSection {
+            padding: 15px;
+        }
+
+
+        .reducSection,
+        .menopauseSection {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .cadeauSection {
+            flex-direction: column-reverse;
+            text-align: center;
+        }
+
+        .reducText,
+        .cadeauText,
+        .banniereText,
+        .menopauseText {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="lp-container">
+    <div class="banniere">
+        <video autoplay loop muted playsinline>
+            <source
+                src="https://res.cloudinary.com/laboratoire-calebasse/video/upload/v1729152218/banniere_landing_page_1_1_1_afd62292d9.mp4"
+                type="video/mp4" media="(max-width: 1024px)">
+            <source
+                src="https://res.cloudinary.com/laboratoire-calebasse/video/upload/v1729152218/banniere_landing_page_1_1_1_afd62292d9.mp4"
+                type="video/mp4" media="(min-width: 1025px)">
+        </video>
+    </div>
+    <p class="introduction">
+        Cette année marque le 27e anniversaire du Laboratoire Calebasse, et nous sommes impatients de le célébrer avec
+        vous. Pour l'occasion, nous avons préparé plein de surprises et de cadeaux ! Mais tout d'abord, faisons un saut
+        dans le temps et revenons 27 ans en arrière, à nos débuts. <br><br>
+        En 1997, Madame Liu ouvrait "À la Calebasse Verte" dans le 13ème arrondissement de Paris, avec une mission qui
+        reste inchangée : votre bien-être en vous offrant une alternative 100 % naturelle, issue de la richesse de la
+        Médecine Traditionnelle Chinoise (MTC). Cette approche est basée sur la rencontre de la tradition et de
+        l'innovation, offrant des solutions naturelles préventives et respectueuses de la santé de chacun. <br><br>
+    </p>
+
+    <div class="SavoirPlus">
+        <details>
+            <summary>Lire plus<span class="arrow">▼</span></summary>
+            <br>
+            <div class="content">
+                <p>
+                    Aujourd'hui, Monsieur Wu, fils de Madame Liu, continue de porter cette vision, combinant les
+                    pratiques de la médecine chinoise avec la science moderne pour faire de notre laboratoire une
+                    référence de la MTC en Europe. Au fil des ans, grâce à vous, nos fidèles clients, nos partenaires
+                    engagés, nos producteurs et notre équipe dévouée, nous avons grandi et évolué. C'est votre confiance
+                    qui nous permet aujourd'hui de célébrer notre 27ème anniversaire et de continuer de poursuivre notre
+                    mission : offrir un bien-être naturel, accessible et respectueux de la santé de chacun.
+                </p>
+            </div>
+        </details>
+    </div>
+
+    <div class="nav-title">Découvrez toutes les surprises et cadeaux prévus pour célébrer les 27 ans de Calebasse !
+    </div>
+    <div class="nav-options">
+        <a href="#pcadeau" class="active">60€ ou plus ? Un cadeau en plus ! <br /> <span
+                class="date">18/10-31/10</span></a>
+        <a href="#ppromotion">-20 % sur ma commande !<br /> <span class="date">18/10-21/10</span></a>
+        <a href="#pmenopause">Offre Spéciale Ménopause<br /><span class="date"> 18/10</span></a>
+        <a href="#pevent">Événement en boutique <br /> <span class="date">18/10-20/10</span></a>
+    </div>
+
+    <div class="reducSection" id="ppromotion">
+        <picture class="reducImage">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915519/Code_de_reduction_20_ordi_dc41812848.jpg"
+                alt="Célébrez et économisez: -20% avec CALEBASSE27">
+        </picture>
+        <div class="reducText">
+            <p>
+                Pour marquer nos 27 ans d'innovation et de bien-être, nous avons décidé de vous gâter. <br><br>
+                <b> De 18 au 20 octobre,</b> profitez d'une remise exceptionnelle de 20% sur toutes vos commandes !
+                <br><br>
+                Utilisez le code <span class="codePromo">CALEBASSE27</span> lors de votre achat pour célébrer avec nous
+                et faire le plein de vos produits préférés*.
+            </p> <br><br>
+            <a class="button" href="https://calebasse.com/sante">Je veux en profiter !</a>
+            <div class="legende">*Offre non applicable sur les matériaux MTC et les livres</div>
+        </div>
+    </div>
+
+    <div class="cadeauSection" id="pcadeau">
+        <div class="cadeauText">
+            <p>Et les surprises continuent ! <br><br>
+                Chaque jour, <b>entre 18 et 31 octobre</b>, les <strong>10 premiers achats de 60€ ou plus</strong>
+                seront exceptionnellement récompensés.</p>
+            <p>Recevez non pas une, mais <strong>deux boîtes de nos tisanes</strong>, une manière délicate et savoureuse
+                de découvrir les nuances de nos infusions artisanales. <br><br>Ces fleurs sont parfaites pour créer des
+                moments de détente et de convivialité.</p><br><br>
+            <a class="button" href="https://calebasse.com/sante">Je passe ma commande !</a>
+        </div>
+        <div class="cadeauImage">
+            <picture>
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915669/Commande_de_60_533e12a80d.jpg"
+                    alt="Recevez 2 cadeaux en plus dans vos commandes de plus de 60€ !">
+            </picture>
+        </div>
+    </div>
+
+    <picture class="banniere">
+        <source media="(max-width: 1024px)"
+            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915736/Mobile_Image_Banniere_mobile_Journee_mondiale_de_la_Menopause_b16d21a084.jpg">
+        <source media="(min-width: 1025px)"
+            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915718/Image_Banniere_ordi_Journee_mondiale_de_la_Menopause_ca6ea60348.jpg">
+        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915736/Mobile_Image_Banniere_mobile_Journee_mondiale_de_la_Menopause_b16d21a084.jpg"
+            alt="Journée mondiale de la ménopause">
+    </picture>
+    <div class="banniereText">
+        <p><br>Le 18 octobre ne marque pas seulement notre anniversaire, mais c'est aussi la Journée mondiale de la
+            ménopause, un moment clé pour sensibiliser et soutenir les femmes à cette étape importante de leur vie. Chez
+            Calebasse, nous croyons fermement que chaque femme mérite de vivre cette période avec sérénité et bien-être.
+        </p>
+        <p>En cette journée spéciale, nous tenons à accompagner toutes les femmes avec une <strong>offre
+                exclusive</strong>.</p>
+    </div>
+
+    <div class="menopauseSection" id="pmenopause">
+        <div class="menopauseImage">
+            <picture>
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728915932/Image_produits_promo_8906141964.jpg"
+                    alt="Offre Spéciale Formule Ménopause">
+            </picture>
+        </div>
+        <div class="menopauseText">
+            <p class="titleMenopause">Offre Spéciale <strong>Formule Ménopause</strong> :</p>
+            <div class="offre"><strong>Achetez 2 flacons</strong> de notre Formule Ménopause et recevez le <strong>3ème
+                    gratuitement</strong> !</div>
+            <p>C'est l'occasion parfaite pour celles qui cherchent un soutien naturel et efficace durant la ménopause.
+                N'attendez plus pour vous faire plaisir ou pour gâter une amie !</p>
+            <p>Ensemble, brisons les tabous et célébrons la santé et la résilience des femmes à chaque étape de leur vie
+                !</p><br><br>
+            <a class="button" href="https://calebasse.com/produits/geng-nian-an-formule-menopause-4236">Je veux en
+                profiter !</a>
+        </div>
+    </div>
+
+    <div class="eventSection" id="pevent">
+        <picture class="banniere">
+            <source media="(max-width: 1024px)"
+                srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728916357/Mobile_Image_Banniere_Evenement_en_boutique_1fa7ef3964.jpg">
+            <source media="(min-width: 1025px)"
+                srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728916244/Image_Banniere_Evenement_en_boutique_7d39c804e6.jpg">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728916357/Mobile_Image_Banniere_Evenement_en_boutique_1fa7ef3964.jpg"
+                alt="Un événement spécial pour vous">
+        </picture>
+        <div class="eventDetails">
+            <p><br>Venez célébrer les 27 ans de Laboratoire Calebasse lors d'un événement inoubliable dans notre
+                boutique située dans le 13ème arrondissement de Paris.</p>
+            <h3>Au programme :</h3>
+            <ul>
+                <li><strong>Dégustations gratuites de thés aux herbes :</strong> Découvrez les saveurs uniques de nos
+                    infusions, conçues pour apporter détente et santé.</li>
+                <li><strong>Ateliers de thérapie expérientielle :</strong> Engagez-vous dans des séances interactives et
+                    apprenez des techniques de bien-être pour enrichir votre quotidien.</li>
+                <li><strong>Offres exclusives :</strong> Profitez de promotions spéciales, disponibles uniquement durant
+                    cet événement.</li>
+            </ul>
+
+            <h3>Où ?</h3>
+            <p>15 rue de la Vistule, 75013 Paris</p>
+            <h3>Quand ?</h3>
+            <ul>
+                <li>Vendredi 18 octobre de 18h00 à 20h00</li>
+                <li>Samedi 19 octobre de 15h00 à 18h00</li>
+            </ul>
+
+            <p>Joignez-vous à nous les 18 et 19 octobre pour un moment de partage et de découverte.</p>
+            <p>C'est l'occasion parfaite de nous rencontrer, d'échanger et de profiter ensemble de cette grande fête.
+                Nous avons hâte de vous accueillir et de célébrer à vos côtés !</p>
+        </div>
+    </div>
+
+    <div class="finalSection">
+        <picture class="finalImage">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1728916421/Conclusion_c5563eedeb.jpg"
+                alt="Conclusion">
+        </picture>
+        <div class="conclusionText">
+            <p>
+                Alors que nous célébrons le 27e anniversaire du Laboratoire Calebasse, nous embrassons non seulement une
+                étape importante, mais nous honorons également un moment très symbolique dans notre culture. En effet,
+                le chiffre 27, équivalent à trois fois neuf, représente l'apogée de la création et la réalisation de
+                l'extrême dans la philosophie chinoise. Cet anniversaire n'est donc pas seulement un moment de
+                réjouissance, mais aussi une célébration de la continuité de notre excellence et de notre engagement
+                envers la santé naturelle.
+            </p>
+            <p><br>
+                Nous tenons à vous exprimer notre profonde gratitude : merci d'avoir été une partie essentielle de notre
+                voyage jusqu'ici. Votre fidélité et votre engagement envers le Laboratoire Calebasse nous inspirent
+                chaque jour et nous poussent à aller toujours plus loin. Cette année, le 27ème anniversaire symbolise
+                également le signe de notre évolution. Nous préparons une grande transformation avec <a
+                    href="https://calebasse.com/pages/evolution-bien-etre-sans-limite"><u>l'introduction de nouvelles
+                        formules</u></a> et de nouvelles formes.
+            </p><br>
+            <p><strong>Joyeux anniversaire à nous tous !</strong> Que cette année soit remplie de santé, de bien-être et
+                de moments joyeux partagés. À l'avenir, continuons à partager, à apprendre et à grandir ensemble.</p>
+        </div>
+
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>

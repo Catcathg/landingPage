@@ -1,0 +1,615 @@
+<!--https://calebasse.com/fr/pages/nouvel-an-chinois-->
+
+<style>
+    .pt-8 {
+        padding-top: 0rem;
+    }
+
+    .p-4 {
+        padding: 0rem;
+    }
+
+    .flex.flex-1.flex-col.gap-1 {
+        padding: 3rem 3rem 1rem 3rem;
+        width: 570px;
+    }
+
+    @media (min-width: 1024px) {
+        .lg\:grid-cols-\[400px_auto\] {
+            grid-template-columns: 485px auto;
+        }
+    }
+
+    .flexy {
+        display: flex;
+    }
+
+    .justify {
+        justify-content: center;
+    }
+
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        font-size: 18.2px;
+    }
+
+    .align {
+        text-align: center;
+    }
+
+    .banniere {
+        width: 100%;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    .banniere video {
+        width: 100%;
+        height: auto;
+    }
+
+    .banniere img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .content {
+        text-align: left;
+        margin: 30px;
+        background-color: #F8EFFC;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    .nav-title {
+        margin: 20px 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .margin-p {
+        margin: 20px;
+    }
+
+    .margin {
+        margin: 10px;
+    }
+
+    .nav-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-items: center;
+        margin: 20px 0;
+    }
+
+    .nav-options a {
+        padding: 10px 10px;
+        background-color: #9A8EC3;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .width {
+        width: 100%;
+    }
+
+    video {
+        margin-top: 20px;
+    }
+
+    .nav-options a.active {
+        padding: 10px 20px;
+        background-color: #cb5569;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .button {
+        transition: background-color 0.3s, opacity 0.3s;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #9A8EC3;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        max-width: 250px;
+        white-space: normal;
+        /* Permet au texte de se couper en cas de dépassement */
+        word-wrap: break-word;
+        /* Coupe les mots longs sans espace */
+        text-overflow: ellipsis;
+        /* Si le texte dépasse encore, ajoute '...' */
+    }
+
+    .profiter a {
+        text-decoration: none;
+    }
+
+    .video-player {
+        margin-top: 30px;
+        width: 98%;
+        /* La vidéo prendra toute la largeur disponible */
+        height: 56.25vw;
+        /* La hauteur est définie en fonction du ratio 16:9 */
+        max-width: 100%;
+        /* Limiter la largeur à 100% du conteneur */
+        max-height: 55vh;
+        /* Limiter la hauteur à 80% de la hauteur de la fenêtre */
+        border: none;
+        /* Retirer les bordures */
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .video-player {
+            height: 60vw;
+            /* Réduire la hauteur sur les petits écrans */
+            width: 100%;
+        }
+    }
+
+
+
+
+
+    .kBauBB a {
+        text-decoration: none !important;
+    }
+
+    .color {
+        font-weight: bold;
+        color: #AACB55;
+    }
+
+    .legende {
+        font-size: 0.8rem;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .banniere img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .section,
+    .reverse {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        margin: 20px 10px;
+    }
+
+    .center {
+        margin: 10px;
+        border-radius: 10px;
+        background-color: #f8effc;
+        padding: 20px;
+    }
+
+
+    .section img,
+    .reverse img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    details {
+        cursor: pointer;
+        text-align: center;
+    }
+
+    summary {
+        list-style: none;
+        color: #688658;
+        display: inline-block;
+        cursor: pointer;
+        font-weight: 800;
+    }
+
+    summary::marker {
+        display: none;
+    }
+
+    .arrow {
+        display: inline-block;
+        transition: transform 0.3s;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    details[open] .arrow {
+        transform: rotate(180deg);
+    }
+
+    .text,
+    .banniereText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        margin: 20px 40px;
+    }
+
+    @media (min-width: 1025px) {
+        .width {
+            width: 100%;
+            justify-content: center;
+            display: flex;
+        }
+
+        .destopNone {
+            display: none;
+        }
+
+        .lg\:grid-cols-\[400px_auto\] {
+            grid-template-columns: 495px auto;
+        }
+    }
+
+
+    @media only screen and (max-width: 1024px) {
+        .container {
+            font-size: 1rem;
+        }
+
+        .width {
+            width: 100%;
+            justify-content: center;
+            display: flex;
+        }
+
+        .disparaitre {
+            display: none;
+        }
+
+
+        .flex.flex-1.flex-col.gap-1 {
+            padding: 0 3rem;
+        }
+
+
+        .flex.flex-1.flex-col.gap-1 {
+            width: 400px;
+        }
+
+        .info {
+            display: block;
+        }
+
+        .content {
+            margin: 0px;
+            padding: 20px;
+        }
+
+
+        .center {
+            border-radius: 10px;
+            background-color: #f8effc;
+            padding: 10px;
+        }
+
+        .text {
+            margin: 0;
+        }
+
+        .section {
+            margin: 0px;
+        }
+
+        .reverse {
+            margin-top: 20px;
+        }
+
+        .nav-title {
+            text-align: center;
+        }
+
+        .button,
+        .nav-options a {
+            width: 100%;
+            display: block;
+            justify-content: center;
+            padding: 20px 20px;
+        }
+
+        .nav-options {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .section,
+        .reverse {
+            padding: 15px;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+
+        .section {
+            flex-direction: column;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .reverse {
+            flex-direction: column-reverse;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+    }
+</style>
+
+
+<div class="container">
+    <picture class="flexy justify align">
+        <source media="(max-width: 1024px)"
+            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737037497/serpent_banner_1024x683px_2_2bbe0efe60.png">
+        <source media="(min-width: 1025px)"
+            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737034968/serpent_banner_1280x400px_2_100x_8_97a238aa7d.png">
+        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737035022/serpent_banner_375x400_2px_2_200_ppi_c51264b7a1.png"
+            alt="règles d'or de l'année du Serpent selon Calebasse">
+    </picture>
+    <div class="flexy justify align">
+        <iframe src="https://www.youtube.com/embed/CxL1MwSJYcg?loop=1&mute=1&playsinline=1" frameborder="0"
+            allow="fullscreen" allowfullscreen class="video-player">
+        </iframe>
+    </div>
+    <div class="inner mtext">
+        <div class="align margin">
+            <p>Le Nouvel An Chinois est l'une des célébrations les plus importantes et les plus riches en significations
+                dans la culture chinoise. Il marque le début d'une nouvelle année selon le calendrier lunaire.</p>
+        </div>
+
+        <div class="nav-title">Découvrez toutes les surprises et cadeaux prévus pour célébrer le Nouvel An Chinois !
+        </div>
+
+        <div class="nav-options">
+            <a href="#pmarche">Marché du Nouvel An à Belleville </a>
+            <a href="#ppromotion">70€ ou plus ? -10% sur ma commande ! </a>
+            <a href="#pcadeau">Un cadeau en plus !</a>
+            <div class="disparaitre width"><a href="#pserpent">Année du Serpent - Blog </a></div>
+            <div class="destopNone width"><a href="#pcny">Année du Serpent - Blog </a></div>
+        </div>
+    </div>
+    <div class="center">
+        <h3>🧧 Célébrons le Nouvel An Chinois ensemble à Belleville ! 🧧 </h3>
+        <div class="margin-p">
+            <p>Des spécialités culinaires, des boissons traditionnelles et des objets culturels seront au rendez-vous
+                pour vous offrir une expérience authentique.</p>
+        </div>
+        <div class="SavoirPlus">
+            <details>
+                <summary id="pmarche">Lire plus<span class="arrow">▼</span></summary>
+                <div class="content">
+                    <div class="info">
+                        <div class="where">
+                            <p><b>Où</b></p>
+                            <p>130 Bd de Belleville, 75020 Paris</p>
+                        </div>
+                        <div class="when">
+                            <p><b>Quand?</b></p>
+                            <p>Samedi 25 janvier de 11h à 22h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>C'est l'occasion parfaite de nous rencontrer, d'échanger et de profiter ensemble de cette grande
+                    fête. Nous avons hâte de vous accueillir et de célébrer à vos côtés !</p>
+                <h3>Au programme :</h3>
+
+                <div class="section">
+                    <picture class="image">
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737622732/Boissons_min_1_1_1_1_22405a166e.png"
+                            alt="boissons">
+                    </picture>
+                    <div class="text">
+                        <p> Nous serons ravis de vous accueillir sur notre stand et de vous faire découvrir quelques
+                            délices asiatiques :
+                        <ul>
+                            <li>Gruau aux cinq rouges </li>
+                            <li>Boisson à base de prunes chinoises </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reverse">
+                    <div class="text">
+                        <p>Pour tout achat à partir de 8€ sur notre stand : la <b>calligraphie</b> de votre <b>prénom en
+                                chinois offerte</b>, une belle manière de porter chance pour l'année à venir !</p>
+                    </div>
+                    <div class="image">
+                        <picture>
+                            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737040540/Calligraphie_de60f9769c.png"
+                                alt="caligraphie">
+                        </picture>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="center">
+                        <h3>🎁 Jeu Enveloppe Rouge du Nouvel An 🎁 </h3>
+                    </div>
+                    <p>Sur notre stand, tirez au sort une enveloppe rouge spéciale Nouvel An, contenant l'un des cadeaux
+                        suivants : </br>
+                    <ul>
+                        <li><b>Cadeau du Bonheur</b> : Coffret Sérénité du Nouvel An</li>
+                        <li><b>Cadeau de la Paix</b> : Tasse réutilisable</li>
+                        <li><b>Cadeau de la Joie</b> : Poupée traditionnelle de la médecine chinoise</li>
+                        <li><b>Cadeau de la Santé</b> : Bon de réduction de -20% (sans minimum d'achat)</li>
+                    </ul>
+                    </p>
+                </div>
+        </div>
+        </details>
+    </div>
+
+    <div class="reverse" id="ppromotion">
+        <div class="text">
+            <p>Pour marquer le Nouvel An Chinois, nous avons décidé de vous gâter. </br></br> Du <b>24/01</b> au
+                <b>04/02</b>, profitez d'une remise exceptionnelle de <b>10%</b> sur toutes vos commandes à partir de
+                70€ ! </br></br> Utilisez le code <b><span style="color: #688658">SERPENT10</span></b> lors de votre
+                achat pour célébrer avec nous et faire le plein de vos produits préférés*.
+            </p>
+            <div class="profiter"><a class="button" href="https://calebasse.com/sante">Je veux en profiter !</a>
+                <div class="legende">*Offre non applicable sur les livres</div>
+            </div>
+        </div>
+        <div class="image">
+            <picture>
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737037054/PROMO_min_1_ffcc9d7ea9.png"
+                    alt="visuel promotion">
+            </picture>
+        </div>
+    </div>
+
+    <div class="section" id="pcadeau">
+        <picture class="image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1737037044/CADEAU_min_3ec337427f.png"
+                alt="cadeau">
+        </picture>
+        <div class="text">
+            <h3>Offre spéciale le 28 et 29 Janvier !</h3>
+            <p>Pour les <b>50 premières commandes</b> sur le site chaque jour, nous offrons une boîte de <b>Hong Qiao
+                    Mei</b>. </br></br> Consommer cette plante pendant le Nouvel An Chinois, c’est offrir à son corps un
+                nouveau souffle et accueillir l’année avec énergie et équilibre.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="section disparaitre" id="pserpent">
+        <div class="flex flex-col overflow-hidden rounded-2xl lg:grid lg:grid-cols-[400px_auto] lg:gap-3"><a
+                class="hover:underline"
+                aria-label="Go to article Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                <div class="group relative h-[300px] w-full lg:rounded-lg lg:overflow-hidden"><span
+                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+                            sizes="100vw"
+                            srcset="/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=640&amp;q=75 640w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=750&amp;q=75 750w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=828&amp;q=75 828w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=3840&amp;q=75 3840w"
+                            src="/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=3840&amp;q=75"
+                            decoding="async" data-nimg="fill"
+                            class="cursor-pointer object-cover duration-200 hover:scale-110"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                </div>
+            </a>
+            <div class="flex flex-1 flex-col gap-1 p-4"><a class="hover:underline"
+                    aria-label="Go to article  Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                    href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                    <div class="line-clamp-2 text-lg font-semibold">Nouvel An chinois 2025 : 5 règles d’or pour réussir
+                        l’année </br>du Serpent</div>
+                </a>
+                <div class="line-clamp-2 text-gray-500"><a class="hover:underline"
+                        aria-label="Go to blog family Voyage en chine" href="/blog/voyage-en-chine">Voyage en chine</a>
+                    - 20/01/2025</div>
+                <div class="mt-2 line-clamp-4 overflow-hidden">Le 29 janvier, nous célébrerons le Nouvel An chinois, une
+                    occasion de renouvellement et de festivités. Chaque nouvelle année, placée sous le signe d’un animal
+                    du zodiaque chinois et influencée par un élément, apporte son lot de promesses, d’opportunités et de
+                    défis. Cette fois, l’année sera marquée par le Serpent, dominé par l’élément Bois.
+
+                    Que nous réserve cette année et comment s’y préparer ?
+                </div>
+                <div class="mt-4 flex flex-grow items-end justify-end"><a class="text-primary hover:underline"
+                        aria-label="Go to article Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                        href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                        <div class="flex items-center gap-1"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" viewBox="0 0 32 32" class="right-icon fill-primary">
+                                <title>right</title>
+                                <path
+                                    d="M13.372 6.667c-0.011-0-0.025-0.001-0.038-0.001-0.368 0-0.702 0.149-0.943 0.391v0c-0.241 0.241-0.39 0.575-0.39 0.943s0.149 0.701 0.39 0.943l7.057 7.057-7.057 7.057c-0.241 0.241-0.39 0.575-0.39 0.943s0.149 0.701 0.39 0.943v0c0.241 0.241 0.575 0.39 0.943 0.39s0.701-0.149 0.943-0.39l8-8c0.241-0.241 0.39-0.575 0.39-0.943s-0.149-0.701-0.39-0.943l-8-8c-0.232-0.232-0.55-0.38-0.902-0.391l-0.002-0z">
+                                </path>
+                            </svg><span class="text-lg">Lire plus</span></div>
+                    </a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section destopNone" id="pcny">
+        <div
+            class="flex flex-col overflow-hidden rounded-2xl lg:grid lg:grid-cols-[400px_auto] lg:gap-3 lg:rounded-none lg:shadow-none">
+            <a class="hover:underline"
+                aria-label="Go to article Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                <div class="group relative h-[300px] w-full lg:rounded-lg lg:overflow-hidden"><span
+                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 30px; padding: 0px; position: absolute; inset: 0px;"><img
+                            sizes="100vw"
+                            srcset="/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=640&amp;q=75 640w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=750&amp;q=75 750w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=828&amp;q=75 828w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1080&amp;q=75 1080w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1200&amp;q=75 1200w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=1920&amp;q=75 1920w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=2048&amp;q=75 2048w, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=3840&amp;q=75 3840w"
+                            src="/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Flaboratoire-calebasse%2Fimage%2Fupload%2Fv1737022140%2Fserpent_banner_1024x683px_150_ppi_129aec37a4.png&amp;w=3840&amp;q=75"
+                            decoding="async" data-nimg="fill"
+                            class="cursor-pointer object-cover duration-200 hover:scale-110"
+                            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                </div>
+            </a>
+            <div class="flex flex-1 flex-col gap-1 p-4"><a class="hover:underline"
+                    aria-label="Go to article  Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                    href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                    <div class="line-clamp-2 text-lg font-semibold">Nouvel An chinois 2025 : 5 règles d’or </br>pour
+                        réussir l’année du Serpent</div>
+                </a>
+                <div class="line-clamp-2 text-gray-500"><a class="hover:underline"
+                        aria-label="Go to blog family Voyage en chine" href="/blog/voyage-en-chine">Voyage en chine</a>
+                    - 20/01/2025</div>
+                <div class="mt-2 line-clamp-4 overflow-hidden">Le 29 janvier, nous célébrerons le Nouvel An chinois, une
+                    occasion de renouvellement et de festivités. Chaque nouvelle année, placée sous le signe d’un animal
+                    du zodiaque chinois et influencée par un élément, apporte son lot de promesses, d’opportunités et de
+                    défis. Cette fois, l’année sera marquée par le Serpent, dominé par l’élément Bois.
+
+                    Que nous réserve cette année et comment s’y préparer ?
+                </div>
+                <div class="mt-4 flex flex-grow items-end justify-end"><a class="text-primary hover:underline"
+                        aria-label="Go to article Nouvel An chinois 2025 : 5 règles d’or pour réussir l’année du Serpent"
+                        href="/blog/voyage-en-chine/nouvel-an-chinois-2025-5-regles-d-or-pour-reussir-l-annee-du-serpent">
+                        <div class="flex items-center gap-1"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" viewBox="0 0 32 32" class="right-icon fill-primary">
+                                <title>right</title>
+                                <path
+                                    d="M13.372 6.667c-0.011-0-0.025-0.001-0.038-0.001-0.368 0-0.702 0.149-0.943 0.391v0c-0.241 0.241-0.39 0.575-0.39 0.943s0.149 0.701 0.39 0.943l7.057 7.057-7.057 7.057c-0.241 0.241-0.39 0.575-0.39 0.943s0.149 0.701 0.39 0.943v0c0.241 0.241 0.575 0.39 0.943 0.39s0.701-0.149 0.943-0.39l8-8c0.241-0.241 0.39-0.575 0.39-0.943s-0.149-0.701-0.39-0.943l-8-8c-0.232-0.232-0.55-0.38-0.902-0.391l-0.002-0z">
+                                </path>
+                            </svg><span class="text-lg">Lire plus</span></div>
+                    </a></div>
+            </div>
+        </div>
+    </div>
+
+</div>

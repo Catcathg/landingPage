@@ -1,0 +1,838 @@
+<!--https://calebasse.com/fr/pages/fete-des-meres-->
+
+<style>
+    @media (min-width: 1024px) {
+        .lg\:pt-12 {
+            padding-top: 0 !important;
+        }
+    }
+
+    .caleverte-markdown:not(.no-style) ol,
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .intro {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.3rem;
+    }
+
+    .intro details {
+        margin-top: 15px;
+    }
+
+    .intro summary {
+        cursor: pointer;
+        color: #a47e62;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .intro summary:focus {
+        outline: none;
+    }
+
+    .intro details[open] summary::after {
+        transform: rotate(90deg);
+    }
+
+    .intro summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .destop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .title {
+        display: flex;
+        margin: 0 auto;
+        padding: 20px 20px 20px 20px;
+    }
+
+    .left {
+        width: 65%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .right {
+        width: 35%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .right img {
+        max-width: 119%;
+        height: auto;
+    }
+
+    .lp-nav-button {
+        margin: 20px 0;
+        width: 100%;
+    }
+
+    .nav-options-button ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 0 40px 0;
+        list-style-type: none;
+    }
+
+    .nav-options-button ul li {
+        flex: 1;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .nav-options-button ul li a {
+        display: block;
+        background-color: rgb(164, 126, 98);
+        color: white;
+        text-decoration: none;
+        padding: 20px 0;
+        width: 100%;
+        min-width: 200px;
+        font-size: 1.3rem;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options-button ul li a:hover {
+        background-color: rgba(164, 126, 98, 0.8);
+    }
+
+    .caleverte-markdown .title h1 {
+        display: block;
+        font-size: 5.08em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: -5px;
+    }
+
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .lp-nav-cote .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: calc(50vw - 700px);
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: #A47E62;
+        color: #fff;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        text-decoration-line: none;
+    }
+
+    .lp-container {
+        max-width: 1000px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .productcard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px 0px 60px 0px;
+    }
+
+    .quatre {
+        width: 24%;
+    }
+
+    .max-width {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .nav-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 40px;
+    }
+
+    .nav-title h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.8em;
+    }
+
+    .nav-title p {
+        text-align: center;
+        font-size: 1.5em;
+        font-style: italic;
+    }
+
+    .nav-options a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 20px;
+        background-color: #A47E62;
+        color: #fff;
+        /* White text */
+        font-size: 1.3em;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options a:hover {
+        background-color: #A47E62;
+        /* Dark green background - hover state */
+    }
+
+    /* Styles for screens larger than 768px (tablets, laptops, etc.) */
+    .nav-options a {
+        width: calc(30% - 30px);
+        /* Each link occupies 33.33% width minus margins */
+        text-align: center;
+    }
+
+    .code-box {
+        width: 90%;
+        /* 设置宽度为屏幕宽度的 80% */
+        margin: 20px auto 0 auto;
+        /* 水平居中 */
+        text-align: left;
+        /* 内部元素左对齐 */
+        border-radius: 10px;
+        /* 圆角 */
+        background-color: #fbf2ed;
+        /* 背景色 */
+        padding: 20px 40px;
+        /* 内边距，增加一些间隔，使内容不会紧贴边框 */
+        font-size: 1.5em;
+    }
+
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .sv-introduction {
+        font-size: 1.5em;
+        padding: 20px 0px 0;
+        line-height: 190%;
+    }
+
+    #coffret .product {
+        width: 100%;
+    }
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow products to wrap to new lines */
+        justify-content: space-between;
+        /* Distribute space between products */
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        /* Center align */
+        margin-bottom: 60px;
+        /* Spacing between product blocks */
+        flex-direction: column;
+        /* Stack products vertically on small screens */
+        width: 48%;
+        /* Full width */
+        background: #f8f9fa;
+        padding-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .pdt-img {
+        flex: 1;
+        /* Occupy remaining space */
+        width: 50%;
+    }
+
+    .pdt-desc {
+        text-align: left;
+    }
+
+    .pdt-img img {
+        width: 100%;
+    }
+
+    .pdt-info {
+        flex: 2;
+        /* Occupy remaining space */
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .pdt-desc ul {
+        margin: 0 0 15px 10px;
+        list-style-type: circle;
+    }
+
+    .pdt-info ul li {
+        text-align: left;
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+
+    .pdt-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        /* Increase font size */
+    }
+
+    .pdt-price {
+        color: #4f6f52;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .pdf-desc {
+        text-align: left;
+    }
+
+    .pdt-cta {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 10px 60px;
+        background-color: #4f6f52;
+        /* Light green background */
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s ease;
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+    .pdt-cta a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .pdt-cta:hover {
+        background-color: #004d00;
+        /* Light green background - hover state */
+    }
+
+    /* Responsive layout */
+    @media only screen and (max-width: 768px) {
+        .nav-options-button ul {
+            flex-wrap: wrap;
+        }
+
+        .caleverte-markdown:not(.no-style) h2 {
+            margin-bottom: 0rem;
+            padding-top: 0rem;
+        }
+
+        .productcard {
+            margin: 0px 0px 0px 0px;
+        }
+
+        .caleverte-markdown .title h1 {
+            margin: 0px 0 20px 0;
+            text-align: left;
+            font-size: 4rem;
+            padding: 0 18px;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .destop {
+            display: block;
+        }
+
+        .lp-nav-cote .fixed-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            padding: 10px 5px;
+        }
+
+        .lp-nav-cote .fixed-menu ul {
+            display: flex;
+            flex-direction: revert;
+            flex-wrap: wrap;
+            /* Permet aux éléments de passer à la ligne */
+            align-items: center;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+
+        .lp-nav-cote .fixed-menu ul li {
+            /* Au lieu de flex:1, on utilise une largeur qui permet aux éléments de s'adapter */
+            width: auto;
+            min-width: 30%;
+            /* Pour avoir environ 3 éléments par ligne */
+            margin: 0 2px 4px 2px;
+            /* Ajout de marge en bas */
+            text-align: center;
+        }
+
+        .lp-nav-cote .fixed-menu ul li a {
+            display: block;
+            font-size: 0.8rem;
+            /* Supprimer nowrap pour permettre au texte de se couper */
+            overflow: hidden;
+            padding: 8px 4px;
+        }
+
+        .title {
+            flex-direction: column;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+        }
+
+        .right img {
+            max-width: 95%;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .lp-nav-cote {
+            gap: 8px;
+            padding: 8px;
+        }
+
+        .title {
+            display: contents;
+        }
+
+        .productcard>* {
+            width: 48%;
+            /* Un peu moins de 50% pour tenir compte de l'espacement */
+            margin-bottom: 20px;
+            /* Espace entre les lignes */
+        }
+
+        /* Mobile screen styles */
+        html {
+            font-size: 12px;
+        }
+
+        .code-box {
+            width: 91%;
+            /* 设置宽度为屏幕宽度的 80% */
+            margin: 0 auto;
+            /* 水平居中 */
+            border-radius: 0px;
+            text-align: left;
+            /* 内部元素左对齐 */
+            background-color: #fbf2ed;
+            /* 背景色 */
+            font-size: 1.2rem;
+        }
+
+        .nav-options {
+            flex-direction: row;
+        }
+
+        .nav-options a {
+            width: calc(49% - 10px);
+            /* Each link occupies 50% width minus margins */
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .nav-title h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+
+        .sv {
+            margin-bottom: 20px;
+        }
+
+        .pdt-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            /* Increase font size */
+            margin: 10px 0;
+        }
+
+        .product {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            width: 49%;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pdt-img,
+        .pdt-info {
+            width: 100%;
+            /* Full width for each product on mobile */
+            margin-right: 0;
+            /* Remove right margin on mobile */
+        }
+
+        .pdt-cta {
+            font-size: 1.2rem;
+            padding: 5px 30px;
+            border-radius: 30px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            margin: 0 auto;
+            font-weight: normal;
+        }
+
+        #pdt-special .pdt-img {
+            order: -1;
+            /* 将 .pdt-info 放在前面 */
+        }
+
+        .sv-introduction {
+            font-size: 1.1em;
+            padding: 10px;
+        }
+    }
+</style>
+<div class="lp-container">
+    <!-- begin of kv = key visuel -->
+    <div class="kv">
+        <div class="kv-img">
+            <div class="title">
+                <div class="left">
+                    <div class="mobile">
+                        <h1>
+                            Un cadeau inspiré<br>
+                            de la tradition,<br>
+                            pour <span style="color: #A47E62">celle</span> qui<br>
+                            vous a tout <span style="color: #A47E62">transmis</span>.
+                        </h1>
+                    </div>
+                    <div class="destop">
+                        <h1>
+                            Un cadeau inspiré
+                            de la tradition,
+                            pour <span style="color: rgb(164, 126, 98);">celle</span> qui
+                            vous a tout <span style="color: rgb(164, 126, 98);">transmis</span>.
+                        </h1>
+                    </div>
+                </div>
+                <div class="right">
+                    <picture class="kv">
+                        <source media="(max-width: 768px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747226109/Landing_page_1_d67aa1caf7.jpg">
+                        <source media="(min-width: 769px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747227063/Banniere_5af72a50c2.jpg">
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747227063/Banniere_5af72a50c2.jpg"
+                            alt="Fete des mères">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of kv-->
+    <div class="intro">
+        <p>Pour cette Fête des Mères, nous avons choisi de célébrer ce qu'elle incarne depuis toujours : <b>la
+                transmission</b>. Celle de l'amour, des gestes simples, des valeurs profondes et celle, plus discrète
+            mais tout aussi précieuse, du soin.</p>
+        <p><b>Pour la femme qu'elle est. Pour la mère qu'elle a été.</b></p>
+        <details>
+            <summary>Lire plus ▼</summary>
+            <p>Parce qu'elle vous a guidé·e, protégé·e, nourri·e… aujourd'hui, c'est à votre tour de prendre soin
+                d'elle.</p>
+            <p>Nous avons imaginé des attentions naturelles, enracinées dans <b>la sagesse millénaire de la médecine
+                    traditionnelle chinoise</b>, pour lui offrir un moment bien à elle <b>- apaisant, doux,
+                    ressourçant</b>.</p>
+            <p>Coffrets bien-être, infusions harmonisantes, formules ciblées… Chaque composition a été pensée pour
+                nourrir ce qu'elle a toujours cultivé autour d'elle : <b>la vitalité, la douceur, l'équilibre</b>.</p>
+        </details>
+    </div>
+    <div class="code-box">
+        <h2>Offre Exclusive :</h2>
+        <ul>
+            <li style="list-style-type: disc;">10% de réduction* pour tout panier de plus de <b> 40 €</b> avec le code :
+                <b>MERE10</b></li>
+            <li style="list-style-type: disc;"> 20% de réduction* pour tout panier de plus de <b> 70 €</b> avec le code
+                : <b>MERE20</b></li>
+            <span style="font-size: 1rem"><em>*Offre valable jusqu'au <b>26 mai 23h59</b> sur tout le site, sauf sur les
+                    livres et le matériel d’acupuncture</em></span>
+        </ul>
+    </div>
+    <!-- end of kv = key visuel -->
+    <div class="lp-nav-cote">
+        <div class="fixed-menu">
+            <ul>
+                <li><a href="#pvitalite">Vitalité</a></li>
+                <li><a href="#psommeil">Sommeil</a></li>
+                <li><a href="#pbeaute">Beauté</a></li>
+                <li><a href="#pjeunesse">Equilibre féminin</a></li>
+                <li><a href="#pcheveux">Cheveux</a></li>
+                <li><a href="#pplantes">Tisanes</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- begin of wish selector nav = navigation -->
+    <div class="lp-nav">
+        <div class="nav-title">
+            <h2>Elle vous a transmis tant de choses. Et vous, qu’aimeriez-vous lui offrir en retour ?</h2>
+            <p> Je voudrais lui offrir…</p>
+        </div>
+        <div class="nav-options">
+            <a href="#pvitalite">Une vitalité éclatante</a>
+            <a href="#psommeil">Des nuits apaisantes</a>
+            <a href="#pbeaute">Une beauté naturelle</a>
+            <a href="#pjeunesse">L'équilibre féminin</a>
+            <a href="#pcheveux">Une chevelure saine</a>
+            <a href="#pplantes">Soin par les plantes</a>
+        </div>
+    </div>
+    <!-- end of wish selector nav = navigation -->
+    <!-- begin of beaute section -->
+    <div id="pvitalite">
+        <div class="sv">
+            <picture>
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747218903/energie_b7217621e1.jpg"
+                    alt="retrouver la vitalité">
+            </picture>
+            <div class="sv-introduction"><b><em>Elle vous a transmis… L’énergie et la vitalité. </em></b>
+                </br>Offrez-lui en retour une force intérieure renouvelée.</div>
+        </div>
+    </div>
+    <!-- begin product bloc--->
+    <div class="productcard">
+        <div class="quatre">
+            <product-card sku="AGQZ"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="ADG"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="BBZYQC"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="CYPFS"></product-card>
+        </div>
+    </div>
+    </br>
+    <!-- end of beaute section -->
+    <!--begin of sommeil section-->
+    <div id="psommeil">
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747218903/nuits_apaisantes_ab8aa02e5a.jpg"
+                alt="sommeil">
+            <div class="sv-introduction"><b><em>Elle vous a transmis… Le calme et la tendresse. </em></b>
+                </br>Offrez-lui en retour des nuits apaisantes.</div>
+        </div>
+        <!-- begin product bloc--->
+        <div class="productcard">
+            <div class="quatre">
+                <product-card sku="D035"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="BQSZMB"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="AWWW"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="D054"></product-card>
+            </div>
+        </div>
+        </br>
+        <!--citation-->
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1715349237/Mise_en_scene_1_e6a03dbb6b.png"
+                alt="Maman et enfant">
+        </div>
+        <!-- end product bloc--->
+        <!--begin of energy section-->
+        <div id="pbeaute">
+            <div class="sv">
+                <picture>
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747214838/beaute_a6561087b3.jpg"
+                        alt="beaute">
+                </picture>
+                <div class="sv-introduction"><b><em>Elle vous a transmis… La beauté naturelle. </em></b> </br>Offrez-lui
+                    en retour une beauté rayonnante.</div>
+            </div>
+            <!-- begin product bloc--->
+            <div class="productcard">
+                <div class="quatre">
+                    <product-card sku="MTC-BSGSB-1"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="APGH"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AMLH"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="D067"></product-card>
+                </div>
+            </div>
+            </br>
+            <!-- end product bloc--->
+            <!-- begin jeuness bloc-->
+            <div id="pjeunesse">
+                <div class="sv">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747214837/equilibre_femme_027c4784ad.jpg"
+                        alt="bien être">
+                    <div class="sv-introduction"><b><em>Elle vous a transmis… Le courage de rester femme. </em></b>
+                        </br>Offrez-lui en retour un retour à l’équilibre.</div>
+                </div>
+                <!-- begin of product bloc-->
+                <div class="productcard">
+                    <div class="quatre">
+                        <product-card sku="D032"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="CSWT"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="D017"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="D011"></product-card>
+                    </div>
+                </div>
+                </br>
+                <!--citation-->
+                <div class="sv">
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1715348722/Mise_en_scene_2_0ea3fe61a2.png"
+                        alt="maman">
+                </div>
+                <!--end of jeunesse section-->
+                <!-- begin cheveux bloc-->
+                <div id="pcheveux">
+                    <div class="sv">
+                        <picture>
+                            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747214838/cheveux_7c71b6a6c4.jpg"
+                                alt="cheveux">
+                        </picture>
+                        <div class="sv-introduction"><b><em>Elle vous a transmis… La force des racines. </em></b>
+                            </br>Offrez-lui en retour une chevelure revitalisée.</div>
+                    </div>
+                    <!-- begin of product bloc-->
+                    <div class="productcard">
+                        <div class="quatre">
+                            <product-card sku="CWHT"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="D036"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="MTC-YJS-2"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="CHSW"></product-card>
+                        </div>
+                    </div>
+                    </br>
+                    <!--end of cheveux section-->
+                    <!-- begin plantes bloc-->
+                    <div id="pplantes">
+                        <div class="sv">
+                            <picture>
+                                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1747214838/plantes_0fbd026e0d.jpg"
+                                    alt="cheveux">
+                            </picture>
+                            <div class="sv-introduction"><b><em>Elle vous a transmis… Le soin par les plantes.
+                                </b></em></br>Offrez-lui en retour une parenthèse de bien-être.</div>
+                        </div>
+                        <!-- begin of product bloc-->
+                        <div class="productcard">
+                            <div class="quatre">
+                                <product-card sku="COF2"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="AGQZ+AJHUA"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="BWWJTT"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="BGMDZT"></product-card>
+                            </div>
+                        </div>
+                        </br>
+                        <!--end of plantes section-->
+                        <!--citation-->
+                        <div class="sv">
+                            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1715348722/Mise_en_scene_3_d318090a01.png"
+                                alt="Maman et enfant">
+                        </div>
+                        <div class="sv">
+                            <span style="font-size: 1rem"><em>Comme un brin d’herbe incapable de rendre la chaleur du
+                                    soleil de printemps, un enfant ne pourra jamais pleinement rendre l’amour infini de
+                                    sa mère.</em></span>
+                        </div>
+                        <div class="intro">
+                            <p><b>Et si vous découvriez aussi... ?</b></p>
+                            <p>Parce que le bien-être se cultive jour après jour, découvrez d’autres univers pensés pour
+                                accompagner chaque moment de vie.
+                                Des plantes aux formules ciblées, tout l’art du soin selon la médecine traditionnelle
+                                chinoise.</p>
+                        </div>
+                        <div class="lp-nav-button">
+                            <div class="nav-options-button">
+                                <ul>
+                                    <li><a href="https://calebasse.com/cycle-menstruel">Confort Menstruel</a></li>
+                                    <li><a href="https://calebasse.com/infusions-a-fleurs">Infusions</a></li>
+                                    <li><a href="https://calebasse.com/minceur">Minceur</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>

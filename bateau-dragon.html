@@ -1,0 +1,885 @@
+<!--https://calebasse.com/fr/pages/fete-des-bateaux-dragons-->
+
+<style>
+    .lg\:pt-12 {
+        padding-top: 0 !important;
+    }
+
+    #__next {
+        background-image: url(https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1639127347/background_92a91b3125.webp);
+    }
+
+    .min-h-\[inherit\] .p-4 {
+        padding: 0;
+    }
+
+    .min-h-\[inherit\] .pt-8 {
+        padding-top: 0;
+    }
+
+    .caleverte-markdown:not(.no-style) ol,
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-position: unset;
+        list-style-type: none;
+    }
+
+    .video-ytb {
+        position: relative;
+        width: 70%;
+        height: 0;
+        padding-bottom: 37.25%;
+    }
+
+    .bg-primary {
+        background-color: #B14B25;
+    }
+
+    .caleverte-markdown:not(.no-style) h1 {
+        font-size: 3.0rem;
+        line-height: 3.25rem;
+        padding: 0;
+    }
+
+    .caleverte-markdown:not(.no-style) h3 {
+        padding: 0;
+    }
+
+    .lp-nav-cote .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: 290px;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: #B14B25;
+        color: #fff;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Sections */
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .sv-introduction {
+        font-size: 1.5em;
+        padding: 20px 0px 0;
+        line-height: 190%;
+    }
+
+    /* Grille produits */
+    .productcard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .quatre {
+        width: 24%;
+        margin: 10px 0;
+    }
+
+    @media screen and (max-width: 1890px) {
+        .lp-nav-cote .fixed-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            padding: 10px 5px;
+        }
+
+        .lp-nav-cote .fixed-menu ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin: 0;
+            list-style: none;
+            width: 65%
+        }
+
+        .lp-nav-cote .fixed-menu ul li {
+            width: auto;
+            min-width: 30%;
+            margin: 0 2px 4px 2px;
+            text-align: center;
+        }
+
+        .lp-nav-cote .fixed-menu ul li a {
+            display: block;
+            font-size: 0.8rem;
+            overflow: hidden;
+            padding: 8px 4px;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .lp-nav-cote {
+            gap: 8px;
+            padding: 8px;
+        }
+    }
+
+    /* Responsive */
+    @media only screen and (max-width: 768px) {
+
+        /* Navigation mobile */
+        .lp-nav-cote .fixed-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            padding: 10px 5px;
+        }
+
+        .lp-nav-cote .fixed-menu ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin: 0;
+            list-style: none;
+            width: 62%
+        }
+
+        .lp-nav-cote .fixed-menu ul li {
+            width: auto;
+            min-width: 30%;
+            margin: 0 2px 4px 2px;
+            text-align: center;
+        }
+
+        .lp-nav-cote .fixed-menu ul li a {
+            display: block;
+            font-size: 0.8rem;
+            overflow: hidden;
+            padding: 8px 4px;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .lp-nav-cote {
+            gap: 8px;
+            padding: 8px;
+        }
+
+        .reverse {
+            padding: 0 0 15px 0;
+        }
+
+        /* Sections mobile */
+        .sv {
+            margin-bottom: 20px;
+        }
+
+        .sv-introduction {
+            font-size: 1.1em;
+            padding: 10px;
+        }
+
+        /* Grille produits mobile */
+        .productcard {
+            margin: 0px 0px 0px 0px;
+        }
+
+        .productcard>* {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+    }
+
+    .cta {
+        text-align: right;
+    }
+
+    .cta a {
+        text-decoration: none;
+        color: #B14B25;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .cta a:hover {
+        color: #B14B25;
+    }
+
+    .cta p {
+        margin: 0;
+    }
+
+    .container-blog {
+        margin: 20px auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+    }
+
+    .legende-blog {
+        display: flex;
+        gap: 10px;
+    }
+
+    .separator {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin: 0 5px;
+    }
+
+    .container-blog:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .left-container {
+        width: 500px;
+        overflow: hidden;
+        height: 327px;
+    }
+
+    .img-blog {
+        width: 100%;
+        height: 378px;
+        overflow: hidden;
+        display: block;
+        /* Important pour que le lien prenne toute la place */
+    }
+
+    .img-blog a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
+
+    .img-blog picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .img-blog img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        display: block;
+    }
+
+    .container-blog:hover .img-blog img {
+        transform: scale(1.05);
+    }
+
+    .right-container {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 0;
+    }
+
+    .title-blog h3 {
+        margin: 0 0 15px 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #333;
+        line-height: 1.3;
+    }
+
+    .category-tag {
+        margin-bottom: 10px;
+    }
+
+    .category-tag span {
+        display: inline-block;
+        background-color: #B14B25;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .separator {
+        margin: 10px 0;
+    }
+
+    .separator span {
+        display: block;
+        width: 40px;
+        height: 2px;
+        background-color: #AACB5;
+    }
+
+    .date {
+        margin-bottom: 15px;
+    }
+
+    .date span {
+        color: #666;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .description {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .description p {
+        margin: 0;
+        color: #555;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        word-wrap: break-word;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .video-player {
+            height: 60vw;
+            width: 100%;
+        }
+
+        .video-ytb {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+
+        .container-blog {
+            margin: 20px 15px;
+            flex-direction: column;
+        }
+
+        .left-container {
+            flex: none;
+            height: 146px;
+        }
+
+        .img-blog {
+            height: 180px;
+        }
+
+        .right-container {
+            padding: 15px;
+        }
+
+        .title-blog h3 {
+            font-size: 1.2rem;
+        }
+
+        .container-page {
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container-blog {
+            margin: 15px 10px;
+        }
+
+        .right-container {
+            padding: 12px;
+        }
+
+        .title-blog h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .img-blog {
+            height: 150px;
+        }
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        white-space: nowrap;
+        text-decoration-line: none;
+    }
+
+    .container-page {
+        max-width: 1100px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+
+    .flexy {
+        display: flex;
+    }
+
+    .justify {
+        justify-content: center;
+    }
+
+    .align {
+        text-align: center;
+    }
+
+    .margin {
+        margin: 10px;
+    }
+
+    .nav-title {
+        margin: 20px 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        justify-items: center;
+        margin: 30px 0;
+    }
+
+    .nav-options a {
+        padding: 10px 10px;
+        background-color: #B14B25;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .reverse {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        margin: 20px 10px;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        margin: 20px 40px;
+    }
+
+    .button {
+        transition: background-color 0.3s, opacity 0.3s;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #B14B25;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+        max-width: 250px;
+        white-space: normal;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+    }
+
+
+    .profiter a {
+        text-decoration: none;
+        margin-bottom: 20px;
+    }
+
+    .video-player {
+        margin-top: 30px;
+        width: 70%;
+        height: 56.25vw;
+        max-width: 100%;
+        max-height: 55vh;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .legende {
+        font-size: 0.8rem;
+        color: #777;
+        margin-top: 5px;
+    }
+
+    .reverse img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .video-player {
+            height: 60vw;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .container {
+            font-size: 1rem;
+        }
+
+        .nav-title {
+            text-align: center;
+        }
+
+        .button,
+        .nav-options a {
+            width: 102%;
+            display: block;
+            justify-content: center;
+            padding: 13px 5px;
+            font-size: 14px;
+        }
+
+        .button-end {
+            max-width: 280px;
+            padding: 0;
+        }
+
+
+        .nav-options {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 30px 0 0;
+        }
+
+        .reverse {
+            flex-direction: column-reverse;
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+        }
+    }
+</style>
+
+<picture class="flexy justify align">
+    <source media="(max-width: 1024px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748425886/Landing_page_Banner_desktop_min_e4b38b6eaf.jpg">
+    <source media="(min-width: 1025px)"
+        srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748425886/Landing_page_Banner_desktop_min_e4b38b6eaf.jpg">
+    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748425886/Landing_page_Banner_desktop_min_e4b38b6eaf.jpg"
+        alt="règles d'or de l'année du Serpent selon Calebasse">
+</picture></br>
+<div class="container-page">
+    <div class="flexy justify align">
+        <div class="video-ytb"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                src="https://www.youtube.com/embed/MLBdtb9rmh4?si=M49lXIORbIVJKXS1" title="YouTube video player"
+                enablejsapi="true" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></div>
+    </div>
+    </br>
+    <div class="inner mtext">
+        <div class="align margin">
+            <p>La <strong>Fête des Bateaux-Dragons</strong> (Duanwu Jie) est l’une des célébrations les plus
+                emblématiques de la culture chinoise. Elle honore la montée de l’énergie du Yang.</p>
+            <p>Pour célébrer la Fête des Bateaux-Dragons, profitez dès maintenant de <strong><span
+                        style="color: #B14B25">réductions exceptionnelles de -10 % à -50 %</span></strong> sur
+                l’ensemble des produits du site* et bien plus !</p>
+        </div>
+
+        <div class="nav-options margin">
+            <a href="#ppromotion">Remise en plus à partir de 70€</a>
+            <a href="#pselection">Sélection spéciale Duanwu</a>
+            <a href="#pblog">Blog - Découvrir la fête </a>
+        </div>
+
+        </br>
+
+        <div class="reverse" id="ppromotion">
+            <div class="text">
+                <p>Du 28/05 au 01/06, à partir de 70€, avec le code <b><span style="color: #B14B25">DRAGON20</span></b>,
+                    toutes les remises inférieures à -20% passent automatiquement à -20% !</p>
+                <div class="legende">*Offre non applicable sur les livres et le matériel d’acupuncture et non cumulable
+                    avec d’autres promotions.</div>
+            </div>
+            <div class="image">
+                <picture>
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748444049/code_de_reduc_3_9a06bd6cb3.jpg"
+                        alt="visuel promotion">
+                </picture>
+            </div>
+        </div>
+    </div>
+    </br>
+    <div class="lp-nav-cote" id="pselection">
+        <div class="fixed-menu">
+            <ul>
+                <li><a href="#psynergie">Synergies</a></li>
+                <li><a href="#pfavoris">Favoris</a></li>
+                <li><a href="#pdouceurs">Douceurs</a></li>
+                <li><a href="#ptradition">Tradition</a></li>
+                <li><a href="#ptresors">Trésors</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end of wish selector nav = navigation -->
+    <!-- begin of beaute section -->
+    <div id="psynergie">
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748429515/1_6bc08f5ffa.jpg">
+        </div>
+    </div>
+    <!-- begin synergie bloc--->
+    <div class="productcard">
+        <div class="quatre">
+            <product-card sku="D036"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D015"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D013"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D027"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D016"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D033"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D035"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D032"></product-card>
+        </div>
+    </div>
+    </br>
+    <!-- end of synergies section -->
+    <!--begin of favoris section-->
+    <div id="pfavoris">
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748429514/2_b263806440.jpg">
+        </div>
+        <!-- begin product bloc--->
+        <div class="productcard">
+            <div class="quatre">
+                <product-card sku="CXYS"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="CTWBXD"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="CLWDHW"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="CHSW"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="D067"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="CSWT"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="AGQZL"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="AYYRL"></product-card>
+            </div>
+        </div>
+        </br>
+        <!-- end of favoris section -->
+        <!--begin of douceurs section-->
+        <div id="pdouceurs">
+            <div class="sv">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748429515/3_2c92f7a35d.jpg">
+            </div>
+            <!-- begin product bloc--->
+            <div class="productcard">
+                <div class="quatre">
+                    <product-card sku="ECORUM-3"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="MYME"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AYYYEZ"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="ASGSYZ"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AQSMYZ"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="ADZL"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AYDJ-E"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AYDJ-R"></product-card>
+                </div>
+            </div>
+            </br>
+            <!-- end of douceurs section -->
+            <!--begin of tradition section-->
+            <div id="ptradition">
+                <div class="sv">
+                    <img
+                        src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748429515/4_28a3debe94.jpg">
+                </div>
+                <!-- begin product bloc--->
+                <div class="productcard">
+                    <div class="quatre">
+                        <product-card sku="MTC-XN-LO1"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="MTC-TS-S-YUN"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="COFDUORQ"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="MTC-TCGSB-2"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="MA93X-CP0003"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="MA10177"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="MA172"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="CN006-1.8L"></product-card>
+                    </div>
+                </div>
+                </br>
+                <!-- end of tradition section -->
+                <!--begin of tresors section-->
+                <div id="ptresors">
+                    <div class="sv"> <img
+                            src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1748429515/5_eb44b68981.jpg">
+                    </div>
+                    <!-- begin product bloc--->
+                    <div class="productcard">
+                        <div class="quatre">
+                            <product-card sku="OMARNL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OAILL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OCARO"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OMARBL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OBAPAL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OPADCL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OOLIVL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="OBOULL"></product-card>
+                        </div>
+                    </div>
+                    </br>
+                    <!-- end of tresors section -->
+
+
+                    <div class="align margin" id="pblog">
+                        <h3>Envie d’en savoir plus sur la fête des bateaux-dragons ?</h3>
+                        <p> Découvrez notre article de blog dédiés au sujet, pour mieux comprendre !</p>
+                    </div>
+
+                    <div class="container-blog">
+                        <div class="left-container">
+                            <div class="img-blog">
+                                <a
+                                    href="https://calebasse.com/blog/voyage-en-chine/partez-a-la-decouverte-de-duan-wu-la-celebre-fete-des-bateaux-dragons">
+                                    <picture><img
+                                            src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/c_limit,w_1080/f_auto/q_auto/v1653644614/la_fete_des_bateaux_dragons_f7e92b68f4?_a=BAVAZGBz0"
+                                            alt="Fête des bateaux-dragons"></picture>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-container">
+                            <div class="title-blog">
+                                <h3>Partez à la découverte de Duan wu : la célèbre Fête des bateaux dragons</h3>
+                            </div>
+                            <div class="legende-blog">
+                                <div class="category-tag">
+                                    <span>Voyage en Chine</span>
+                                </div>
+                                <div class="separator">
+                                    <span></span>
+                                </div>
+                                <div class="date">
+                                    <span>15/05/2025</span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p>Evènement très important dans le calendrier des fêtes chinoises, le festival des
+                                    bateaux dragons appelée "Duan Wu" marque le début d'une grande chaleur. Ce festival
+                                    est marqué par plusieurs coutumes, notamment la célèbre course des bateaux-dragons
+                                    et d'autres traditions culinaires. Découvrez Duan Wu : la fête des bateaux-dragons,
+                                    ses origines et la façon dont elle est célébrée.</p>
+                            </div>
+                            <div class="cta"><a
+                                    href="https://calebasse.com/blog/voyage-en-chine/partez-a-la-decouverte-de-duan-wu-la-celebre-fete-des-bateaux-dragons">
+                                    <p>> Lire plus</p>
+                                </a></div>
+                        </div>
+                    </div>

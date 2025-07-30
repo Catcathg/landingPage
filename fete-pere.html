@@ -1,0 +1,759 @@
+<!--https://calebasse.com/fr/pages/fetes-des-peres-idee-cadeau-->
+
+<style>
+    @media (min-width: 1024px) {
+        .lg\:pt-12 {
+            padding-top: 0 !important;
+        }
+    }
+
+    .caleverte-markdown:not(.no-style) ol,
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .intro {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+    }
+
+    .intro details {
+        margin-top: 15px;
+    }
+
+    .lightblue {
+        color: #628FB8;
+    }
+
+    .intro summary {
+        cursor: pointer;
+        color: #a47e62;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .intro summary:focus {
+        outline: none;
+    }
+
+    .intro details[open] summary::after {
+        transform: rotate(90deg);
+    }
+
+    .intro summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .sv {
+        margin: 20px 0;
+    }
+
+    .destop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .title {
+        display: flex;
+        margin: 0 auto;
+        padding: 20px 20px 20px 20px;
+    }
+
+    .left {
+        width: 65%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .right {
+        width: 35%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .right img {
+        max-width: 119%;
+        height: auto;
+    }
+
+    .lp-nav-button {
+        margin: 20px 0;
+        width: 100%;
+    }
+
+    .nav-options-button ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 0 40px 0;
+        list-style-type: none;
+    }
+
+    .nav-options-button ul li {
+        flex: 1;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .nav-options-button ul li a {
+        display: block;
+        background-color: #628FB8;
+        color: white;
+        text-decoration: none;
+        padding: 20px 0;
+        width: 100%;
+        min-width: 200px;
+        font-size: 1.3rem;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options-button ul li a:hover {
+        background-color: #628FB8;
+    }
+
+    .caleverte-markdown .title h1 {
+        display: block;
+        font-size: 5.08em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: -5px;
+    }
+
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .lp-nav-cote .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: 260px;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: 628FB8;
+        color: #fff;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        text-decoration-line: none;
+    }
+
+    .lp-container {
+        max-width: 1000px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .productcard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .quatre {
+        width: 24%;
+        margin-bottom: 10px;
+        ;
+    }
+
+    .max-width {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .nav-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 40px;
+    }
+
+    .nav-title h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.8em;
+    }
+
+    .nav-title p {
+        text-align: center;
+        font-size: 1.5em;
+        font-style: italic;
+    }
+
+    .nav-options a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 20px;
+        background-color: 628FB8;
+        color: #fff;
+        /* White text */
+        font-size: 1.3em;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options a:hover {
+        background-color: #628FB8;
+        /* Dark green background - hover state */
+    }
+
+    /* Styles for screens larger than 768px (tablets, laptops, etc.) */
+    .nav-options a {
+        width: calc(30% - 30px);
+        /* Each link occupies 33.33% width minus margins */
+        text-align: center;
+    }
+
+    .code-box {
+        width: 90%;
+        /* 设置宽度为屏幕宽度的 80% */
+        margin: 20px auto 0 auto;
+        /* 水平居中 */
+        text-align: left;
+        /* 内部元素左对齐 */
+        border-radius: 10px;
+        /* 圆角 */
+        background-color: #628FB8;
+        /* 背景色 */
+        padding: 20px 40px;
+        /* 内边距，增加一些间隔，使内容不会紧贴边框 */
+        font-size: 1.5em;
+    }
+
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .sv-introduction {
+        font-size: 1.5em;
+        padding: 20px 0px 0;
+        line-height: 190%;
+    }
+
+    #coffret .product {
+        width: 100%;
+    }
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow products to wrap to new lines */
+        justify-content: space-between;
+        /* Distribute space between products */
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        /* Center align */
+        margin-bottom: 60px;
+        /* Spacing between product blocks */
+        flex-direction: column;
+        /* Stack products vertically on small screens */
+        width: 48%;
+        /* Full width */
+        background: #f8f9fa;
+        padding-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .pdt-img {
+        flex: 1;
+        /* Occupy remaining space */
+        width: 50%;
+    }
+
+    .pdt-desc {
+        text-align: left;
+    }
+
+    .pdt-img img {
+        width: 100%;
+    }
+
+    .pdt-info {
+        flex: 2;
+        /* Occupy remaining space */
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .pdt-desc ul {
+        margin: 0 0 15px 10px;
+        list-style-type: circle;
+    }
+
+    .pdt-info ul li {
+        text-align: left;
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+
+    .pdt-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        /* Increase font size */
+    }
+
+    .pdt-price {
+        color: #4f6f52;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .pdf-desc {
+        text-align: left;
+    }
+
+    .pdt-cta {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 10px 60px;
+        background-color: rgba(228, 242, 255, .4)
+            /*  40% opaque green */
+        ;
+        /* Light green background */
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s ease;
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+    .pdt-cta a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .pdt-cta:hover {
+        background-color: #004d00;
+        /* Light green background - hover state */
+    }
+
+    .section {
+        width: 100%;
+        /* Prend 100% de la largeur du conteneur parent au lieu d’une largeur fixe */
+        position: relative;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        background-color: rgba(228, 242, 255, .25);
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        border: 1px solid #eee;
+    }
+
+    /* Style des images */
+    .section-image {
+        flex: 0 0 350px;
+        border-radius: 6px;
+        overflow: hidden;
+        order: 1;
+        /* Image à gauche en desktop */
+    }
+
+    .section-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .section-content {
+        flex: 1;
+        order: 2;
+        font-size: 1.2rem;
+        padding: 25px;
+    }
+
+    .section-content p {
+        margin: 0 0 15px 0;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .decouverte a {
+        width: 60%;
+        background-color: rgb(170 203 85/var(--tw-bg-opacity));
+        border-radius: 3px;
+        padding: 10px 20px;
+        color: #fff;
+        display: inline-block;
+    }
+
+    /* Responsive layout */
+    @media only screen and (max-width: 768px) {
+        .nav-options-button ul {
+            flex-wrap: wrap;
+        }
+
+        .caleverte-markdown:not(.no-style) h2 {
+            margin-bottom: 0rem;
+            padding-top: 0rem;
+        }
+
+        .productcard {
+            margin: 0px 0px 0px 0px;
+        }
+
+        .caleverte-markdown .title h1 {
+            margin: 0px 0 20px 0;
+            text-align: left;
+            font-size: 4rem;
+            padding: 0 18px;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .destop {
+            display: block;
+        }
+
+        .lp-nav-cote .fixed-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            padding: 10px 5px;
+        }
+
+        .lp-nav-cote .fixed-menu ul {
+            display: flex;
+            flex-direction: revert;
+            flex-wrap: wrap;
+            /* Permet aux éléments de passer à la ligne */
+            align-items: center;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+
+        .lp-nav-cote .fixed-menu ul li {
+            /* Au lieu de flex:1, on utilise une largeur qui permet aux éléments de s’adapter */
+            width: auto;
+            min-width: 30%;
+            /* Pour avoir environ 3 éléments par ligne */
+            margin: 0 2px 4px 2px;
+            /* Ajout de marge en bas */
+            text-align: center;
+        }
+
+        .lp-nav-cote .fixed-menu ul li a {
+            display: block;
+            font-size: 0.8rem;
+            /* Supprimer nowrap pour permettre au texte de se couper */
+            overflow: hidden;
+            padding: 8px 4px;
+        }
+
+        .title {
+            flex-direction: column;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .intro {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+        }
+
+        .right img {
+            max-width: 95%;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .lp-nav-cote {
+            gap: 8px;
+            padding: 8px;
+        }
+
+        .title {
+            display: contents;
+        }
+
+        .productcard>* {
+            width: 48%;
+            /* Un peu moins de 50% pour tenir compte de l’espacement */
+            margin-bottom: 20px;
+            /* Espace entre les lignes */
+        }
+
+        /* Mobile screen styles */
+        html {
+            font-size: 12px;
+        }
+
+        .code-box {
+            width: 91%;
+            /* 设置宽度为屏幕宽度的 80% */
+            margin: 0 auto;
+            /* 水平居中 */
+            border-radius: 0px;
+            text-align: left;
+            /* 内部元素左对齐 */
+            background-color: #E4F2FF;
+            /* 背景色 */
+            font-size: 1.2rem;
+        }
+
+        .nav-options {
+            flex-direction: row;
+        }
+
+        .nav-options a {
+            width: calc(49% - 10px);
+            /* Each link occupies 50% width minus margins */
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .nav-title h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+
+        .sv {
+            margin-bottom: 20px;
+        }
+
+        .pdt-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            /* Increase font size */
+            margin: 10px 0;
+        }
+
+        .product {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            width: 49%;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pdt-img,
+        .pdt-info {
+            width: 100%;
+            /* Full width for each product on mobile */
+            margin-right: 0;
+            /* Remove right margin on mobile */
+        }
+
+        .pdt-cta {
+            font-size: 1.2rem;
+            padding: 5px 30px;
+            border-radius: 30px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            margin: 0 auto;
+            font-weight: normal;
+        }
+
+        #pdt-special .pdt-img {
+            order: -1;
+            /* 将 .pdt-info 放在前面 */
+        }
+
+        .sv-introduction {
+            font-size: 1.1em;
+            padding: 10px;
+        }
+
+        .section {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .section-image {
+            order: 1;
+            /* Image en haut en mobile */
+            flex: 0 0 auto;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .section-content {
+            order: 2;
+            padding: 15px;
+            /* Contenu en dessous en mobile */
+        }
+
+    }
+</style>
+<div class="lp-container">
+    <!-- begin of kv = key visuel -->
+    <div class="kv">
+        <div class="kv-img">
+            <div class="title">
+                <div class="left">
+                    <div class="mobile">
+                        <h1>
+                            LES <span class="lightblue">PAPAS</span> MÉRITENT AUSSI QU’ON PRENNE <span
+                                class="lightblue">SOIN</span> D’EUX.
+                        </h1>
+                    </div>
+                    <div class="destop">
+                        <h1>
+                            LES <span class="lightblue">PAPAS</span> MÉRITENT AUSSI QU’ON PRENNE <span
+                                class="lightblue">SOIN</span> D’EUX.
+                        </h1>
+                    </div>
+                </div>
+                <div class="right">
+                    <picture class="kv">
+                        <source media="(max-width: 768px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749134272/Landing_page_banner_mobile_cc55328c77.jpg">
+                        <source media="(min-width: 769px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749130754/Landing_page_banner_desktop_ba547e1a65.jpg">
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749130754/Landing_page_banner_mobile_218444d549.jpg"
+                            alt="Fete des pères">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of kv-->
+    <div class="intro">
+        <p>Et si cette année, on lui offrait <b>plus qu’un cadeau</b> ? Derrière chaque père, il y a un homme aux
+            multiples
+            facettes : inspirant, parfois fatigué… mais toujours présent.</p>
+        <p>À l’occasion de la Fête des Pères, offrez-lui plus qu’un objet : Un vrai moment pour lui, pour se
+            <b>ressourcer</b>,
+            se <b>revitaliser</b>, se sentir reconnu.</p>
+        <p>Parce que les papas aussi méritent qu’on prenne soin d’eux. </p>
+        <p>En manque d’inspiration ? Optez pour notre coffret cadeau déjà composé ! Une sélection pensée pour lui faire
+            plaisir en toute simplicité.</p>
+        <p>&nbsp;</p>
+    </div>
+    <section class="section category4">
+        <div class="section-image">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749138704/coffret_fete_des_peres_88f20a85cc.jpg"
+                alt="coffret fete des pères ! ">
+            <div
+                class="absolute right-3 top-3 grid place-items-center px-2 py-1 z-20 rounded-full bg-accent text-xl font-semibold text-white">
+                -31 %</div>
+        </div>
+        <div class="section-content">
+            <div class="titre-article">
+                <h2>Coffret Vitalité de l’Homme </h2>
+            </div>
+            <p>Un coffret pensé pour lui offrir un regain d’énergie, de
+                force et de bien-être.</p>
+            <p>
+                Inspiré des principes de la médecine traditionnelle chinoise, ce trio naturel soutient la vitalité
+                masculine dans toutes ses dimensions : physique, mentale et intime.
+            </p>
+            <p>
+                Parce que faire plaisir à son papa ne devrait pas avoir de prix : <b>notre coffret à 49,90€ au lieu de
+                    72€.</b></p>
+            <div class="decouverte">
+                <a href="/produits/coffret-vitalite-homme-fete-des-peres-5180">J'offre ce coffret</a>
+            </div>
+        </div>
+    </section>
+    <!-- end of kv = key visuel -->
+    <div class="intro">Pour compléter ce moment de soin, explorez notre sélection spéciale fête des pères :
+        des solutions naturelles qui accompagnent l’homme dans sa vitalité et son bien-être.<p>&nbsp;</p>
+    </div>
+    <!-- begin of beaute section -->
+    <div id="pvitalite">
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1749130753/Banniere_selection_papa_8f34e82e34.jpg"
+                alt="retrouver la vitalité">
+        </div>
+    </div>
+    <!-- begin product bloc--->
+    <div class="productcard">
+        <div class="quatre">
+            <product-card sku="COFPERES"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="BNSWSB"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="BQLTT"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D040"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D064"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D016"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="D036"></product-card>
+        </div>
+        <div class="quatre">
+            <product-card sku="MA952"></product-card>
+        </div>
+    </div>
+    </br>
+    <!-- end of beaute section -->
+    <div class="intro">
+        <p><b>Et si vous découvriez aussi... ?</b></p>
+        <p>Parce que le bien-être se cultive jour après jour, découvrez d’autres univers pensés pour accompagner chaque
+            moment de vie. Des plantes aux formules ciblées, tout l’art du soin selon la médecine traditionnelle
+            chinoise.</p>
+    </div>
+    <div class="lp-nav-button">
+        <div class="nav-options-button">
+            <ul>
+                <li><a href="/articulations-and-muscles">Articulations et muscles</a></li>
+                <li><a href="/equilibre-masculin">Équilibre masculin</a></li>
+                <li><a href="/forme">Forme</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

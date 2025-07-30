@@ -1,0 +1,1137 @@
+<!--https://calebasse.com/fr/pages/solde-ete-->
+
+<style>
+    .decouverte a {
+        width: 60%;
+        background-color: rgb(170 203 85/var(--tw-bg-opacity));
+        border-radius: 3px;
+        padding: 10px 20px;
+        color: #aacb55;
+        display: inline-block;
+        font-weight: 800;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    .caleverte-markdown:not(.no-style) ol,
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .intro {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.3rem;
+    }
+
+    .intro details {
+        margin-top: 15px;
+    }
+
+    .intro summary {
+        cursor: pointer;
+        color: #a47e62;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .intro summary:focus {
+        outline: none;
+    }
+
+    .intro details[open] summary::after {
+        transform: rotate(90deg);
+    }
+
+    .intro summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .destop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .title {
+        display: flex;
+        margin: 0 auto;
+        padding: 20px 20px 20px 20px;
+    }
+
+    .left {
+        width: 65%;
+        padding-right: 5%;
+        text-align: left;
+    }
+
+    .right {
+        width: 35%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .right img {
+        max-width: 119%;
+        height: auto;
+    }
+
+    .lp-nav-button {
+        margin: 20px 0;
+        width: 100%;
+    }
+
+    .nav-options-button ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 0 40px 0;
+        list-style-type: none;
+    }
+
+    .nav-options-button ul li {
+        flex: 1;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .nav-options-button ul li a {
+        display: block;
+        background-color: #f5c66f;
+        color: white;
+        text-decoration: none;
+        padding: 20px 0;
+        width: 100%;
+        min-width: 200px;
+        font-size: 1.3rem;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options-button ul li a:hover {
+        background-color: rgba(164, 126, 98, 0.8);
+    }
+
+    .caleverte-markdown .title h1 {
+        display: block;
+        font-size: min(6vw, 5em);
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: -5px;
+    }
+
+    .caleverte-markdown:not(.no-style) ul {
+        list-style-type: none;
+    }
+
+    .lp-nav-cote .fixed-menu {
+        z-index: 10;
+        position: fixed;
+        bottom: 10px;
+        right: calc(50vw - 700px);
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .fixed-menu ul li a {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 25px;
+        background-color: #f5c66f;
+        color: #000;
+        font-size: 0.8em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+    }
+
+    .caleverte-markdown:not(.no-style) a {
+        text-decoration-line: none;
+    }
+
+    .lp-container {
+        max-width: 1000px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .productcard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px 0px 60px 0px;
+    }
+
+    .quatre {
+        width: 24%;
+    }
+
+    .max-width {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .nav-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 40px;
+    }
+
+    .nav-title h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.8em;
+    }
+
+    .nav-title p {
+        text-align: center;
+        font-size: 1.5em;
+        font-style: italic;
+    }
+
+    .nav-options a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 20px;
+        background-color: #f5c66f;
+        color: #000;
+        /* Black text */
+        font-size: 1.3em;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-options a:hover {
+        background-color: #f5c66f;
+        /* Dark green background - hover state */
+    }
+
+    /* Styles for screens larger than 768px (tablets, laptops, etc.) */
+    .nav-options a {
+        width: calc(30% - 30px);
+        /* Each link occupies 33.33% width minus margins */
+        text-align: center;
+    }
+
+    .code-box {
+        width: 90%;
+        /* 设置宽度为屏幕宽度的 80% */
+        margin: 20px auto 0 auto;
+        /* 水平居中 */
+        text-align: left;
+        /* 内部元素左对齐 */
+        border-radius: 10px;
+        /* 圆角 */
+        background-color: #fbf2ed;
+        /* 背景色 */
+        padding: 20px 40px;
+        /* 内边距，增加一些间隔，使内容不会紧贴边框 */
+        font-size: 1.5em;
+    }
+
+    .sv {
+        margin-bottom: 50px;
+    }
+
+    .sv-introduction {
+        font-size: 1.5em;
+        padding: 20px 0px 0;
+        line-height: 190%;
+    }
+
+    #coffret .product {
+        width: 100%;
+    }
+
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow products to wrap to new lines */
+        justify-content: space-between;
+        /* Distribute space between products */
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        /* Center align */
+        margin-bottom: 60px;
+        /* Spacing between product blocks */
+        flex-direction: column;
+        /* Stack products vertically on small screens */
+        width: 48%;
+        /* Full width */
+        background: #f8f9fa;
+        padding-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .pdt-img {
+        flex: 1;
+        /* Occupy remaining space */
+        width: 50%;
+    }
+
+    .pdt-desc {
+        text-align: left;
+    }
+
+    .pdt-img img {
+        width: 100%;
+    }
+
+    .pdt-info {
+        flex: 2;
+        /* Occupy remaining space */
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .pdt-desc ul {
+        margin: 0 0 15px 10px;
+        list-style-type: circle;
+    }
+
+    .pdt-info ul li {
+        text-align: left;
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+
+    .pdt-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        /* Increase font size */
+    }
+
+    .pdt-price {
+        color: #4f6f52;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .pdf-desc {
+        text-align: left;
+    }
+
+    .pdt-cta {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 10px 60px;
+        background-color: #4f6f52;
+        /* Light green background */
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s ease;
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+    .pdt-cta a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .pdt-cta:hover {
+        background-color: #004d00;
+        /* Light green background - hover state */
+    }
+
+    .section {
+        width: 100%;
+        /* Prend 100% de la largeur du conteneur parent au lieu d’une largeur fixe */
+        position: relative;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        background-color: #FFF6EB;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        border: 1px solid #eee;
+    }
+
+    /* Style des images */
+    .section-image {
+        flex: 0 0 350px;
+        border-radius: 6px;
+        overflow: hidden;
+        order: 1;
+        /* Image à gauche en desktop */
+    }
+
+    .section-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .section-content {
+        flex: 1;
+        order: 2;
+        font-size: 1.2rem;
+        padding: 25px;
+    }
+
+    .section-content p {
+        margin: 0 0 15px 0;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+
+    @media (min-width: 769px) {
+        .lg\:pt-12 {
+            padding-top: 0 !important;
+        }
+    }
+
+    /* Responsive layout */
+    @media only screen and (max-width: 768px) {
+        .nav-options-button ul {
+            flex-wrap: wrap;
+        }
+
+        .caleverte-markdown:not(.no-style) h2 {
+            margin-bottom: 0rem;
+            padding-top: 0rem;
+        }
+
+        .productcard {
+            margin: 0px 0px 0px 0px;
+        }
+
+        .caleverte-markdown .title h1 {
+            margin: 0px 0 20px 0;
+            text-align: left;
+            font-size: 4rem;
+            padding: 0 18px;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .destop {
+            display: block;
+        }
+
+        .lp-nav-cote .fixed-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            padding: 10px 5px;
+        }
+
+        .lp-nav-cote .fixed-menu ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow: scroll;
+            align-items: center;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+
+        .lp-nav-cote .fixed-menu ul li {
+            /* Au lieu de flex:1, on utilise une largeur qui permet aux éléments de s'adapter */
+            width: auto;
+            min-width: 30%;
+            /* Pour avoir environ 3 éléments par ligne */
+            margin: 0 2px 4px 2px;
+            /* Ajout de marge en bas */
+            text-align: center;
+        }
+
+        .lp-nav-cote .fixed-menu ul li a {
+            display: block;
+            font-size: 0.8rem;
+            /* Supprimer nowrap pour permettre au texte de se couper */
+            overflow: hidden;
+            padding: 8px 4px;
+        }
+
+        .title {
+            flex-direction: column;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+        }
+
+        .right img {
+            max-width: 95%;
+        }
+
+        .fixed-menu ul li {
+            margin: 5px;
+        }
+
+        .lp-nav-cote {
+            gap: 8px;
+            padding: 8px;
+        }
+
+        .title {
+            display: contents;
+        }
+
+        .productcard>* {
+            width: 48%;
+            /* Un peu moins de 50% pour tenir compte de l'espacement */
+            margin-bottom: 20px;
+            /* Espace entre les lignes */
+        }
+
+        /* Mobile screen styles */
+        html {
+            font-size: 12px;
+        }
+
+        .code-box {
+            width: 91%;
+            /* 设置宽度为屏幕宽度的 80% */
+            margin: 0 auto;
+            /* 水平居中 */
+            border-radius: 0px;
+            text-align: left;
+            /* 内部元素左对齐 */
+            background-color: #fbf2ed;
+            /* 背景色 */
+            font-size: 1.2rem;
+        }
+
+        .nav-options {
+            flex-direction: row;
+        }
+
+        .nav-options a {
+            width: calc(49% - 10px);
+            /* Each link occupies 50% width minus margins */
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .nav-title h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+
+        .sv {
+            margin-bottom: 20px;
+        }
+
+        .pdt-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            /* Increase font size */
+            margin: 10px 0;
+        }
+
+        .product {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            width: 49%;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pdt-img,
+        .pdt-info {
+            width: 100%;
+            /* Full width for each product on mobile */
+            margin-right: 0;
+            /* Remove right margin on mobile */
+        }
+
+        .pdt-cta {
+            font-size: 1.2rem;
+            padding: 5px 30px;
+            border-radius: 30px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            margin: 0 auto;
+            font-weight: normal;
+        }
+
+        #pdt-special .pdt-img {
+            order: -1;
+            /* 将 .pdt-info 放在前面 */
+        }
+
+        .sv-introduction {
+            font-size: 1.1em;
+            padding: 10px;
+        }
+
+        .section {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .section-image {
+            order: 1;
+            /* Image en haut en mobile */
+            flex: 0 0 auto;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .section-content {
+            order: 2;
+            padding: 15px;
+            /* Contenu en dessous en mobile */
+        }
+    }
+
+    @media (max-width: 600px) {
+        .desktop-only {
+            display: none;
+        }
+
+        .mobile-only {
+            display: block;
+        }
+    }
+</style>
+<div class="lp-container">
+    <!-- begin of kv = key visuel -->
+    <div class="kv">
+        <div class="kv-img">
+            <div class="title">
+                <div class="left">
+                    <div class="mobile">
+                        <h1>
+                            Faites <span style="color: #f5c66f">vos valises,</span><br>
+                            on vous emmène…<br>
+                            dans l’univers <span style="color: #f5c66f">des plantes</span>.
+                        </h1>
+                    </div>
+                    <div class="destop">
+                        <h1>
+                            Faites <span style="color: #f5c66f">vos valises</span>,
+                            on vous emmène…
+                            dans l’univers <span style="color: #f5c66f">des plantes</span>.
+                        </h1>
+                    </div>
+                </div>
+                <div class="right">
+                    <picture class="kv">
+                        <source media="(max-width: 768px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750233287/soldes_d_ete_mobile_bc3b09cd61.jpg">
+                        <source media="(min-width: 769px)"
+                            srcset="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750233078/soldes_d_ete_46307ef8b1.jpg">
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750233078/soldes_d_ete_46307ef8b1.jpg"
+                            alt="Soldes d'été">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of kv-->
+    <div class="intro">
+        <p>Un billet pour l’évasion ? Jusqu’à -50% chez nous et aucun passeport requis.
+            Que vous partiez au soleil ou en ville, nos essentiels bien-être vous accompagnent pour un été plus
+            harmonieux, plus détendu, plus rayonnant.
+        </p>
+        <div class="desktop-only">
+            <h2>
+                <a href="https://calebasse.com/pages/ete-confort-veineux-sans-stress-jambes-legeres"
+                    style="text-decoration: none; color: inherit;">
+                    <span class="summer-highlight"
+                        style="position: relative; background-color: #ecf5f9; padding: 10px 10px; box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15); display: inline-block; border-radius:10px;">
+                        Découvrez nos <span style="color: #67b7b3">sélections d'essentiels</span> pour un été léger,
+                        frais et sans tracas
+                        <span style="position: relative; display: inline-block;">
+                            !<span class="emoji-overlay"
+                                style="position: absolute; top: 0.8em; left: 10px; transform: rotate(-29deg); font-size: 0.8em;">👆🏻</span>
+                        </span>
+                    </span>
+                </a>
+            </h2>
+        </div>
+        <div class="mobile-only">
+            <h2>
+                <a href="https://calebasse.com/pages/ete-confort-veineux-sans-stress-jambes-legeres"
+                    style="text-decoration: none; color: inherit;">
+                    <span class="summer-highlight"
+                        style="position: relative; background-color: #ecf5f9; padding: 10px 10px; box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15); display: inline-block; border-radius:10px;">
+                        Découvrez nos <span style="color: #67b7b3">sélections d'essentiels<br></span> pour un été léger,
+                        frais et sans tracas
+                        <span style="position: relative; display: inline-block;">
+                            !<span class="emoji-overlay"
+                                style="position: absolute; top: 0.8em; left: 10px; transform: rotate(-29deg); font-size: 0.8em;">👆🏻</span>
+                        </span>
+                    </span>
+                </a>
+            </h2>
+        </div>
+        </br>
+    </div>
+    <div class="code-box">
+        <h2>Offres Exclusives :</h2>
+        <ul>
+            <li style="list-style-type: disc;">15% de réduction* pour tout panier de plus de <b>45€</b> avec le code :
+                <b>EXTRA15</b></li>
+            <li style="list-style-type: disc;">20% de réduction* pour tout panier de plus de <b> 70€</b> avec le code :
+                <b>EXTRA20</b></li>
+            <span style="font-size: 1rem"><em>*Offre valable jusqu'au <b>22 juillet 23h59</b> sur tout le site, sauf sur
+                    les livres et le matériel d’acupuncture</em></span>
+        </ul>
+    </div>
+    <!-- end of kv = key visuel -->
+    <div class="lp-nav-cote">
+        <div class="fixed-menu">
+            <ul>
+                <li> <a href="#pvoyager">Voyager protégé</a></li>
+                <li><a href="#pessentiels">Essentiels</a></li>
+                <li><a href="#pclassiques">Classiques</a></li>
+                <li><a href="#pdigestion">Digestion</a></li>
+                <li><a href="#pdétox">Détox</a></li>
+                <li><a href="#pbeauté">Beauté</a></li>
+                <li><a href="#psynergies">Synergies</a></li>
+                <li><a href="#pprixdoux">Prix doux</a></li>
+                <li><a href="#pmateriels">Matériels MTC</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- begin of wish selector nav = navigation -->
+    <div class="lp-nav">
+        <div class="nav-title">
+            <h2>Soleil, repos, légèreté… Et vous, qu’avez-vous envie d’emmener avec vous cet été ?</h2>
+            <p>Je mets dans ma valise…</p>
+        </div>
+        <div class="nav-options">
+            <a href="#pvoyager">Voyager protégé</a>
+            <a href="#pessentiels">L’été en douceur</a>
+            <a href="#pclassiques">Classiques de la MTC</a>
+            <a href="#pdigestion">Digestion</a>
+            <a href="#pdétox">Détox d’été</a>
+            <a href="#pbeauté">Beauté naturel</a>
+            <a href="#psynergies">Synergies</a>
+            <a href="#pprixdoux">Prix doux</a>
+            <a href="#pmateriels">Matériels MTC</a>
+        </div>
+    </div>
+    <!-- end of wish selector nav = navigation -->
+    <!--begin of classiques section-->
+    <div id="pvoyager">
+        <div class="sv">
+            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1752230447/9_40b636e182.png"
+                alt="voyages">
+            <div class="sv-introduction"><b><em>Pour voyager l’esprit léger et le corps bien défendu,</em></b> </br>
+                Découvrez notre sélection pour renforcer votre immunité, où que vous alliez cet été.</div>
+        </div>
+        <!-- begin product bloc--->
+        <div class="productcard">
+            <div class="quatre">
+                <product-card sku="ELZBZF"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="CYPFSX4"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="BYPFT"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="ALZ"></product-card>
+            </div>
+        </div>
+        </br>
+        <!-- end product bloc--->
+        <!-- begin of essentiels section -->
+        <div id="pessentiels">
+            <div class="sv">
+                <picture>
+                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234100/1_4bdc566da2.jpg"
+                        alt="essentiels">
+                </picture>
+                <div class="sv-introduction"><b><em>Pour un été tout en légèreté et en sérénité. </em></b> </br>Emportez
+                    avec vous les indispensables pour apaiser le corps, rafraîchir l’esprit et ralentir le rythme.</div>
+            </div>
+        </div>
+        <section class="section category4">
+            <div class="section-image">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1751357497/LP_SOLDES_1_1_1_1_cf7fcc6b59.jpg"
+                    alt="suan mei tang">
+                <div
+                    class="absolute right-3 top-3 grid place-items-center px-2 py-1 z-20 rounded-full bg-accent text-xl font-semibold text-white">
+                    -20 %</div>
+            </div>
+            <div class="section-content">
+                <div class="titre-article">
+                    <h2>Boisson à base de prunes chinoises</h2>
+                </div>
+                <p>L'infusion acidulée qui rafraîchit l'été.</p>
+                <p>
+                    Boisson iconique de l’été en Chine, le <b>Suan Mei Tang</b> est un élixir fruité et naturellement
+                    désaltérant, préparé à partir de <b>prunes séchées, aubépine, peau de mandarine, réglisse</b> et
+                    <b>fleurs d’olivier odorant</b>.
+                </p>
+                <p>
+                    À la fois acidulée, légèrement sucrée et terriblement rafraîchissante, cette infusion est idéale
+                    pour <b>apaiser la chaleur interne, stimuler la digestion</b> et <b>recharger votre énergie</b>.</p>
+                <div class="decouverte">
+                    <a href="/produits/suan-mei-tang-boisson-a-base-de-prunes-chinoises-4468">Je découvre !</a>
+                </div>
+            </div>
+        </section>
+        <!-- begin product bloc--->
+        <div class="productcard">
+            <div class="quatre">
+                <product-card sku="BSMT"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="MTC-XN-BP1"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="BSJHLB"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="MHSH"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="D027"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="BBQSSB"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="BWWXDY"></product-card>
+            </div>
+            <div class="quatre">
+                <product-card sku="MTC-TS-S-LIAN"></product-card>
+            </div>
+        </div>
+        </br>
+        <!-- end of essentiels section -->
+        <!--begin of classiques section-->
+        <div id="pclassiques">
+            <div class="sv">
+                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234100/2_b761a05b2b.jpg"
+                    alt="classiques">
+                <div class="sv-introduction"><b><em>Pour un été sans faux pas. </em></b> </br>Emportez avec vous les
+                    indispensables que tout le monde adore : testés, approuvés, et toujours au rendez-vous.</div>
+            </div>
+            <!-- begin product bloc--->
+            <div class="productcard">
+                <div class="quatre">
+                    <product-card sku="CXYS"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="CYPFS"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="D067"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AGQZL"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="ARS"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="AHQSL"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="CGZFLW"></product-card>
+                </div>
+                <div class="quatre">
+                    <product-card sku="CCHSGW"></product-card>
+                </div>
+            </div>
+            </br>
+            <!-- end product bloc--->
+            <!--begin of digestion section-->
+            <div id="pdigestion">
+                <div class="sv">
+                    <picture>
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234100/3_7604c1835c.jpg"
+                            alt="digestion">
+                    </picture>
+                    <div class="sv-introduction"><b><em>Pour un été en toute légèreté. </em></b> </br>Emportez avec vous
+                        les indispensables pour soutenir votre digestion et profiter des repas sans inconfort.</div>
+                </div>
+                <!-- begin product bloc--->
+                <div class="productcard">
+                    <div class="quatre">
+                        <product-card sku="D015"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="BXSC"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="BZQT"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="AYDJ-R"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="BSMT"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="CBJW"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="OCHIC"></product-card>
+                    </div>
+                    <div class="quatre">
+                        <product-card sku="BHXZQT"></product-card>
+                    </div>
+                </div>
+                </br>
+                <!-- end product bloc--->
+                <!-- begin detox bloc-->
+                <div id="pdétox">
+                    <div class="sv">
+                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234100/4_b4189a397e.jpg"
+                            alt="détox">
+                        <div class="sv-introduction"><b><em>Pour une détox douce et naturelle tout l’été. </em></b>
+                            </br>Emportez avec vous les indispensables pour alléger le corps, clarifier l’esprit et
+                            retrouver votre vitalité intérieure.</div>
+                    </div>
+                    <!-- begin of product bloc-->
+                    <div class="productcard">
+                        <div class="quatre">
+                            <product-card sku="D013"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="D033"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="AYYRL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="BWWXDY"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="APGYL"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="D050"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="CWWXDY"></product-card>
+                        </div>
+                        <div class="quatre">
+                            <product-card sku="ASYE"></product-card>
+                        </div>
+                    </div>
+                    </br>
+                    <!--end of detox section-->
+                    <!-- begin beaute bloc-->
+                    <div id="pbeauté">
+                        <div class="sv">
+                            <picture>
+                                <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234101/5_81dcba256c.jpg"
+                                    alt="beaute">
+                            </picture>
+                            <div class="sv-introduction"><b><em>Pour une peau lumineuse tout l’été. </em></b>
+                                </br>Emportez avec vous les indispensables qui nourrissent l’éclat naturel, de
+                                l’intérieur vers l’extérieur..</div>
+                        </div>
+                        <!-- begin of product bloc-->
+                        <div class="productcard">
+                            <div class="quatre">
+                                <product-card sku="ADQYL"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="CZZACW"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="MTC-AMS-1"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="BSBT+MA10177"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="MTC-BSGSB-1"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="D067"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="AHSW"></product-card>
+                            </div>
+                            <div class="quatre">
+                                <product-card sku="D036"></product-card>
+                            </div>
+                        </div>
+                        </br>
+                        <!--end of beaute section-->
+                        <!-- begin synergies bloc-->
+                        <div id="psynergies">
+                            <div class="sv">
+                                <picture>
+                                    <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234102/6_987656e799.jpg"
+                                        alt="complements">
+                                </picture>
+                                <div class="sv-introduction"><b><em>Pour un été en harmonie complète. </em></b>
+                                    </br>Emportez avec vous les synergies de plantes qui agissent en profondeur pour
+                                    soutenir votre bien-être global, jour après jour.</div>
+                            </div>
+                            <!-- begin of product bloc-->
+                            <div class="productcard">
+                                <div class="quatre">
+                                    <product-card sku="D011"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D036"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D054"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D016"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D033"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D035"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D032"></product-card>
+                                </div>
+                                <div class="quatre">
+                                    <product-card sku="D027"></product-card>
+                                </div>
+                            </div>
+                            </br>
+                            <!--end of synergies section-->
+                            <!-- begin plantes bloc-->
+                            <div id="pprixdoux">
+                                <div class="sv">
+                                    <picture>
+                                        <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234102/7_e31878ce70.jpg"
+                                            alt="plantes">
+                                    </picture>
+                                    <div class="sv-introduction"><b><em>Pour un été riche en bienfaits… et en bonnes
+                                                affaires. </b></em></br>Emportez avec vous les plantes occidentales
+                                        incontournables, à prix tout doux pour la saison.</div>
+                                </div>
+                                <!-- begin of product bloc-->
+                                <div class="productcard">
+                                    <div class="quatre">
+                                        <product-card sku="OMARNL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OAILL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OCARO"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OMARBL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OBAPAL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OBOULL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OOLIVL"></product-card>
+                                    </div>
+                                    <div class="quatre">
+                                        <product-card sku="OPADCL"></product-card>
+                                    </div>
+                                </div>
+                                </br>
+                                <!--end of plantes section-->
+                                <!-- begin materiels bloc-->
+                                <div id="pmateriels">
+                                    <div class="sv">
+                                        <picture>
+                                            <img src="https://res.cloudinary.com/laboratoire-calebasse/image/upload/v1750234100/8_8c13896a20.jpg"
+                                                alt="plantes">
+                                        </picture>
+                                        <div class="sv-introduction"><b><em>Pour un été de gestes justes et de soins en
+                                                    profondeur. </b></em></br>Emportez avec vous les essentiels de la
+                                            MTC pour prolonger vos rituels, où que vous soyez.</div>
+                                    </div>
+                                    <!-- begin of product bloc-->
+                                    <div class="productcard">
+                                        <div class="quatre">
+                                            <product-card sku="COFDUORQ"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="MA361-HMZ"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="MA10177"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="MA172"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="CN001"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="MA71X-1"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="MA93X-CP0003"></product-card>
+                                        </div>
+                                        <div class="quatre">
+                                            <product-card sku="CN006-1.8L"></product-card>
+                                        </div>
+                                    </div>
+                                    <!--end of plantes section-->
+                                    <div class="lp-nav">
+                                        <div class="nav-title">
+                                            <h2>Et si vous découvriez aussi... ?</h2>
+                                            <p>Parce que le bien-être se cultive jour après jour, même en vacances,
+                                                découvrez d’autres univers pensés pour accompagner chaque moment de vie.
+                                                Des plantes aux formules ciblées, tout l’art du soin selon la médecine
+                                                traditionnelle chinoise.</p>
+                                        </div>
+                                        <div class="nav-options">
+                                            <a href="/nouveautes">Nos nouveautés</a>
+                                            <a href="/soldes-exceptionnelles">Jardin de l'Occident</a>
+                                            <a href="/infusions-a-fleurs">Infusions</a>
+                                            <a href="/objets-decoratifs">Objets décoratif</a>
+                                            <a href="/materiel-mtc">Matériel MTC</a>
+                                            <a href="/bio">Nos Produits Bio</a>
+                                        </div>
+                                    </div>
+                                </div>
