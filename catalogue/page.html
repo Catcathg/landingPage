@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Générateur PDF - Interface Web</title>
+    <style>
+        /* CSS optimisé */
+        body {
+            font-family: Poppins, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background: #45a049;
+        }
+
+        .button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .status {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Générateur de PDF Catalogue</h1>
+
+        <button id="generateBtn" class="button" onclick="generatePDF()">
+            Générer le PDF
+        </button>
+
+        <div class="progress" style="display: none;" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="status" class="status"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let isGenerating = false;
+
+        function updateProgress(percent, message) {
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const status = document.getElementById('status');
+
+            progressContainer.style.display = 'block';
+            progressBar.style.width = percent + '%';
+            status.textContent = message;
+        }
+
+        async function generatePDF() {
+            if (isGenerating) return;
+
+            isGenerating = true;
+            const btn = document.getElementById('generateBtn');
+            const result = document.getElementById('result');
+
+            btn.disabled = true;
+            btn.textContent = 'Génération en cours...';
+            result.innerHTML = '';
+
+            try {
+                updateProgress(10, 'Initialisation...');
+
+                // Simulation de progression pour l'UX
+                setTimeout(() => updateProgress(30, 'Traitement des données...'), 1000);
+                setTimeout(() => updateProgress(60, 'Génération du document...'), 3000);
+                setTimeout(() => updateProgress(85, 'Création du PDF...'), 5000);
+
+                // Appel optimisé avec timeout
+                const timeoutPromise = new Promise((_, reject) =>
+                    setTimeout(() => reject(new Error('Timeout: Génération trop longue')), 60000)
+                );
+
+                const generatePromise = google.script.run
+                    .withSuccessHandler(onSuccess)
+                    .withFailureHandler(onError)
+                    .generatePdfFromSheets();
+
+                // Course entre génération et timeout
+                await Promise.race([generatePromise, timeoutPromise]);
+
+            } catch (error) {
+                onError(error);
+            }
+        }
+
+        function onSuccess(base64Pdf) {
+            updateProgress(100, 'PDF généré avec succès !');
+
+            // Créer et télécharger le fichier
+            const link = document.createElement('a');
+            link.href = 'data:application/pdf;base64,' + base64Pdf;
+            link.download = 'Catalogue-Calebasse-' + new Date().toISOString().split('T')[0] + '.pdf';
+            link.click();
+
+            // Reset interface
+            setTimeout(() => {
+                resetInterface();
+                document.getElementById('result').innerHTML =
+                    '<div style="color: green;">✅ PDF téléchargé avec succès !</div>';
+            }, 1000);
+        }
+
+        function onError(error) {
+            console.error('Erreur:', error);
+            resetInterface();
+            document.getElementById('result').innerHTML =
+                '<div style="color: red;">❌ Erreur: ' + error.message + '</div>';
+        }
+
+        function resetInterface() {
+            isGenerating = false;
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = false;
+            btn.textContent = 'Générer le PDF';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('status').textContent = '';
+        }
+    </script>
+</body>
+
+</html>
